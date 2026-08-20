@@ -38,9 +38,19 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Always allow local dev origins alongside whatever CLIENT_URL is configured for deployment
+const allowedOrigins = new Set(
+    ['http://localhost:5173', 'http://127.0.0.1:5173', process.env.CLIENT_URL, process.env.DOMAIN_URL].filter(Boolean),
+);
+
 app.use(
     cors({
-        origin: process.env.CLIENT_URL || 'http://localhost:5173',
+        origin: (origin, callback) => {
+            if (!origin || allowedOrigins.has(origin)) {
+                return callback(null, true);
+            }
+            return callback(new Error(`Origin ${origin} not allowed by CORS`));
+        },
         credentials: true,
     }),
 );
