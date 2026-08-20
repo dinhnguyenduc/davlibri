@@ -1,0 +1,14 @@
+Metric,Value,Target,Status
+Precision@5,93.0%,88%,PASS
+Faithfulness,36.0%,92%,FAIL
+MRR,0.823,0.7,PASS
+
+By Category
+Category,Total,Retrieval %,Faithfulness %
+Quy chế Học viện,25,92.0,28.0
+Chính trị - Đối ngoại,25,92.0,60.0
+Luật pháp Quốc tế,22,86.4,27.3
+Quan hệ Quốc tế,13,100.0,53.8
+Lịch sử & Truyền thống DAV,2,100.0,0.0
+Quy chế đặc thù,12,100.0,8.3
+Chính trì - Đối ngoại,1,100.0,0.0

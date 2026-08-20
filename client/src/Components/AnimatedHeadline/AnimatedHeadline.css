@@ -1,0 +1,196 @@
+.animated-headline-container {
+    width: 100%;
+    padding: 60px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    position: relative;
+    z-index: 1;
+    clear: both;
+}
+
+.animated-headline-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.animated-headline {
+    font-family: 'Calistoga', 'Georgia', serif;
+    font-size: 42px;
+    line-height: 1.4;
+    color: #000000;
+    font-weight: 700;
+    margin: 0;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.headline-plain-text {
+    display: inline-block;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.headline-dynamic-wrapper {
+    position: relative;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.headline-dynamic-text {
+    position: relative;
+    z-index: 2;
+    color: #000000;
+    font-weight: 800;
+    display: inline-block;
+    animation: fadeInScale 0.8s ease-out 0.3s both;
+}
+
+/* SVG Circle Highlight */
+.headline-highlight-circle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 110%;
+    height: 120%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.headline-highlight-circle path {
+    fill: none;
+    stroke: #ff4444;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1500;
+    stroke-dashoffset: 1500;
+    opacity: 0;
+}
+
+/* Animation when active */
+.headline-dynamic-wrapper.active .headline-highlight-circle path {
+    animation: drawCircle 1.5s ease-out 0.5s forwards;
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes drawCircle {
+    0% {
+        stroke-dashoffset: 1500;
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+}
+
+/* Pulsing animation for dynamic text */
+.headline-dynamic-wrapper.active .headline-dynamic-text {
+    animation: fadeInScale 0.8s ease-out 0.3s both, pulse 2s ease-in-out 2s infinite;
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .animated-headline {
+        font-size: 36px;
+    }
+
+    .animated-headline-container {
+        padding: 50px 20px;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .animated-headline {
+        font-size: 28px;
+        line-height: 1.5;
+    }
+
+    .animated-headline-container {
+        padding: 40px 15px;
+        margin-top: 0;
+        position: relative;
+        z-index: 1;
+    }
+
+    .headline-highlight-circle {
+        width: 115%;
+        height: 130%;
+    }
+}
+
+@media (max-width: 480px) {
+    .animated-headline {
+        font-size: 22px;
+        gap: 8px;
+    }
+
+    .animated-headline-container {
+        padding: 30px 10px;
+        margin-top: 0;
+        position: relative;
+        z-index: 1;
+    }
+
+    .headline-dynamic-wrapper {
+        padding: 0 5px;
+    }
+}
+
+/* Alternative color schemes */
+.animated-headline-container.variant-blue .headline-highlight-circle path {
+    stroke: #4054b2;
+}
+
+.animated-headline-container.variant-green .headline-highlight-circle path {
+    stroke: #10b981;
+}
+
+.animated-headline-container.variant-purple .headline-highlight-circle path {
+    stroke: #8b5cf6;
+}
+
+.animated-headline-container.variant-orange .headline-highlight-circle path {
+    stroke: #f59e0b;
+}

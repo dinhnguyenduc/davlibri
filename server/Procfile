@@ -1,0 +1,46 @@
+{
+    "name": "davlibri-server",
+    "description": "Library Management System Backend with Vector Search & RAG Chatbot",
+    "buildpacks": [
+        {
+            "url": "heroku/nodejs"
+        }
+    ],
+    "env": {
+        "NODE_ENV": {
+            "value": "production"
+        },
+        "MONGO_URI": {
+            "description": "MongoDB Atlas connection string",
+            "required": true
+        },
+        "GEMINI_API_KEY": {
+            "description": "Google Gemini API key for AI features",
+            "required": true
+        },
+        "JWT_SECRET": {
+            "description": "JWT secret for authentication",
+            "required": true
+        },
+        "CLOUDINARY_NAME": {
+            "description": "Cloudinary account name",
+            "required": true
+        },
+        "CLOUDINARY_API_KEY": {
+            "description": "Cloudinary API key",
+            "required": true
+        },
+        "CLOUDINARY_API_SECRET": {
+            "description": "Cloudinary API secret",
+            "required": true
+        },
+        "VNP_SECRET_KEY": {
+            "description": "VNPay secret key for payment verification",
+            "required": true
+        },
+        "REACT_APP_API_URL": {
+            "description": "Backend API URL",
+            "required": true
+        }
+    }
+}

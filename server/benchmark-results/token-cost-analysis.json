@@ -1,0 +1,16 @@
+{
+  "totalRequests": 100,
+  "cacheHits": 40,
+  "cacheMisses": 60,
+  "tokens": {
+    "input": 9433,
+    "output": 3133,
+    "total": 12566
+  },
+  "cost": {
+    "withoutCache": 0.001647375,
+    "withCache": 0.000988425,
+    "savings": 0.0006589499999999999
+  },
+  "cacheHitRate": 40
+}

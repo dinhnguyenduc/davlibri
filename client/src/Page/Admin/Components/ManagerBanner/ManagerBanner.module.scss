@@ -1,0 +1,68 @@
+.manager-banner {
+    padding: 24px;
+    background: #fff;
+    min-height: calc(100vh - 64px);
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0;
+        }
+    }
+
+    .banner-form {
+        margin-top: 20px;
+
+        .image-preview {
+            margin-top: 10px;
+            border: 1px solid #d9d9d9;
+            border-radius: 8px;
+            padding: 8px;
+
+            img {
+                display: block;
+                max-width: 100%;
+                height: auto;
+                border-radius: 4px;
+            }
+        }
+
+        .interactive-preview {
+            position: relative;
+            user-select: none;
+
+            &:hover {
+                border-color: #40a9ff;
+            }
+
+            &.dragging {
+                border-color: #096dd9;
+                box-shadow: 0 0 8px rgba(24, 144, 255, 0.3);
+            }
+        }
+    }
+}
+
+:global {
+    .ant-table-wrapper {
+        .ant-table {
+            font-size: 14px;
+        }
+
+        .ant-image {
+            border-radius: 4px;
+            overflow: hidden;
+        }
+    }
+
+    .ant-modal-body {
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+}

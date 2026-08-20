@@ -1,0 +1,106 @@
+const { AuthFailureError } = require('../core/error.response');
+const { verifyToken } = require('../services/tokenServices');
+const modelUser = require('../models/users.model');
+
+const asyncHandler = (fn) => {
+    return (req, res, next) => {
+        fn(req, res, next).catch(next);
+    };
+};
+
+const authUser = async (req, res, next) => {
+    try {
+        const user = req.cookies.token;
+        if (!user) throw new AuthFailureError('Vui lòng đăng nhập');
+
+        const token = user;
+        const decoded = await verifyToken(token);
+        req.user = decoded;
+        next();
+    } catch (error) {
+        next(error);
+    }
+};
+
+const authAdmin = async (req, res, next) => {
+    try {
+        const user = req.cookies.token;
+        if (!user) throw new AuthFailureError('Bạn không có quyền truy cập');
+        const token = user;
+        const decoded = await verifyToken(token);
+        const { id } = decoded;
+        const findUser = await modelUser.findById(id);
+        if (findUser.role !== 'admin') {
+            throw new AuthFailureError('Bạn không có quyền truy cập');
+        }
+        req.user = decoded;
+        next();
+    } catch (error) {
+        next(error);
+    }
+};
+
+/**
+ * Middleware kiểm tra quyền librarian hoặc admin
+ */
+const authLibrarian = async (req, res, next) => {
+    try {
+        const user = req.cookies.token;
+        if (!user) throw new AuthFailureError('Bạn không có quyền truy cập');
+        const token = user;
+        const decoded = await verifyToken(token);
+        const { id } = decoded;
+        const findUser = await modelUser.findById(id);
+
+        if (findUser.role !== 'admin' && findUser.role !== 'librarian') {
+            throw new AuthFailureError('Bạn không có quyền truy cập');
+        }
+
+        req.user = { ...decoded, permissions: findUser.permissions, role: findUser.role };
+        next();
+    } catch (error) {
+        next(error);
+    }
+};
+
+/**
+ * Middleware kiểm tra quyền cụ thể (dùng cho librarian)
+ * @param {string} permission - Tên quyền cần kiểm tra
+ */
+const checkPermission = (permission) => {
+    return async (req, res, next) => {
+        try {
+            const user = req.cookies.token;
+            if (!user) throw new AuthFailureError('Bạn không có quyền truy cập');
+
+            const token = user;
+            const decoded = await verifyToken(token);
+            const { id } = decoded;
+            const findUser = await modelUser.findById(id);
+
+            // Admin có tất cả quyền
+            if (findUser.role === 'admin') {
+                req.user = { ...decoded, permissions: [], role: findUser.role };
+                return next();
+            }
+
+            // Kiểm tra librarian có permission không
+            if (findUser.role === 'librarian' && findUser.permissions.includes(permission)) {
+                req.user = { ...decoded, permissions: findUser.permissions, role: findUser.role };
+                return next();
+            }
+
+            throw new AuthFailureError('Bạn không có quyền thực hiện thao tác này');
+        } catch (error) {
+            next(error);
+        }
+    };
+};
+
+module.exports = {
+    asyncHandler,
+    authUser,
+    authAdmin,
+    authLibrarian,
+    checkPermission,
+};

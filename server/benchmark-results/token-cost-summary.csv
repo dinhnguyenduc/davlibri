@@ -1,0 +1,16 @@
+Metric,Value
+Total Requests,100
+Cache Hit Rate,40%
+Cache Hits,40
+Cache Misses,60
+
+Token Usage
+,Without Cache,With Cache,Savings
+Input Tokens,9433,5659,3773
+Output Tokens,3133,1879,1253
+Total Tokens,12566,7539,5026
+
+Cost Analysis
+,Without Cache,With Cache,Savings
+Cost (USD),$0.0016,$0.0010,$0.0007
+Savings %,0%,40.0%,

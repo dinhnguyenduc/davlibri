@@ -1,0 +1,15 @@
+# Vercel Configuration for Frontend
+# Deploy with: vercel --prod
+
+[build]
+  command = "npm run build"
+  functions = "functions"
+  publish = "dist"
+
+[env]
+  NODE_ENV = "production"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

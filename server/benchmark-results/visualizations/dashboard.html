@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Benchmark Results</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a2e;
+            color: #eee;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .card {
+            background: #16213e;
+            border-radius: 10px;
+            padding: 30px;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        .card iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 8px;
+            background: white;
+        }
+        .links {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .links a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+        .links a:hover {
+            background: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📊 DAVLibri Benchmark Dashboard</h1>
+        <p>Comprehensive Performance Analysis - Chapter 5</p>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <h2>🚀 Latency Comparison</h2>
+            <iframe src="latency-chart.html"></iframe>
+        </div>
+
+        <div class="card">
+            <h2>🎯 Accuracy Metrics</h2>
+            <iframe src="accuracy-chart.html"></iframe>
+        </div>
+
+        <div class="card">
+            <h2>💰 Cost Efficiency</h2>
+            <iframe src="cost-chart.html"></iframe>
+        </div>
+    </div>
+
+    <div class="links">
+        <a href="latency-chart.html" target="_blank">View Latency Chart</a>
+        <a href="accuracy-chart.html" target="_blank">View Accuracy Chart</a>
+        <a href="cost-chart.html" target="_blank">View Cost Chart</a>
+    </div>
+</body>
+</html>

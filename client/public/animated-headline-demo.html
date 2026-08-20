@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Animated Headline - Demo</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Calistoga&family=Barlow:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Barlow', sans-serif;
+                background: #f5f5f5;
+                padding: 20px;
+            }
+
+            .demo-container {
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+
+            .demo-header {
+                text-align: center;
+                margin-bottom: 40px;
+                background: white;
+                padding: 30px;
+                border-radius: 15px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+
+            .demo-header h1 {
+                font-family: 'Calistoga', cursive;
+                color: #333;
+                margin-bottom: 10px;
+                font-size: 32px;
+            }
+
+            .demo-header p {
+                color: #666;
+                font-size: 16px;
+            }
+
+            /* Animated Headline Styles */
+            .animated-headline-container {
+                width: 100%;
+                padding: 60px 20px;
+                background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 20px;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+                margin-bottom: 30px;
+            }
+
+            .animated-headline-wrapper {
+                max-width: 1200px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .animated-headline {
+                font-family: 'Calistoga', 'Georgia', serif;
+                font-size: 42px;
+                line-height: 1.4;
+                color: #000000;
+                font-weight: 700;
+                margin: 0;
+                padding: 0 20px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .headline-plain-text {
+                display: inline-block;
+                animation: fadeInUp 0.8s ease-out;
+            }
+
+            .headline-dynamic-wrapper {
+                position: relative;
+                display: inline-block;
+                padding: 0 10px;
+            }
+
+            .headline-dynamic-text {
+                position: relative;
+                z-index: 2;
+                color: #000000;
+                font-weight: 800;
+                display: inline-block;
+                animation: fadeInScale 0.8s ease-out 0.3s both;
+            }
+
+            .headline-highlight-circle {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: 110%;
+                height: 120%;
+                z-index: 1;
+                pointer-events: none;
+            }
+
+            .headline-highlight-circle path {
+                fill: none;
+                stroke: #ff4444;
+                stroke-width: 8;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-dasharray: 1500;
+                stroke-dashoffset: 1500;
+                opacity: 0;
+            }
+
+            .headline-dynamic-wrapper.active .headline-highlight-circle path {
+                animation: drawCircle 1.5s ease-out 0.5s forwards;
+            }
+
+            .headline-dynamic-wrapper.active .headline-dynamic-text {
+                animation: fadeInScale 0.8s ease-out 0.3s both, pulse 2s ease-in-out 2s infinite;
+            }
+
+            /* Animations */
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes fadeInScale {
+                from {
+                    opacity: 0;
+                    transform: scale(0.8);
+                }
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+
+            @keyframes drawCircle {
+                0% {
+                    stroke-dashoffset: 1500;
+                    opacity: 0;
+                }
+                20% {
+                    opacity: 1;
+                }
+                100% {
+                    stroke-dashoffset: 0;
+                    opacity: 1;
+                }
+            }
+
+            @keyframes pulse {
+                0%,
+                100% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.05);
+                }
+            }
+
+            /* Color variants */
+            .variant-red .headline-highlight-circle path {
+                stroke: #ff4444;
+            }
+            .variant-blue .headline-highlight-circle path {
+                stroke: #4054b2;
+            }
+            .variant-green .headline-highlight-circle path {
+                stroke: #10b981;
+            }
+            .variant-purple .headline-highlight-circle path {
+                stroke: #8b5cf6;
+            }
+            .variant-orange .headline-highlight-circle path {
+                stroke: #f59e0b;
+            }
+
+            /* Info section */
+            .info-section {
+                background: white;
+                border-radius: 15px;
+                padding: 30px;
+                margin-top: 30px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+
+            .info-section h2 {
+                color: #4054b2;
+                margin-bottom: 20px;
+                font-size: 24px;
+            }
+
+            .variants-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+                margin-top: 20px;
+            }
+
+            .variant-demo {
+                padding: 20px;
+                background: #f8f9fa;
+                border-radius: 10px;
+                text-align: center;
+            }
+
+            .variant-demo h3 {
+                font-size: 18px;
+                margin-bottom: 10px;
+                color: #333;
+            }
+
+            .color-label {
+                display: inline-block;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                margin: 10px 5px;
+                border: 3px solid white;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .features-list {
+                list-style: none;
+                padding: 0;
+            }
+
+            .features-list li {
+                padding: 10px 0;
+                color: #666;
+                border-bottom: 1px solid #eee;
+            }
+
+            .features-list li:last-child {
+                border-bottom: none;
+            }
+
+            .features-list li::before {
+                content: '✓ ';
+                color: #4054b2;
+                font-weight: bold;
+                margin-right: 8px;
+            }
+
+            .replay-button {
+                background: linear-gradient(135deg, #4054b2 0%, #5a6ac4 100%);
+                color: white;
+                border: none;
+                padding: 12px 30px;
+                border-radius: 8px;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                margin-top: 20px;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 12px rgba(64, 84, 178, 0.3);
+            }
+
+            .replay-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 16px rgba(64, 84, 178, 0.4);
+            }
+
+            @media (max-width: 768px) {
+                .animated-headline {
+                    font-size: 28px;
+                }
+                .demo-header h1 {
+                    font-size: 24px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="demo-container">
+            <div class="demo-header">
+                <h1>🎨 Animated Headline Component</h1>
+                <p>Hiệu ứng text với highlight vòng tròn tự động vẽ</p>
+            </div>
+
+            <!-- Main Demo - Red -->
+            <div class="animated-headline-container variant-red" id="demo1">
+                <div class="animated-headline-wrapper">
+                    <h2 class="animated-headline">
+                        <span class="headline-plain-text">
+                            Đọc được nhiều sách hơn và đọc tốt hơn với DAVLibri chỉ từ
+                        </span>
+                        <span class="headline-dynamic-wrapper">
+                            <span class="headline-dynamic-text">1,900đ/ngày</span>
+                            <svg
+                                class="headline-highlight-circle"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 500 150"
+                                preserveAspectRatio="none"
+                            >
+                                <path
+                                    d="M325,18C228.7-8.3,118.5,8.3,78,21C22.4,38.4,4.6,54.6,5.6,77.6c1.4,32.4,52.2,54,142.6,63.7 c66.2,7.1,212.2,7.5,273.5-8.3c64.4-16.6,104.3-57.6,33.8-98.2C386.7-4.9,179.4-1.4,126.3,20.7"
+                                ></path>
+                            </svg>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+
+            <!-- Blue Variant -->
+            <div class="animated-headline-container variant-blue" id="demo2">
+                <div class="animated-headline-wrapper">
+                    <h2 class="animated-headline">
+                        <span class="headline-plain-text"> Hơn 10,000 đầu sách đang chờ bạn khám phá chỉ từ </span>
+                        <span class="headline-dynamic-wrapper">
+                            <span class="headline-dynamic-text">1,900đ/ngày</span>
+                            <svg
+                                class="headline-highlight-circle"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 500 150"
+                                preserveAspectRatio="none"
+                            >
+                                <path
+                                    d="M325,18C228.7-8.3,118.5,8.3,78,21C22.4,38.4,4.6,54.6,5.6,77.6c1.4,32.4,52.2,54,142.6,63.7 c66.2,7.1,212.2,7.5,273.5-8.3c64.4-16.6,104.3-57.6,33.8-98.2C386.7-4.9,179.4-1.4,126.3,20.7"
+                                ></path>
+                            </svg>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+
+            <!-- Green Variant -->
+            <div class="animated-headline-container variant-green" id="demo3">
+                <div class="animated-headline-wrapper">
+                    <h2 class="animated-headline">
+                        <span class="headline-plain-text"> Tiết kiệm hơn với gói thành viên chỉ </span>
+                        <span class="headline-dynamic-wrapper">
+                            <span class="headline-dynamic-text">57,000đ/tháng</span>
+                            <svg
+                                class="headline-highlight-circle"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 500 150"
+                                preserveAspectRatio="none"
+                            >
+                                <path
+                                    d="M325,18C228.7-8.3,118.5,8.3,78,21C22.4,38.4,4.6,54.6,5.6,77.6c1.4,32.4,52.2,54,142.6,63.7 c66.2,7.1,212.2,7.5,273.5-8.3c64.4-16.6,104.3-57.6,33.8-98.2C386.7-4.9,179.4-1.4,126.3,20.7"
+                                ></path>
+                            </svg>
+                        </span>
+                    </h2>
+                </div>
+            </div>
+
+            <div style="text-align: center">
+                <button class="replay-button" onclick="replayAnimations()">🔄 Xem lại hiệu ứng</button>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2>📋 Thông tin về Component</h2>
+                <ul class="features-list">
+                    <li>Hiệu ứng vẽ vòng tròn highlight tự động bằng SVG animation</li>
+                    <li>Text fade in với animation mượt mà</li>
+                    <li>Pulsing effect cho text được highlight</li>
+                    <li>5 biến thể màu sắc khác nhau (Red, Blue, Green, Purple, Orange)</li>
+                    <li>Responsive hoàn toàn trên mọi thiết bị</li>
+                    <li>Dễ dàng tùy chỉnh nội dung và màu sắc</li>
+                    <li>Không cần thư viện bên ngoài, chỉ dùng CSS thuần</li>
+                </ul>
+
+                <h2 style="margin-top: 30px">🎨 Biến thể màu sắc</h2>
+                <div class="variants-grid">
+                    <div class="variant-demo">
+                        <h3>Red (Default)</h3>
+                        <span class="color-label" style="background: #ff4444"></span>
+                        <p style="margin-top: 10px; color: #666">Màu đỏ nổi bật, thu hút sự chú ý</p>
+                    </div>
+                    <div class="variant-demo">
+                        <h3>Blue</h3>
+                        <span class="color-label" style="background: #4054b2"></span>
+                        <p style="margin-top: 10px; color: #666">Màu xanh dương chuyên nghiệp</p>
+                    </div>
+                    <div class="variant-demo">
+                        <h3>Green</h3>
+                        <span class="color-label" style="background: #10b981"></span>
+                        <p style="margin-top: 10px; color: #666">Màu xanh lá tươi mới</p>
+                    </div>
+                    <div class="variant-demo">
+                        <h3>Purple</h3>
+                        <span class="color-label" style="background: #8b5cf6"></span>
+                        <p style="margin-top: 10px; color: #666">Màu tím sáng tạo</p>
+                    </div>
+                    <div class="variant-demo">
+                        <h3>Orange</h3>
+                        <span class="color-label" style="background: #f59e0b"></span>
+                        <p style="margin-top: 10px; color: #666">Màu cam năng động</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Activate animations on page load
+            window.addEventListener('load', function () {
+                setTimeout(function () {
+                    document.querySelectorAll('.headline-dynamic-wrapper').forEach(function (el) {
+                        el.classList.add('active');
+                    });
+                }, 300);
+            });
+
+            // Replay animations function
+            function replayAnimations() {
+                // Remove active class
+                document.querySelectorAll('.headline-dynamic-wrapper').forEach(function (el) {
+                    el.classList.remove('active');
+                });
+
+                // Add it back after a short delay
+                setTimeout(function () {
+                    document.querySelectorAll('.headline-dynamic-wrapper').forEach(function (el) {
+                        el.classList.add('active');
+                    });
+                }, 100);
+            }
+        </script>
+    </body>
+</html>

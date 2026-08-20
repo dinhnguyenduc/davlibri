@@ -1,0 +1,513 @@
+.banner-container {
+    width: 100%;
+    padding: 20px 0;
+    background: #ffffff;
+    position: relative;
+    z-index: 0;
+}
+
+.banner-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    pointer-events: none;
+}
+
+.banner-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.banner-background {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f6ecdd 0%, #e8d5c4 100%);
+    border-radius: 0;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+/* Left side - Books illustration */
+.banner-left {
+    flex: 0 0 200px;
+    display: flex;
+    align-items: center;
+}
+
+.books-stack {
+    position: relative;
+    width: 150px;
+    height: 200px;
+}
+
+.book {
+    position: absolute;
+    width: 80px;
+    height: 100px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.book-1 {
+    background: linear-gradient(135deg, #8b4c8f 0%, #7a3e7e 100%);
+    transform: rotate(-15deg);
+    left: 0;
+    top: 50px;
+    z-index: 3;
+}
+
+.book-2 {
+    background: linear-gradient(135deg, #c44569 0%, #b23555 100%);
+    transform: rotate(-5deg);
+    left: 30px;
+    top: 40px;
+    z-index: 2;
+}
+
+.book-3 {
+    background: linear-gradient(135deg, #f9ca24 0%, #f0b922 100%);
+    transform: rotate(5deg);
+    left: 60px;
+    top: 30px;
+    z-index: 1;
+}
+
+/* Center - Text content */
+.banner-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 40px;
+}
+
+.banner-text-content {
+    max-width: 600px;
+}
+
+.banner-title {
+    font-family: 'Calistoga', cursive;
+    font-size: 48px;
+    line-height: 1.2;
+    color: #000000;
+    margin-bottom: 30px;
+    font-weight: 700;
+    animation: fadeInUp 1s ease-out;
+}
+
+.banner-features {
+    margin-bottom: 30px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000000;
+    font-weight: 500;
+    animation: fadeInLeft 1s ease-out;
+}
+
+.feature-item:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.feature-item:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.feature-item:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.feature-icon {
+    margin-right: 12px;
+    color: #4054b2;
+    font-size: 16px;
+}
+
+.banner-button {
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: #4054b2;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Barlow', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 3px;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.banner-button:hover {
+    background-color: #1b2d82;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(64, 84, 178, 0.4);
+    filter: brightness(120%);
+}
+
+/* Right side - Reading person illustration */
+.banner-right {
+    flex: 0 0 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.illustration {
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+
+/* Reading person illustration */
+.reading-person {
+    position: relative;
+    width: 300px;
+    height: 350px;
+}
+
+.person-cap {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 60px;
+    background: linear-gradient(135deg, #90c959 0%, #7ab843 100%);
+    border-radius: 60px 60px 0 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.person-cap::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 20px;
+    background: linear-gradient(135deg, #90c959 0%, #7ab843 100%);
+    border-radius: 50%;
+}
+
+.person-body {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 180px;
+    background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+    border-radius: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.person-body::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    background: #ffd6a5;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.person-book {
+    position: absolute;
+    top: 180px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-10deg);
+    width: 180px;
+    height: 120px;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+    border: 4px solid #333;
+    border-radius: 4px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.person-book::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 100%;
+    background: #ccc;
+}
+
+/* Family reading illustration */
+.family-reading {
+    position: relative;
+    width: 300px;
+    height: 350px;
+}
+
+.family-group {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 350"><circle cx="80" cy="100" r="30" fill="%23ff6b6b"/><circle cx="150" cy="100" r="30" fill="%23ffd93d"/><circle cx="220" cy="100" r="30" fill="%234ecdc4"/><rect x="50" y="130" width="60" height="80" rx="10" fill="%23ff6b6b"/><rect x="120" y="130" width="60" height="80" rx="10" fill="%23ffd93d"/><rect x="190" y="130" width="60" height="80" rx="10" fill="%234ecdc4"/></svg>')
+        center/contain no-repeat;
+}
+
+/* Books stack right illustration */
+.books-stack-right {
+    position: relative;
+    width: 250px;
+    height: 300px;
+}
+
+.book-right {
+    position: absolute;
+    width: 120px;
+    height: 160px;
+    border-radius: 6px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.book-r1 {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    transform: rotate(-8deg);
+    right: 120px;
+    top: 50px;
+    z-index: 3;
+}
+
+.book-r2 {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    transform: rotate(5deg);
+    right: 60px;
+    top: 80px;
+    z-index: 2;
+}
+
+.book-r3 {
+    background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+    transform: rotate(-3deg);
+    right: 0;
+    top: 110px;
+    z-index: 1;
+}
+
+/* Navigation Controls */
+.banner-controls {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.control-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.control-button:hover {
+    background-color: #4054b2;
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+.control-button svg {
+    stroke: currentColor;
+}
+
+/* Dots Navigation */
+.banner-dots {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background-color: #4054b2;
+    width: 32px;
+    border-radius: 6px;
+}
+
+.dot:hover {
+    background-color: rgba(64, 84, 178, 0.7);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .banner-content {
+        gap: 20px;
+    }
+
+    .banner-left,
+    .banner-right {
+        flex: 0 0 150px;
+    }
+
+    .banner-title {
+        font-size: 42px;
+    }
+
+    .feature-item {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner-container {
+        height: 500px;
+    }
+
+    .banner-background {
+        padding: 20px;
+    }
+
+    .banner-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .banner-left,
+    .banner-right {
+        flex: 0 0 auto;
+        width: 100%;
+        height: 150px;
+    }
+
+    .banner-center {
+        padding: 0 20px;
+    }
+
+    .banner-title {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .feature-item {
+        font-size: 14px;
+    }
+
+    .banner-button {
+        display: block;
+        text-align: center;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .books-stack,
+    .illustration {
+        height: 150px;
+    }
+
+    .control-button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .banner-controls {
+        bottom: 20px;
+    }
+
+    .banner-dots {
+        bottom: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-container {
+        height: 450px;
+    }
+
+    .banner-title {
+        font-size: 28px;
+    }
+
+    .feature-item {
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+
+    .banner-button {
+        font-size: 14px;
+        padding: 12px 25px;
+    }
+}

@@ -1,0 +1,14 @@
+Error Category,Count,Percentage
+Tìm thấy nhưng độ tương đồng thấp,34,100.0%
+Không tìm thấy trong database,0,0.0%
+Trả lời sai hoàn toàn,0,0.0%
+Yêu cầu suy luận nhiều bước,0,0.0%
+Thiếu ngữ cảnh cần thiết,0,0.0%
+Câu hỏi mơ hồ, đa nghĩa,0,0.0%
+
+Summary
+Metric,Value
+Total Questions,100
+Correct,66
+Incorrect,34
+Accuracy,66.0%

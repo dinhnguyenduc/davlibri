@@ -1,0 +1,71 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Python virtual environment
+.venv/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Documentation (keep root README.md only)
+*.md
+!README.md
+
+# Documents
+*.pdf
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Temporary files
+*.tmp
+*.bak
+*.old
+*.orig
+*.cache
+
+# Sensitive files
+readMe
+users_import.json
+*.pem
+*.key
+
+# Upload directories (keep structure but not content)
+server/src/uploads/avatars/*
+!server/src/uploads/avatars/.gitkeep
+server/src/uploads/products/*
+!server/src/uploads/products/.gitkeep

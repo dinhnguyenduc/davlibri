@@ -1,0 +1,1002 @@
+[
+    {
+        "id": "DAV_REG_001",
+        "category": "Quy chế Học viện",
+        "topic": "Học phần và Điểm số",
+        "complexity": "Medium",
+        "question": "Theo Quyết định số 508/QĐ-HVNG, sinh viên Học viện Ngoại giao bị điểm F ở học phần bắt buộc phải xử lý như thế nào?",
+        "golden_answer": "Sinh viên phải đăng ký học lại học phần đó ở một trong các học kỳ tiếp theo cho đến khi đạt điểm A, B, C hoặc D.",
+        "source_ref": "Quyết định 508/QĐ-HVNG",
+        "keywords": ["điểm F", "học lại", "học phần bắt buộc", "điểm A B C D"]
+    },
+    {
+        "id": "DAV_REG_002",
+        "category": "Quy chế Học viện",
+        "topic": "Hoạt động cộng đồng",
+        "complexity": "Easy",
+        "question": "Để đủ điều kiện tốt nghiệp, sinh viên Học viện Ngoại giao cần tích lũy tối thiểu bao nhiêu điểm Hoạt động cộng đồng (HĐCĐ)?",
+        "golden_answer": "Sinh viên phải tích lũy và hoàn thành tối thiểu 60 điểm HĐCĐ trong suốt khóa học.",
+        "source_ref": "Quy chế đào tạo tín chỉ DAV",
+        "keywords": ["60 điểm HĐCĐ", "hoạt động cộng đồng", "điều kiện tốt nghiệp"]
+    },
+    {
+        "id": "DAV_REG_003",
+        "category": "Quy chế Học viện",
+        "topic": "Thực tập",
+        "complexity": "Medium",
+        "question": "Theo quy định về Học phần thực tập, sinh viên DAV cần đảm bảo thời gian thực tập tối thiểu là bao nhiêu giờ?",
+        "golden_answer": "Sinh viên cần đảm bảo tích lũy đủ thời gian thực tập tối thiểu 135 giờ tại tối đa 02 cơ sở thực tập.",
+        "source_ref": "Quy định về Học phần thực tập DAV",
+        "keywords": ["135 giờ", "thực tập", "02 cơ sở"]
+    },
+    {
+        "id": "DAV_REG_004",
+        "category": "Quy chế Học viện",
+        "topic": "Thực tập",
+        "complexity": "Medium",
+        "question": "Điều kiện tiên quyết để sinh viên DAV được bắt đầu thực hiện Học phần thực tập là gì?",
+        "golden_answer": "Sinh viên có thể bắt đầu thực tập khi kết thúc năm học thứ Hai hoặc đã tích lũy đủ 50% tổng số tín chỉ của Chương trình đào tạo.",
+        "source_ref": "Quy định về Học phần thực tập DAV",
+        "keywords": ["năm thứ hai", "50% tín chỉ", "điều kiện thực tập"]
+    },
+    {
+        "id": "DAV_REG_005",
+        "category": "Quy chế Học viện",
+        "topic": "Khóa luận tốt nghiệp",
+        "complexity": "Easy",
+        "question": "Hội đồng chấm Khóa luận tốt nghiệp tại DAV bao gồm những thành phần nào?",
+        "golden_answer": "Hội đồng gồm 03 thành viên: 01 Chủ tịch, 01 Thư ký và 01 Ủy viên (bao gồm giảng viên hướng dẫn trực tiếp).",
+        "source_ref": "Quy chế đào tạo DAV",
+        "keywords": ["03 thành viên", "hội đồng", "chủ tịch", "thư ký", "ủy viên"]
+    },
+    {
+        "id": "DAV_REG_006",
+        "category": "Quy chế Học viện",
+        "topic": "Thi cử",
+        "complexity": "Easy",
+        "question": "Trong kỳ thi kết thúc học phần, thời gian làm bài thi tự luận đối với học phần từ 03 tín chỉ trở lên là bao lâu?",
+        "golden_answer": "Thời gian làm bài thi là từ 90 đến 120 phút.",
+        "source_ref": "Quy chế thi và kiểm tra DAV",
+        "keywords": ["90-120 phút", "tự luận", "03 tín chỉ"]
+    },
+    {
+        "id": "DAV_REG_007",
+        "category": "Quy chế Học viện",
+        "topic": "Hoạt động cộng đồng",
+        "complexity": "Medium",
+        "question": "Sinh viên bị đình chỉ tham gia hoạt động cộng đồng (HĐCĐ) lần thứ nhất sẽ chịu hình thức xử lý nào nếu tái phạm?",
+        "golden_answer": "Sinh viên sẽ phải hoàn thành thêm 10 điểm HĐCĐ so với mức điểm tối thiểu (60 điểm).",
+        "source_ref": "Quy chế HĐCĐ DAV",
+        "keywords": ["10 điểm thêm", "tái phạm", "đình chỉ HĐCĐ"]
+    },
+    {
+        "id": "DAV_REG_008",
+        "category": "Quy chế Học viện",
+        "topic": "Năm học",
+        "complexity": "Easy",
+        "question": "Một năm học chuẩn tại Học viện Ngoại giao bao gồm mấy học kỳ chính?",
+        "golden_answer": "Một năm học gồm hai hoặc ba học kỳ chính với tổng số tối thiểu 30 tuần lên lớp.",
+        "source_ref": "Quy chế đào tạo tín chỉ DAV",
+        "keywords": ["hai hoặc ba học kỳ", "30 tuần"]
+    },
+    {
+        "id": "DAV_REG_009",
+        "category": "Quy chế Học viện",
+        "topic": "Đăng ký học phần",
+        "complexity": "Medium",
+        "question": "Theo quy chế tín chỉ, khối lượng học tập tối đa sinh viên được đăng ký trong một học kỳ là bao nhiêu?",
+        "golden_answer": "Khối lượng tối đa không vượt quá 3/2 khối lượng trung bình một học kỳ theo kế hoạch học tập chuẩn.",
+        "source_ref": "Quy chế đào tạo tín chỉ DAV",
+        "keywords": ["3/2 khối lượng", "đăng ký tối đa", "học kỳ"]
+    },
+    {
+        "id": "DAV_REG_010",
+        "category": "Quy chế Học viện",
+        "topic": "Thông tin chung",
+        "complexity": "Easy",
+        "question": "Địa chỉ trụ sở chính của Học viện Ngoại giao nằm ở đâu?",
+        "golden_answer": "Số 69 Phố Chùa Láng, Phường Láng Thượng, Quận Đống Đa, Hà Nội.",
+        "source_ref": "Thông tin chính thức DAV",
+        "keywords": ["69 Chùa Láng", "Đống Đa", "Hà Nội"]
+    },
+    {
+        "id": "POL_VN_011",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "Nền ngoại giao Việt Nam",
+        "complexity": "Medium",
+        "question": "Đại hội Đảng lần thứ XIII xác định xây dựng nền ngoại giao Việt Nam toàn diện, hiện đại với ba trụ cột nào?",
+        "golden_answer": "Ba trụ cột là: Đối ngoại Đảng, Ngoại giao Nhà nước và Đối ngoại Nhân dân.",
+        "source_ref": "Văn kiện Đại hội XIII",
+        "keywords": ["ba trụ cột", "đối ngoại Đảng", "ngoại giao nhà nước", "đối ngoại nhân dân"]
+    },
+    {
+        "id": "POL_VN_012",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "Trường phái ngoại giao VN",
+        "complexity": "Medium",
+        "question": "Trường phái ngoại giao mang đậm bản sắc Việt Nam được Tổng Bí thư Nguyễn Phú Trọng đúc kết là gì?",
+        "golden_answer": "Ngoại giao 'Cây tre Việt Nam': Gốc vững, thân chắc, cành uyển chuyển.",
+        "source_ref": "Phát biểu của TBT Nguyễn Phú Trọng",
+        "keywords": ["cây tre Việt Nam", "gốc vững", "cành uyển chuyển"]
+    },
+    {
+        "id": "POL_VN_013",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "Chính sách quốc phòng",
+        "complexity": "Hard",
+        "question": "Chính sách quốc phòng 'Bốn không' của Việt Nam bao gồm những nội dung nào?",
+        "golden_answer": "Không tham gia liên minh quân sự; không liên kết với nước này để chống nước kia; không cho nước ngoài đặt căn cứ quân sự hoặc sử dụng lãnh thổ để chống lại nước khác; không sử dụng vũ lực hoặc đe dọa sử dụng vũ lực.",
+        "source_ref": "Sách Trắng Quốc phòng Việt Nam",
+        "keywords": ["bốn không", "liên minh quân sự", "căn cứ quân sự", "không vũ lực"]
+    },
+    {
+        "id": "POL_VN_014",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "Quan hệ song phương",
+        "complexity": "Medium",
+        "question": "Việt Nam hiện nay có quan hệ Đối tác Chiến lược Toàn diện với những quốc gia nào (tính đến năm 2025)?",
+        "golden_answer": "Trung Quốc, Nga, Ấn Độ, Hàn Quốc, Hoa Kỳ, Nhật Bản, Úc, Pháp (Danh sách cần cập nhật liên tục theo thực tế).",
+        "source_ref": "Bộ Ngoại giao Việt Nam",
+        "keywords": ["đối tác chiến lược toàn diện", "Trung Quốc", "Nga", "Hoa Kỳ"]
+    },
+    {
+        "id": "POL_VN_015",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "Phương châm đối ngoại",
+        "complexity": "Easy",
+        "question": "Phương châm đối ngoại của Việt Nam trong thời kỳ đổi mới là gì?",
+        "golden_answer": "Việt Nam muốn là bạn, là đối tác tin cậy và là thành viên có trách nhiệm của cộng đồng quốc tế.",
+        "source_ref": "Nghị quyết Đại hội Đảng",
+        "keywords": ["bạn", "đối tác tin cậy", "thành viên có trách nhiệm"]
+    },
+    {
+        "id": "POL_VN_016",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "ASEAN",
+        "complexity": "Medium",
+        "question": "Vai trò của ASEAN mà Việt Nam luôn nỗ lực thúc đẩy trong cấu trúc an ninh khu vực là gì?",
+        "golden_answer": "Vai trò trung tâm (Centrality) của ASEAN.",
+        "source_ref": "Chính sách đối ngoại Việt Nam",
+        "keywords": ["vai trò trung tâm", "centrality", "ASEAN"]
+    },
+    {
+        "id": "POL_VN_017",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "Mục tiêu phát triển",
+        "complexity": "Easy",
+        "question": "Văn kiện Đại hội XIII xác định mục tiêu phát triển đất nước đến năm 2045 là gì?",
+        "golden_answer": "Trở thành nước phát triển, thu nhập cao.",
+        "source_ref": "Văn kiện Đại hội XIII",
+        "keywords": ["2045", "nước phát triển", "thu nhập cao"]
+    },
+    {
+        "id": "POL_VN_018",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "Chính sách đối ngoại",
+        "complexity": "Medium",
+        "question": "Cụm từ 'Đa phương hóa, đa dạng hóa' trong chính sách đối ngoại của Việt Nam có ý nghĩa gì?",
+        "golden_answer": "Nghĩa là mở rộng quan hệ với nhiều đối tác, nhiều khu vực, không bị lệ thuộc vào một đối tác hay một thị trường duy nhất.",
+        "source_ref": "Văn kiện Đại hội Đảng",
+        "keywords": ["đa phương hóa", "đa dạng hóa", "nhiều đối tác"]
+    },
+    {
+        "id": "POL_VN_019",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "Cơ quan đối ngoại",
+        "complexity": "Easy",
+        "question": "Cơ quan nào là cơ quan tham mưu chiến lược của Đảng về công tác đối ngoại?",
+        "golden_answer": "Ban Đối ngoại Trung ương.",
+        "source_ref": "Tổ chức bộ máy Đảng",
+        "keywords": ["Ban Đối ngoại Trung ương", "tham mưu chiến lược"]
+    },
+    {
+        "id": "POL_VN_020",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "Ngoại giao đa phương",
+        "complexity": "Medium",
+        "question": "Năm 2020, Việt Nam đã đảm nhiệm thành công hai trọng trách quốc tế lớn nào?",
+        "golden_answer": "Chủ tịch ASEAN 2020 và Ủy viên không thường trực Hội đồng Bảo an Liên Hợp Quốc nhiệm kỳ 2020-2021.",
+        "source_ref": "Thành tựu ngoại giao Việt Nam 2020",
+        "keywords": ["chủ tịch ASEAN", "HĐBA LHQ", "2020"]
+    },
+    {
+        "id": "INT_LAW_021",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Luật Biển",
+        "complexity": "Medium",
+        "question": "Theo UNCLOS 1982, chiều rộng tối đa của Lãnh hải (Territorial Sea) là bao nhiêu?",
+        "golden_answer": "12 hải lý tính từ đường cơ sở.",
+        "source_ref": "UNCLOS 1982 - Điều 3",
+        "keywords": ["12 hải lý", "lãnh hải", "đường cơ sở"]
+    },
+    {
+        "id": "INT_LAW_022",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Luật Biển",
+        "complexity": "Medium",
+        "question": "Vùng đặc quyền kinh tế (EEZ) của một quốc gia ven biển mở rộng tối đa bao nhiêu hải lý?",
+        "golden_answer": "200 hải lý tính từ đường cơ sở.",
+        "source_ref": "UNCLOS 1982 - Điều 57",
+        "keywords": ["200 hải lý", "EEZ", "đặc quyền kinh tế"]
+    },
+    {
+        "id": "INT_LAW_023",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Biển Đông",
+        "complexity": "Easy",
+        "question": "DOC là viết tắt của văn bản pháp lý nào liên quan đến Biển Đông?",
+        "golden_answer": "Declaration on the Conduct of Parties in the South China Sea (Tuyên bố về ứng xử của các bên ở Biển Đông).",
+        "source_ref": "DOC 2002",
+        "keywords": ["DOC", "tuyên bố ứng xử", "Biển Đông"]
+    },
+    {
+        "id": "INT_LAW_024",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Luật Biển",
+        "complexity": "Hard",
+        "question": "Điều 76 của UNCLOS 1982 quy định về vấn đề gì?",
+        "golden_answer": "Quy định về ranh giới và cách xác định Thềm lục địa (Continental Shelf), bao gồm cả thềm lục địa mở rộng.",
+        "source_ref": "UNCLOS 1982 - Điều 76",
+        "keywords": ["Điều 76", "thềm lục địa", "continental shelf"]
+    },
+    {
+        "id": "INT_LAW_025",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Luật Biển",
+        "complexity": "Hard",
+        "question": "Quyền tài phán (Jurisdiction) của quốc gia ven biển trong vùng Đặc quyền kinh tế (EEZ) bao gồm những gì?",
+        "golden_answer": "Quyền tài phán về lắp đặt, sử dụng đảo nhân tạo, thiết bị, công trình; nghiên cứu khoa học biển; và bảo vệ môi trường biển.",
+        "source_ref": "UNCLOS 1982 - Điều 56",
+        "keywords": ["quyền tài phán", "đảo nhân tạo", "nghiên cứu khoa học biển"]
+    },
+    {
+        "id": "INT_LAW_026",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Luật Biển",
+        "complexity": "Medium",
+        "question": "Theo luật pháp quốc tế, 'quyền đi qua không gây hại' (Innocent Passage) áp dụng trong vùng biển nào?",
+        "golden_answer": "Áp dụng trong Lãnh hải (Territorial Sea).",
+        "source_ref": "UNCLOS 1982 - Phần II",
+        "keywords": ["innocent passage", "lãnh hải", "đi qua không gây hại"]
+    },
+    {
+        "id": "INT_LAW_027",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Biển Đông",
+        "complexity": "Medium",
+        "question": "COC là văn bản đang được ASEAN và Trung Quốc đàm phán, viết tắt của từ gì?",
+        "golden_answer": "Code of Conduct in the South China Sea (Bộ Quy tắc ứng xử ở Biển Đông).",
+        "source_ref": "Đàm phán COC ASEAN-Trung Quốc",
+        "keywords": ["COC", "quy tắc ứng xử", "ASEAN-Trung Quốc"]
+    },
+    {
+        "id": "INT_LAW_028",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Tổ chức quốc tế",
+        "complexity": "Easy",
+        "question": "Cơ quan tư pháp chính của Liên Hợp Quốc có trụ sở tại The Hague là gì?",
+        "golden_answer": "Tòa án Công lý Quốc tế (ICJ).",
+        "source_ref": "Hiến chương LHQ - Chương XIV",
+        "keywords": ["ICJ", "Tòa án Công lý Quốc tế", "The Hague"]
+    },
+    {
+        "id": "INT_LAW_029",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Thềm lục địa VN",
+        "complexity": "Hard",
+        "question": "Việt Nam đã chính thức nộp đệ trình ranh giới thềm lục địa mở rộng ở khu vực nào của Biển Đông lên Liên Hợp Quốc?",
+        "golden_answer": "Khu vực giữa Biển Đông (VNM-C).",
+        "source_ref": "Đệ trình VNM-C năm 2009",
+        "keywords": ["thềm lục địa mở rộng", "VNM-C", "Biển Đông"]
+    },
+    {
+        "id": "INT_LAW_030",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Luật Điều ước",
+        "complexity": "Medium",
+        "question": "Nguyên tắc 'Pacta sunt servanda' trong Luật Điều ước quốc tế có nghĩa là gì?",
+        "golden_answer": "Mọi điều ước quốc tế đã có hiệu lực đều ràng buộc các bên tham gia và phải được thực hiện một cách thiện chí.",
+        "source_ref": "Công ước Vienna 1969 - Điều 26",
+        "keywords": ["pacta sunt servanda", "ràng buộc", "thiện chí"]
+    },
+    {
+        "id": "IR_THEORY_031",
+        "category": "Quan hệ Quốc tế",
+        "topic": "Lý thuyết Hiện thực",
+        "complexity": "Easy",
+        "question": "Thuyết Hiện thực (Realism) trong Quan hệ quốc tế coi chủ thể nào là quan trọng nhất?",
+        "golden_answer": "Quốc gia - Dân tộc (Nation-State).",
+        "source_ref": "Lý thuyết Quan hệ Quốc tế",
+        "keywords": ["Realism", "Nation-State", "quốc gia"]
+    },
+    {
+        "id": "IR_THEORY_032",
+        "category": "Quan hệ Quốc tế",
+        "topic": "Quyền lực",
+        "complexity": "Medium",
+        "question": "Quyền lực mềm (Soft Power) theo Joseph Nye được cấu thành từ ba nguồn lực chính nào?",
+        "golden_answer": "Văn hóa, Giá trị chính trị và Chính sách đối ngoại.",
+        "source_ref": "Joseph Nye - Soft Power Theory",
+        "keywords": ["soft power", "văn hóa", "giá trị chính trị"]
+    },
+    {
+        "id": "IR_THEORY_033",
+        "category": "Quan hệ Quốc tế",
+        "topic": "Xung đột quyền lực",
+        "complexity": "Hard",
+        "question": "Khái niệm 'Bẫy Thucydides' thường được dùng để mô tả nguy cơ xung đột giữa hai loại cường quốc nào?",
+        "golden_answer": "Giữa một cường quốc đang trỗi dậy (Rising power) và một cường quốc đang nắm giữ vị thế thống trị (Ruling power).",
+        "source_ref": "Graham Allison - Thucydides Trap",
+        "keywords": ["Thucydides trap", "rising power", "ruling power"]
+    },
+    {
+        "id": "IR_THEORY_034",
+        "category": "Quan hệ Quốc tế",
+        "topic": "Lý thuyết Tự do",
+        "complexity": "Medium",
+        "question": "Tổ chức thương mại thế giới (WTO) là biểu hiện của trường phái lý thuyết quan hệ quốc tế nào?",
+        "golden_answer": "Thuyết Tự do (Liberalism) hoặc Thuyết Chế độ (Institutionalism).",
+        "source_ref": "Lý thuyết Quan hệ Quốc tế",
+        "keywords": ["WTO", "Liberalism", "Institutionalism"]
+    },
+    {
+        "id": "IR_THEORY_035",
+        "category": "Quan hệ Quốc tế",
+        "topic": "Lịch sử QH Quốc tế",
+        "complexity": "Easy",
+        "question": "Chiến tranh Lạnh (Cold War) kết thúc được đánh dấu bằng sự kiện nào?",
+        "golden_answer": "Sự sụp đổ của Bức tường Berlin (1989) và sự tan rã của Liên bang Xô viết (1991).",
+        "source_ref": "Lịch sử Quan hệ Quốc tế",
+        "keywords": ["Chiến tranh Lạnh", "Bức tường Berlin", "Liên Xô"]
+    },
+    {
+        "id": "DAV_HIST_036",
+        "category": "Lịch sử & Truyền thống DAV",
+        "topic": "Lịch sử thành lập",
+        "complexity": "Easy",
+        "question": "Học viện Ngoại giao được thành lập vào năm nào và tên gọi đầu tiên là gì?",
+        "golden_answer": "Thành lập năm 1959 với tên gọi Trường Cán bộ Ngoại giao - Ngoại thương.",
+        "source_ref": "Lịch sử DAV",
+        "keywords": ["1959", "Trường Cán bộ", "Ngoại giao Ngoại thương"]
+    },
+    {
+        "id": "DAV_HIST_037",
+        "category": "Lịch sử & Truyền thống DAV",
+        "topic": "Sứ mạng",
+        "complexity": "Medium",
+        "question": "Sứ mạng (Mission) của Học viện Ngoại giao được xác định là gì?",
+        "golden_answer": "Đào tạo nguồn nhân lực chất lượng cao, bồi dưỡng cán bộ ngoại giao, nghiên cứu chiến lược và tư vấn chính sách đối ngoại.",
+        "source_ref": "Điều lệ DAV",
+        "keywords": ["đào tạo", "bồi dưỡng", "nghiên cứu chiến lược", "tư vấn chính sách"]
+    },
+    {
+        "id": "DAV_SPEC_038",
+        "category": "Quy chế đặc thù",
+        "topic": "Hệ đào tạo",
+        "complexity": "Medium",
+        "question": "Hệ đào tạo Chất lượng cao tại DAV yêu cầu chuẩn đầu ra ngoại ngữ cao hơn hệ Tiêu chuẩn ở điểm nào?",
+        "golden_answer": "Sinh viên hệ Chất lượng cao phải đạt chuẩn năng lực ngoại ngữ bậc 5/6 (tương đương C1) so với bậc 4/6 (B2) của hệ Chuẩn (tuỳ theo quy định cụ thể từng khoá).",
+        "source_ref": "Quy định đào tạo DAV",
+        "keywords": ["hệ chất lượng cao", "C1", "B2", "ngoại ngữ"]
+    },
+    {
+        "id": "DAV_SPEC_039",
+        "category": "Quy chế đặc thù",
+        "topic": "Khoa chuyên môn",
+        "complexity": "Easy",
+        "question": "Khoa nào tại Học viện Ngoại giao chịu trách nhiệm đào tạo chuyên sâu về Luật biển và Luật môi trường quốc tế?",
+        "golden_answer": "Khoa Luật Quốc tế.",
+        "source_ref": "Cơ cấu tổ chức DAV",
+        "keywords": ["Khoa Luật Quốc tế", "Luật biển", "Luật môi trường"]
+    },
+    {
+        "id": "DAV_SPEC_040",
+        "category": "Quy chế đặc thù",
+        "topic": "Nghiên cứu khoa học",
+        "complexity": "Easy",
+        "question": "Tạp chí Nghiên cứu Quốc tế của Học viện Ngoại giao là ấn phẩm thuộc loại hình gì?",
+        "golden_answer": "Là tạp chí khoa học chuyên ngành, đăng tải các công trình nghiên cứu về quan hệ quốc tế, chính sách đối ngoại, luật pháp và kinh tế quốc tế.",
+        "source_ref": "Tạp chí Nghiên cứu Quốc tế DAV",
+        "keywords": ["tạp chí khoa học", "nghiên cứu quốc tế", "chính sách đối ngoại"]
+    },
+    {
+        "id": "POL_VN_041",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "Cơ quan đối ngoại",
+        "complexity": "Medium",
+        "question": "Trong cơ cấu tổ chức Bộ Ngoại giao, Ủy ban Nhà nước về người Việt Nam ở nước ngoài có chức năng gì?",
+        "golden_answer": "Tham mưu, giúp Bộ trưởng Bộ Ngoại giao thực hiện chức năng quản lý nhà nước về công tác đối với người Việt Nam ở nước ngoài.",
+        "source_ref": "Nghị định tổ chức Bộ Ngoại giao",
+        "keywords": ["Ủy ban Nhà nước", "người Việt ở nước ngoài", "tham mưu"]
+    },
+    {
+        "id": "POL_VN_042",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "Ngoại giao văn hóa",
+        "complexity": "Medium",
+        "question": "Ngoại giao văn hóa (Cultural Diplomacy) được Việt Nam xác định vai trò như thế nào trong chính sách đối ngoại toàn diện?",
+        "golden_answer": "Là 'nền tảng tinh thần', giúp quảng bá hình ảnh đất nước, con người và văn hóa Việt Nam ra thế giới.",
+        "source_ref": "Chiến lược đối ngoại Việt Nam",
+        "keywords": ["ngoại giao văn hóa", "nền tảng tinh thần", "quảng bá hình ảnh"]
+    },
+    {
+        "id": "INT_LAW_043",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Hiến chương LHQ",
+        "complexity": "Easy",
+        "question": "Nguyên tắc 'Bình đẳng chủ quyền giữa các quốc gia' được ghi nhận tại văn bản pháp lý quốc tế quan trọng nào?",
+        "golden_answer": "Hiến chương Liên Hợp Quốc (Điều 2.1).",
+        "source_ref": "Hiến chương LHQ - Điều 2.1",
+        "keywords": ["bình đẳng chủ quyền", "Hiến chương LHQ", "Điều 2.1"]
+    },
+    {
+        "id": "INT_LAW_044",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Giải quyết tranh chấp",
+        "complexity": "Hard",
+        "question": "Tòa án Trọng tài Thường trực (PCA) khác với Tòa án Công lý Quốc tế (ICJ) ở điểm cơ bản nào?",
+        "golden_answer": "ICJ là cơ quan của LHQ xét xử tranh chấp giữa các quốc gia; PCA là tổ chức liên chính phủ cung cấp dịch vụ giải quyết tranh chấp (bao gồm trọng tài) cho cả quốc gia và các thực thể khác.",
+        "source_ref": "Luật pháp quốc tế",
+        "keywords": ["PCA", "ICJ", "trọng tài", "tranh chấp"]
+    },
+    {
+        "id": "DAV_REG_045",
+        "category": "Quy chế Học viện",
+        "topic": "Thủ tục hành chính",
+        "complexity": "Easy",
+        "question": "Sinh viên DAV muốn xin bảng điểm tạm thời cần liên hệ với đơn vị chức năng nào?",
+        "golden_answer": "Phòng Đào tạo Đại học.",
+        "source_ref": "Quy trình hành chính DAV",
+        "keywords": ["bảng điểm", "Phòng Đào tạo Đại học"]
+    },
+    {
+        "id": "DAV_REG_046",
+        "category": "Quy chế Học viện",
+        "topic": "Hệ thống thông tin",
+        "complexity": "Easy",
+        "question": "Cổng thông tin đào tạo trực tuyến của Học viện Ngoại giao thường sử dụng tên miền nào để sinh viên đăng ký tín chỉ?",
+        "golden_answer": "qldt.dav.edu.vn",
+        "source_ref": "Hệ thống QLDT DAV",
+        "keywords": ["qldt.dav.edu.vn", "đăng ký tín chỉ", "cổng đào tạo"]
+    },
+    {
+        "id": "POL_VN_047",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "ASEAN",
+        "complexity": "Easy",
+        "question": "Việt Nam gia nhập ASEAN vào ngày tháng năm nào?",
+        "golden_answer": "Ngày 28 tháng 7 năm 1995.",
+        "source_ref": "Lịch sử đối ngoại Việt Nam",
+        "keywords": ["28/7/1995", "gia nhập ASEAN"]
+    },
+    {
+        "id": "POL_VN_048",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "APEC",
+        "complexity": "Easy",
+        "question": "Sự kiện APEC 2017 được tổ chức tại thành phố nào của Việt Nam?",
+        "golden_answer": "Thành phố Đà Nẵng.",
+        "source_ref": "APEC 2017 Việt Nam",
+        "keywords": ["APEC 2017", "Đà Nẵng"]
+    },
+    {
+        "id": "IR_THEORY_049",
+        "category": "Quan hệ Quốc tế",
+        "topic": "Ngoại giao kênh hai",
+        "complexity": "Medium",
+        "question": "Thuật ngữ 'Track II Diplomacy' (Ngoại giao kênh 2) ám chỉ hoạt động của nhóm đối tượng nào?",
+        "golden_answer": "Các tác nhân phi chính phủ (nhà nghiên cứu, học giả, tổ chức xã hội) tham gia thảo luận, đề xuất chính sách nhằm hỗ trợ ngoại giao chính thức.",
+        "source_ref": "Lý thuyết Ngoại giao",
+        "keywords": ["Track II", "phi chính phủ", "học giả", "ngoại giao kênh 2"]
+    },
+    {
+        "id": "DAV_SPEC_050",
+        "category": "Quy chế đặc thù",
+        "topic": "Viện nghiên cứu",
+        "complexity": "Medium",
+        "question": "Viện Biển Đông (East Sea Institute) trực thuộc Học viện Ngoại giao có nhiệm vụ chính là gì?",
+        "golden_answer": "Nghiên cứu chuyên sâu các vấn đề liên quan đến Biển Đông, tư vấn chính sách và tổ chức các hội thảo quốc tế thường niên về Biển Đông.",
+        "source_ref": "Điều lệ Viện Biển Đông",
+        "keywords": ["Viện Biển Đông", "nghiên cứu", "tư vấn chính sách", "hội thảo"]
+    },
+    {
+        "id": "DAV_REG_051",
+        "category": "Quy chế Học viện",
+        "topic": "Điểm rèn luyện",
+        "complexity": "Easy",
+        "question": "Điểm rèn luyện của sinh viên DAV được xếp loại Xuất sắc khi đạt mức điểm nào?",
+        "golden_answer": "Từ 90 đến 100 điểm.",
+        "source_ref": "Quy chế rèn luyện DAV",
+        "keywords": ["90-100 điểm", "xuất sắc", "rèn luyện"]
+    },
+    {
+        "id": "DAV_REG_052",
+        "category": "Quy chế Học viện",
+        "topic": "Xử lý kỷ luật",
+        "complexity": "Medium",
+        "question": "Sinh viên bị xếp loại rèn luyện Yếu (dưới 50 điểm) trong hai học kỳ liên tiếp sẽ chịu hình thức xử lý nào?",
+        "golden_answer": "Tạm ngừng học ít nhất một năm học và vận động thôi học nếu không tiến bộ.",
+        "source_ref": "Quy chế rèn luyện DAV",
+        "keywords": ["yếu", "dưới 50 điểm", "tạm ngừng học"]
+    },
+    {
+        "id": "DAV_REG_053",
+        "category": "Quy chế Học viện",
+        "topic": "Môn học điều kiện",
+        "complexity": "Easy",
+        "question": "Môn học Giáo dục Quốc phòng và An ninh có được tính vào điểm trung bình chung học tập (GPA) không?",
+        "golden_answer": "Không, đây là môn học điều kiện cấp chứng chỉ, không tính vào GPA.",
+        "source_ref": "Quy chế đào tạo DAV",
+        "keywords": ["Giáo dục Quốc phòng", "không tính GPA", "môn điều kiện"]
+    },
+    {
+        "id": "DAV_REG_054",
+        "category": "Quy chế Học viện",
+        "topic": "Thời gian đào tạo",
+        "complexity": "Easy",
+        "question": "Thời hạn tối đa để sinh viên hoàn thành chương trình đào tạo đại học (đối với khóa học 4 năm) là bao lâu?",
+        "golden_answer": "Tối đa là 08 năm (gấp đôi thời gian thiết kế của chương trình).",
+        "source_ref": "Quy chế đào tạo DAV",
+        "keywords": ["08 năm", "thời hạn tối đa", "gấp đôi"]
+    },
+    {
+        "id": "DAV_REG_055",
+        "category": "Quy chế Học viện",
+        "topic": "Khiếu nại điểm",
+        "complexity": "Medium",
+        "question": "Sinh viên muốn khiếu nại điểm thi kết thúc học phần phải nộp đơn trong thời hạn bao lâu kể từ ngày công bố điểm?",
+        "golden_answer": "Trong vòng 05 - 07 ngày làm việc (tuỳ theo thông báo cụ thể từng kỳ).",
+        "source_ref": "Quy chế thi và kiểm tra DAV",
+        "keywords": ["khiếu nại điểm", "05-07 ngày", "công bố điểm"]
+    },
+    {
+        "id": "POL_VN_056",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "Lịch sử ngoại giao",
+        "complexity": "Medium",
+        "question": "Khái niệm 'Ngoại giao tâm công' trong lịch sử ngoại giao Việt Nam gắn liền với danh nhân nào?",
+        "golden_answer": "Nguyễn Trãi (với tư tưởng 'lấy đại nghĩa thắng hung tàn, lấy chí nhân thay cường bạo').",
+        "source_ref": "Lịch sử ngoại giao Việt Nam",
+        "keywords": ["Nguyễn Trãi", "tâm công", "đại nghĩa", "chí nhân"]
+    },
+    {
+        "id": "POL_VN_057",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "Hội nghị quốc tế",
+        "complexity": "Easy",
+        "question": "Hội nghị Geneva năm 1954 bàn về vấn đề gì?",
+        "golden_answer": "Chấm dứt chiến tranh, lập lại hòa bình ở Đông Dương.",
+        "source_ref": "Hiệp định Geneva 1954",
+        "keywords": ["Geneva 1954", "Đông Dương", "hòa bình"]
+    },
+    {
+        "id": "POL_VN_058",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "Quan hệ song phương",
+        "complexity": "Easy",
+        "question": "Việt Nam bình thường hóa quan hệ với Hoa Kỳ vào năm nào?",
+        "golden_answer": "Năm 1995.",
+        "source_ref": "Lịch sử quan hệ Việt-Mỹ",
+        "keywords": ["1995", "bình thường hóa", "Hoa Kỳ"]
+    },
+    {
+        "id": "POL_VN_059",
+        "category": "Chính trì - Đối ngoại",
+        "topic": "Hợp tác tiểu vùng",
+        "complexity": "Medium",
+        "question": "Cơ chế hợp tác Mê Kông - Lan Thương (MLC) bao gồm những quốc gia thành viên nào?",
+        "golden_answer": "Trung Quốc, Myanmar, Lào, Thái Lan, Campuchia và Việt Nam.",
+        "source_ref": "Cơ chế MLC",
+        "keywords": ["Mê Kông Lan Thương", "MLC", "6 quốc gia"]
+    },
+    {
+        "id": "POL_VN_060",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "Tổ chức quốc tế",
+        "complexity": "Easy",
+        "question": "Việt Nam chính thức trở thành thành viên thứ 150 của WTO vào năm nào?",
+        "golden_answer": "Năm 2007 (chính thức gia nhập ngày 11/1/2007).",
+        "source_ref": "Gia nhập WTO",
+        "keywords": ["WTO", "2007", "thành viên thứ 150"]
+    },
+    {
+        "id": "INT_LAW_061",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Nguồn luật",
+        "complexity": "Medium",
+        "question": "Trong Luật Quốc tế, nguồn bổ trợ (subsidiary means) để xác định các quy tắc pháp luật bao gồm những gì?",
+        "golden_answer": "Các phán quyết của tòa án và các học thuyết của các chuyên gia luật pháp quốc tế có trình độ cao.",
+        "source_ref": "Điều lệ ICJ - Điều 38",
+        "keywords": ["nguồn bổ trợ", "phán quyết", "học thuyết"]
+    },
+    {
+        "id": "INT_LAW_062",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Quy phạm mệnh lệnh",
+        "complexity": "Hard",
+        "question": "Nguyên tắc 'Jus cogens' (Quy phạm mệnh lệnh) có đặc điểm gì?",
+        "golden_answer": "Là quy phạm pháp luật quốc tế chung được cộng đồng quốc tế chấp nhận, không cho phép bất cứ sự vi phạm nào và chỉ có thể bị sửa đổi bởi một quy phạm cùng tính chất ra đời sau.",
+        "source_ref": "Công ước Vienna 1969 - Điều 53",
+        "keywords": ["jus cogens", "quy phạm mệnh lệnh", "không vi phạm"]
+    },
+    {
+        "id": "INT_LAW_063",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Hội đồng Bảo an",
+        "complexity": "Medium",
+        "question": "Cơ quan nào của Liên Hợp Quốc có quyền ban hành các nghị quyết mang tính ràng buộc pháp lý đối với tất cả thành viên?",
+        "golden_answer": "Hội đồng Bảo an (Security Council).",
+        "source_ref": "Hiến chương LHQ - Chương VII",
+        "keywords": ["Hội đồng Bảo an", "ràng buộc pháp lý", "nghị quyết"]
+    },
+    {
+        "id": "INT_LAW_064",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Quan hệ ngoại giao",
+        "complexity": "Medium",
+        "question": "Theo Công ước Vienna 1961 về Quan hệ Ngoại giao, trụ sở cơ quan đại diện ngoại giao có quyền bất khả xâm phạm nghĩa là gì?",
+        "golden_answer": "Nước sở tại không được phép xâm nhập nếu không có sự đồng ý của người đứng đầu cơ quan đại diện.",
+        "source_ref": "Công ước Vienna 1961 - Điều 22",
+        "keywords": ["bất khả xâm phạm", "trụ sở đại diện", "không xâm nhập"]
+    },
+    {
+        "id": "INT_LAW_065",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Miễn trừ ngoại giao",
+        "complexity": "Medium",
+        "question": "Quyền miễn trừ ngoại giao (Diplomatic Immunity) bảo vệ viên chức ngoại giao khỏi thẩm quyền xét xử của tòa án nước nào?",
+        "golden_answer": "Tòa án nước sở tại (nước tiếp nhận) về hình sự, dân sự và hành chính (với một số ngoại lệ).",
+        "source_ref": "Công ước Vienna 1961",
+        "keywords": ["miễn trừ ngoại giao", "nước sở tại", "hình sự dân sự"]
+    },
+    {
+        "id": "IR_THEORY_066",
+        "category": "Quan hệ Quốc tế",
+        "topic": "Cân bằng quyền lực",
+        "complexity": "Medium",
+        "question": "Lý thuyết 'Cân bằng quyền lực' (Balance of Power) dự báo các quốc gia sẽ làm gì khi đối mặt với một cường quốc đang trỗi dậy mạnh mẽ?",
+        "golden_answer": "Các quốc gia sẽ liên kết lại để cân bằng (Balancing) chống lại mối đe dọa đó.",
+        "source_ref": "Lý thuyết Quan hệ Quốc tế",
+        "keywords": ["cân bằng quyền lực", "balancing", "liên kết"]
+    },
+    {
+        "id": "IR_THEORY_067",
+        "category": "Quan hệ Quốc tế",
+        "topic": "An ninh phi truyền thống",
+        "complexity": "Medium",
+        "question": "Khái niệm 'An ninh phi truyền thống' (Non-traditional Security) bao gồm những thách thức nào?",
+        "golden_answer": "Biến đổi khí hậu, dịch bệnh, an ninh mạng, khủng bố, di cư trái phép, an ninh lương thực, v.v.",
+        "source_ref": "Nghiên cứu An ninh phi truyền thống",
+        "keywords": ["an ninh phi truyền thống", "biến đổi khí hậu", "dịch bệnh", "an ninh mạng"]
+    },
+    {
+        "id": "IR_THEORY_068",
+        "category": "Quan hệ Quốc tế",
+        "topic": "Thuyết Kiến tạo",
+        "complexity": "Hard",
+        "question": "Thuyết Kiến tạo (Constructivism) nhấn mạnh yếu tố nào trong việc định hình hành vi quốc gia?",
+        "golden_answer": "Bản sắc (Identity), chuẩn mực xã hội (Norms) và sự tương tác xã hội thay vì chỉ lợi ích vật chất.",
+        "source_ref": "Lý thuyết Constructivism",
+        "keywords": ["Constructivism", "Identity", "Norms", "tương tác xã hội"]
+    },
+    {
+        "id": "IR_THEORY_069",
+        "category": "Quan hệ Quốc tế",
+        "topic": "Lý thuyết Trò chơi",
+        "complexity": "Hard",
+        "question": "Trò chơi 'Tù nhân' (Prisoner's Dilemma) trong Lý thuyết Trò chơi minh họa vấn đề gì trong hợp tác quốc tế?",
+        "golden_answer": "Minh họa lý do tại sao hai chủ thể hoàn toàn duy lý lại có thể không hợp tác với nhau ngay cả khi việc đó có lợi cho cả hai.",
+        "source_ref": "Game Theory in IR",
+        "keywords": ["Prisoner's Dilemma", "hợp tác", "duy lý"]
+    },
+    {
+        "id": "IR_THEORY_070",
+        "category": "Quan hệ Quốc tế",
+        "topic": "Cấu trúc quyền lực",
+        "complexity": "Medium",
+        "question": "Hệ thống quốc tế 'Đơn cực' (Unipolarity) là gì?",
+        "golden_answer": "Là hệ thống mà trong đó một quốc gia duy nhất nắm giữ ưu thế vượt trội về sức mạnh quân sự, kinh tế và văn hóa.",
+        "source_ref": "Lý thuyết Cấu trúc Quốc tế",
+        "keywords": ["đơn cực", "unipolarity", "ưu thế vượt trội"]
+    },
+    {
+        "id": "DAV_SPEC_071",
+        "category": "Quy chế đặc thù",
+        "topic": "Hoạt động lễ tân",
+        "complexity": "Medium",
+        "question": "Sinh viên Học viện Ngoại giao tham gia các hoạt động lễ tân nhà nước (đón tiếp nguyên thủ quốc gia) được tính quyền lợi gì?",
+        "golden_answer": "Được cộng điểm rèn luyện, điểm hoạt động cộng đồng và cấp giấy chứng nhận tham gia hoạt động ngoại giao thực tế.",
+        "source_ref": "Quy chế hoạt động sinh viên DAV",
+        "keywords": ["lễ tân nhà nước", "cộng điểm", "giấy chứng nhận"]
+    },
+    {
+        "id": "DAV_SPEC_072",
+        "category": "Quy chế đặc thù",
+        "topic": "Khoa chuyên môn",
+        "complexity": "Easy",
+        "question": "Khoa Truyền thông và Văn hóa đối ngoại (FICC) của DAV đào tạo những chuyên ngành nào?",
+        "golden_answer": "Truyền thông quốc tế và Văn hóa đối ngoại.",
+        "source_ref": "Thông tin tuyển sinh DAV",
+        "keywords": ["FICC", "Truyền thông quốc tế", "Văn hóa đối ngoại"]
+    },
+    {
+        "id": "DAV_SPEC_073",
+        "category": "Quy chế đặc thù",
+        "topic": "Hoạt động sinh viên",
+        "complexity": "Easy",
+        "question": "Câu lạc bộ nào tại DAV chuyên trách về mô phỏng các phiên họp của Liên Hợp Quốc?",
+        "golden_answer": "DAV Model United Nations (DAVMUN).",
+        "source_ref": "Hoạt động sinh viên DAV",
+        "keywords": ["DAVMUN", "Model UN", "mô phỏng LHQ"]
+    },
+    {
+        "id": "DAV_SPEC_074",
+        "category": "Quy chế đặc thù",
+        "topic": "Bồi dưỡng nghiệp vụ",
+        "complexity": "Medium",
+        "question": "Trung tâm Đào tạo, Bồi dưỡng cán bộ đối ngoại (FOSET) có chức năng gì?",
+        "golden_answer": "Tổ chức các khóa bồi dưỡng kỹ năng, nghiệp vụ đối ngoại, ngoại ngữ biên phiên dịch cho cán bộ, công chức và các đối tượng khác.",
+        "source_ref": "Điều lệ FOSET",
+        "keywords": ["FOSET", "bồi dưỡng", "biên phiên dịch"]
+    },
+    {
+        "id": "DAV_SPEC_075",
+        "category": "Quy chế đặc thù",
+        "topic": "Văn hóa học đường",
+        "complexity": "Easy",
+        "question": "Sinh viên DAV được yêu cầu trang phục như thế nào khi đến trường theo quy định văn hóa học đường?",
+        "golden_answer": "Trang phục lịch sự, kín đáo; khuyến khích mặc áo sơ mi, quần âu; cấm mặc quần đùi, áo ba lỗ, dép lê vào khu vực giảng đường.",
+        "source_ref": "Quy định nội quy DAV",
+        "keywords": ["trang phục lịch sự", "áo sơ mi", "quần âu"]
+    },
+    {
+        "id": "INT_LAW_076",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Luật Biển",
+        "complexity": "Medium",
+        "question": "Theo Công ước Luật Biển 1982, 'Vùng nước nội thủy' (Internal Waters) nằm ở đâu?",
+        "golden_answer": "Nằm phía trong đường cơ sở (baselines) dùng để tính chiều rộng lãnh hải.",
+        "source_ref": "UNCLOS 1982",
+        "keywords": ["nước nội thủy", "đường cơ sở", "baselines"]
+    },
+    {
+        "id": "INT_LAW_077",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Đáy đại dương",
+        "complexity": "Hard",
+        "question": "Chế độ pháp lý của 'Đáy đại dương' (The Area) được quy định là gì?",
+        "golden_answer": "Là 'Di sản chung của nhân loại' (Common Heritage of Mankind), không quốc gia nào được chiếm hữu.",
+        "source_ref": "UNCLOS 1982 - Phần XI",
+        "keywords": ["đáy đại dương", "di sản chung", "Common Heritage"]
+    },
+    {
+        "id": "INT_LAW_078",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Khai thác khoáng sản biển",
+        "complexity": "Hard",
+        "question": "Tổ chức nào có thẩm quyền cấp phép khai thác khoáng sản ở Đáy đại dương quốc tế?",
+        "golden_answer": "Cơ quan Quyền lực đáy đại dương (ISA - International Seabed Authority).",
+        "source_ref": "UNCLOS 1982 - ISA",
+        "keywords": ["ISA", "khai thác khoáng sản", "đáy đại dương"]
+    },
+    {
+        "id": "POL_VN_079",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "Hiệp định thương mại",
+        "complexity": "Easy",
+        "question": "Hiệp định EVFTA là hiệp định thương mại tự do giữa Việt Nam và đối tác nào?",
+        "golden_answer": "Liên minh Châu Âu (EU).",
+        "source_ref": "Hiệp định EVFTA",
+        "keywords": ["EVFTA", "EU", "thương mại tự do"]
+    },
+    {
+        "id": "POL_VN_080",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "ASEAN",
+        "complexity": "Medium",
+        "question": "Năm Chủ tịch ASEAN 2020 của Việt Nam có chủ đề là gì?",
+        "golden_answer": "Gắn kết và Chủ động thích ứng (Cohesive and Responsive).",
+        "source_ref": "ASEAN 2020 Việt Nam",
+        "keywords": ["ASEAN 2020", "Cohesive", "Responsive"]
+    },
+    {
+        "id": "DAV_REG_081",
+        "category": "Quy chế Học viện",
+        "topic": "Đào tạo trực tuyến",
+        "complexity": "Easy",
+        "question": "Trong trường hợp bất khả kháng (dịch bệnh, thiên tai), phương thức giảng dạy tại DAV được chuyển đổi như thế nào?",
+        "golden_answer": "Chuyển sang hình thức đào tạo trực tuyến (E-learning) thông qua MS Teams hoặc các nền tảng được phê duyệt.",
+        "source_ref": "Quy định đào tạo đặc biệt DAV",
+        "keywords": ["E-learning", "MS Teams", "đào tạo trực tuyến"]
+    },
+    {
+        "id": "DAV_REG_082",
+        "category": "Quy chế Học viện",
+        "topic": "Đăng ký học phần",
+        "complexity": "Medium",
+        "question": "Sinh viên có được phép đăng ký học vượt (đăng ký môn học của năm sau) không?",
+        "golden_answer": "Có, nếu đáp ứng đủ điều kiện về điểm trung bình tích lũy và điều kiện tiên quyết của học phần.",
+        "source_ref": "Quy chế đào tạo tín chỉ DAV",
+        "keywords": ["học vượt", "điều kiện tiên quyết", "GPA"]
+    },
+    {
+        "id": "DAV_REG_083",
+        "category": "Quy chế Học viện",
+        "topic": "Học bổng",
+        "complexity": "Easy",
+        "question": "Việc xét cấp học bổng khuyến khích học tập tại DAV dựa trên hai tiêu chí chính nào?",
+        "golden_answer": "Kết quả học tập (GPA học kỳ) và Kết quả rèn luyện.",
+        "source_ref": "Quy chế học bổng DAV",
+        "keywords": ["học bổng", "GPA", "rèn luyện"]
+    },
+    {
+        "id": "DAV_REG_084",
+        "category": "Quy chế Học viện",
+        "topic": "Thư viện",
+        "complexity": "Easy",
+        "question": "Hệ thống thư viện số của Học viện Ngoại giao phục vụ tra cứu tài liệu có tên là gì?",
+        "golden_answer": "Thư viện Đặng Xuân Khu (hoặc hệ thống eLib DAV).",
+        "source_ref": "Thông tin thư viện DAV",
+        "keywords": ["Đặng Xuân Khu", "eLib DAV", "thư viện số"]
+    },
+    {
+        "id": "DAV_REG_085",
+        "category": "Quy chế Học viện",
+        "topic": "Cảnh báo học tập",
+        "complexity": "Medium",
+        "question": "Sinh viên bị cảnh báo học tập (Academic Warning) mức 2 nếu vi phạm điều gì?",
+        "golden_answer": "Có điểm trung bình chung tích lũy dưới 1.20 (đối với sinh viên năm nhất) hoặc dưới 1.40 (các năm sau) trong 2 kỳ liên tiếp.",
+        "source_ref": "Quy chế đào tạo DAV",
+        "keywords": ["cảnh báo mức 2", "1.20", "1.40", "2 kỳ liên tiếp"]
+    },
+    {
+        "id": "POL_VN_086",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "CPTPP",
+        "complexity": "Medium",
+        "question": "Tên gọi đầy đủ của CPTPP - Hiệp định mà Việt Nam là thành viên sáng lập?",
+        "golden_answer": "Hiệp định Đối tác Toàn diện và Tiến bộ xuyên Thái Bình Dương.",
+        "source_ref": "Hiệp định CPTPP",
+        "keywords": ["CPTPP", "Đối tác Toàn diện", "Tiến bộ", "Thái Bình Dương"]
+    },
+    {
+        "id": "POL_VN_087",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "Tư tưởng ngoại giao",
+        "complexity": "Hard",
+        "question": "Phương châm 'Dĩ bất biến, ứng vạn biến' được Chủ tịch Hồ Chí Minh căn dặn cụ Huỳnh Thúc Kháng năm 1946 nghĩa là gì?",
+        "golden_answer": "Lấy cái không thay đổi (mục tiêu độc lập, chủ quyền) để ứng phó với cái vạn biến (tình thế, sách lược thay đổi khôn lường).",
+        "source_ref": "Tư tưởng Hồ Chí Minh về ngoại giao",
+        "keywords": ["dĩ bất biến ứng vạn biến", "Hồ Chí Minh", "độc lập chủ quyền"]
+    },
+    {
+        "id": "POL_VN_088",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "Hành lang kinh tế",
+        "complexity": "Medium",
+        "question": "Hành lang kinh tế Đông - Tây (EWEC) đi qua những quốc gia nào?",
+        "golden_answer": "Myanmar, Thái Lan, Lào và Việt Nam.",
+        "source_ref": "EWEC GMS",
+        "keywords": ["EWEC", "Đông Tây", "Myanmar", "Thái Lan", "Lào"]
+    },
+    {
+        "id": "IR_THEORY_089",
+        "category": "Quan hệ Quốc tế",
+        "topic": "Học thuyết Monroe",
+        "complexity": "Medium",
+        "question": "Học thuyết Monroe (1823) của Hoa Kỳ chủ trương điều gì?",
+        "golden_answer": "Châu Mỹ là của người châu Mỹ, cảnh báo các cường quốc châu Âu không can thiệp vào Tây bán cầu.",
+        "source_ref": "Học thuyết Monroe 1823",
+        "keywords": ["Monroe", "Châu Mỹ", "Tây bán cầu"]
+    },
+    {
+        "id": "IR_THEORY_090",
+        "category": "Quan hệ Quốc tế",
+        "topic": "Bá quyền",
+        "complexity": "Hard",
+        "question": "Khái niệm 'Bá quyền' (Hegemony) theo Antonio Gramsci nhấn mạnh vai trò của cái gì bên cạnh sức mạnh vũ lực?",
+        "golden_answer": "Sự đồng thuận (Consent) về ý thức hệ và văn hóa.",
+        "source_ref": "Antonio Gramsci - Hegemony Theory",
+        "keywords": ["hegemony", "Gramsci", "đồng thuận", "ý thức hệ"]
+    },
+    {
+        "id": "DAV_SPEC_091",
+        "category": "Quy chế đặc thù",
+        "topic": "Đơn vị chức năng",
+        "complexity": "Easy",
+        "question": "Phòng Công tác Chính trị và Quản lý sinh viên (CTCT&QLSV) chịu trách nhiệm chính về mảng nào?",
+        "golden_answer": "Quản lý hồ sơ sinh viên, điểm rèn luyện, chế độ chính sách, học bổng và các hoạt động phong trào.",
+        "source_ref": "Cơ cấu tổ chức DAV",
+        "keywords": ["CTCT&QLSV", "hồ sơ sinh viên", "học bổng", "phong trào"]
+    },
+    {
+        "id": "DAV_SPEC_092",
+        "category": "Quy chế đặc thù",
+        "topic": "Khoa chuyên môn",
+        "complexity": "Medium",
+        "question": "Khoa Kinh tế Quốc tế tại DAV tập trung giảng dạy theo định hướng nào khác biệt so với các trường Kinh tế khác?",
+        "golden_answer": "Tập trung vào Kinh tế chính trị quốc tế, Tài chính quốc tế và các vấn đề kinh tế gắn liền với ngoại giao/chính sách đối ngoại.",
+        "source_ref": "Thông tin Khoa Kinh tế Quốc tế DAV",
+        "keywords": ["Kinh tế chính trị quốc tế", "Tài chính quốc tế", "ngoại giao kinh tế"]
+    },
+    {
+        "id": "DAV_SPEC_093",
+        "category": "Quy chế đặc thù",
+        "topic": "Sự kiện tuyển sinh",
+        "complexity": "Easy",
+        "question": "Sự kiện thường niên 'DAV Open Day' có mục đích gì?",
+        "golden_answer": "Ngày hội tư vấn tuyển sinh và hướng nghiệp dành cho học sinh THPT muốn tìm hiểu về Học viện.",
+        "source_ref": "Hoạt động tuyển sinh DAV",
+        "keywords": ["DAV Open Day", "tư vấn tuyển sinh", "hướng nghiệp"]
+    },
+    {
+        "id": "INT_LAW_094",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Luật Nhân đạo",
+        "complexity": "Medium",
+        "question": "Trong Luật Nhân đạo quốc tế (Luật chiến tranh), nguyên tắc 'Phân biệt' (Distinction) yêu cầu điều gì?",
+        "golden_answer": "Các bên tham chiến phải luôn phân biệt giữa mục tiêu quân sự và mục tiêu dân sự, giữa binh lính và thường dân.",
+        "source_ref": "Luật Nhân đạo Quốc tế",
+        "keywords": ["nguyên tắc phân biệt", "mục tiêu quân sự", "thường dân"]
+    },
+    {
+        "id": "INT_LAW_095",
+        "category": "Luật pháp Quốc tế",
+        "topic": "Quyền tự vệ",
+        "complexity": "Easy",
+        "question": "Quyền tự vệ chính đáng (Self-defense) được quy định tại Điều bao nhiêu của Hiến chương LHQ?",
+        "golden_answer": "Điều 51.",
+        "source_ref": "Hiến chương LHQ - Điều 51",
+        "keywords": ["Điều 51", "quyền tự vệ", "self-defense"]
+    },
+    {
+        "id": "POL_VN_096",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "Quan hệ song phương",
+        "complexity": "Easy",
+        "question": "Việt Nam thiết lập quan hệ ngoại giao với Trung Quốc vào ngày tháng năm nào?",
+        "golden_answer": "Ngày 18 tháng 1 năm 1950.",
+        "source_ref": "Lịch sử quan hệ Việt-Trung",
+        "keywords": ["18/1/1950", "Trung Quốc", "thiết lập ngoại giao"]
+    },
+    {
+        "id": "POL_VN_097",
+        "category": "Chính trị - Đối ngoại",
+        "topic": "ASEAN",
+        "complexity": "Medium",
+        "question": "Vai trò 'Nòng cốt, dẫn dắt, hòa giải' là mục tiêu Việt Nam hướng tới trong tổ chức khu vực nào?",
+        "golden_answer": "ASEAN.",
+        "source_ref": "Chính sách đối ngoại Việt Nam",
+        "keywords": ["nòng cốt", "dẫn dắt", "hòa giải", "ASEAN"]
+    },
+    {
+        "id": "DAV_REG_098",
+        "category": "Quy chế Học viện",
+        "topic": "Nghỉ học",
+        "complexity": "Medium",
+        "question": "Sinh viên bị buộc thôi học nếu quá thời gian nghỉ học tạm thời bao lâu mà không làm thủ tục nhập học lại?",
+        "golden_answer": "Quá 01 tháng kể từ ngày hết hạn quyết định nghỉ học tạm thời.",
+        "source_ref": "Quy chế đào tạo DAV",
+        "keywords": ["01 tháng", "nghỉ học tạm thời", "buộc thôi học"]
+    },
+    {
+        "id": "DAV_REG_099",
+        "category": "Quy chế Học viện",
+        "topic": "Thang điểm",
+        "complexity": "Easy",
+        "question": "Điểm chữ C+ trong thang điểm tín chỉ tương ứng với thang điểm 4 là bao nhiêu?",
+        "golden_answer": "2.5.",
+        "source_ref": "Quy chế đào tạo tín chỉ DAV",
+        "keywords": ["C+", "2.5", "thang điểm 4"]
+    },
+    {
+        "id": "DAV_REG_100",
+        "category": "Quy chế Học viện",
+        "topic": "Xếp loại tốt nghiệp",
+        "complexity": "Easy",
+        "question": "Để được xét tốt nghiệp loại Giỏi, sinh viên phải đạt điểm trung bình tích lũy (CPA) từ bao nhiêu?",
+        "golden_answer": "Từ 3.20 đến 3.59.",
+        "source_ref": "Quy chế đào tạo DAV",
+        "keywords": ["tốt nghiệp Giỏi", "3.20-3.59", "CPA"]
+    }
+]

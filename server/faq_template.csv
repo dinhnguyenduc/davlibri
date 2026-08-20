@@ -1,0 +1,6 @@
+question,answer,category,keywords,isActive
+"Có sách về thiên văn học không?","Có, chúng tôi có nhiều đầu sách về vũ trụ, hành tinh, ngôi sao và thiên thể. Bạn có thể tìm kiếm theo danh mục Khoa học hoặc liên hệ để được tư vấn cụ thể.",general,"thiên văn, vũ trụ, khoa học, hành tinh",true
+"Làm thế nào để tìm sách trên website?","Bạn có thể dùng thanh tìm kiếm ở đầu trang hoặc lọc theo danh mục sách. Ngoài ra có thể hỏi chatbot để được gợi ý sách phù hợp.",product,"tìm sách, search, website, tìm kiếm",true
+"Thời gian thuê sách là bao lâu?","Mỗi lần thuê tối thiểu 7 ngày, tối đa 30 ngày. Bạn có thể gia hạn thêm nếu không ai đặt trước cuốn sách đó.",rental,"thuê sách, thời gian, ngày, gia hạn",true
+"Giá thuê sách là bao nhiêu?","Giá thuê từ 3.000đ đến 10.000đ/ngày tùy loại sách. Sách chuyên ngành thường có giá cao hơn sách thông thường.",payment,"giá, thuê sách, chi phí, tiền",true
+"Có ship COD không?","Có, chúng tôi hỗ trợ ship COD trong nội thành Hà Nội. Phí ship 25.000đ cho đơn dưới 100.000đ, miễn phí cho đơn trên 100.000đ.",payment,"ship, cod, giao hàng, vận chuyển",true

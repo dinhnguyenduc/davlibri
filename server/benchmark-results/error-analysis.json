@@ -1,0 +1,666 @@
+{
+  "timestamp": "2026-02-04T09:11:52.223Z",
+  "totalQuestions": 100,
+  "correctAnswers": 66,
+  "incorrectAnswers": 34,
+  "errorsByCategory": {
+    "Không tìm thấy trong database": {
+      "count": 0,
+      "examples": []
+    },
+    "Tìm thấy nhưng độ tương đồng thấp": {
+      "count": 34,
+      "examples": [
+        {
+          "question": "Hội đồng chấm Khóa luận tốt nghiệp tại DAV bao gồm những thành phần nào?",
+          "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3"
+        },
+        {
+          "question": "Sinh viên bị đình chỉ tham gia hoạt động cộng đồng (HĐCĐ) lần thứ nhất sẽ chịu hình thức xử lý nào nếu tái phạm?",
+          "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3"
+        },
+        {
+          "question": "Một năm học chuẩn tại Học viện Ngoại giao bao gồm mấy học kỳ chính?",
+          "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3"
+        }
+      ]
+    },
+    "Trả lời sai hoàn toàn": {
+      "count": 0,
+      "examples": []
+    },
+    "Yêu cầu suy luận nhiều bước": {
+      "count": 0,
+      "examples": []
+    },
+    "Thiếu ngữ cảnh cần thiết": {
+      "count": 0,
+      "examples": []
+    },
+    "Câu hỏi mơ hồ, đa nghĩa": {
+      "count": 0,
+      "examples": []
+    }
+  },
+  "detailedErrors": [
+    {
+      "id": "DAV_REG_005",
+      "category": "Quy chế Học viện",
+      "question": "Hội đồng chấm Khóa luận tốt nghiệp tại DAV bao gồm những thành phần nào?",
+      "expectedAnswer": "Hội đồng gồm 03 thành viên: 01 Chủ tịch, 01 Thư ký và 01 Ủy viên (bao gồm giảng viên hướng dẫn trực tiếp).",
+      "actualAnswer": "Chúng tôi đảm bảo chất lượng sách khi giao. Nếu sách có vấn đề trong 24h đầu (không do lỗi người dùng), chúng tôi sẽ đổi miễn phí.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.2846153846153846,
+      "keywords": [
+        "03 thành viên",
+        "hội đồng",
+        "chủ tịch",
+        "thư ký",
+        "ủy viên"
+      ],
+      "topic": "Khóa luận tốt nghiệp",
+      "complexity": "Easy"
+    },
+    {
+      "id": "DAV_REG_007",
+      "category": "Quy chế Học viện",
+      "question": "Sinh viên bị đình chỉ tham gia hoạt động cộng đồng (HĐCĐ) lần thứ nhất sẽ chịu hình thức xử lý nào nếu tái phạm?",
+      "expectedAnswer": "Sinh viên sẽ phải hoàn thành thêm 10 điểm HĐCĐ so với mức điểm tối thiểu (60 điểm).",
+      "actualAnswer": "Tài khoản có thể bị khóa do: vi phạm điều khoản sử dụng, trả sách muộn nhiều lần, hoặc làm hư hỏng sách. Vui lòng liên hệ với chúng tôi để được hỗ trợ.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.26490066225165565,
+      "keywords": [
+        "10 điểm thêm",
+        "tái phạm",
+        "đình chỉ HĐCĐ"
+      ],
+      "topic": "Hoạt động cộng đồng",
+      "complexity": "Medium"
+    },
+    {
+      "id": "DAV_REG_008",
+      "category": "Quy chế Học viện",
+      "question": "Một năm học chuẩn tại Học viện Ngoại giao bao gồm mấy học kỳ chính?",
+      "expectedAnswer": "Một năm học gồm hai hoặc ba học kỳ chính với tổng số tối thiểu 30 tuần lên lớp.",
+      "actualAnswer": "Chúng tôi đảm bảo chất lượng sách khi giao. Nếu sách có vấn đề trong 24h đầu (không do lỗi người dùng), chúng tôi sẽ đổi miễn phí.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.26153846153846155,
+      "keywords": [
+        "hai hoặc ba học kỳ",
+        "30 tuần"
+      ],
+      "topic": "Năm học",
+      "complexity": "Easy"
+    },
+    {
+      "id": "DAV_REG_009",
+      "category": "Quy chế Học viện",
+      "question": "Theo quy chế tín chỉ, khối lượng học tập tối đa sinh viên được đăng ký trong một học kỳ là bao nhiêu?",
+      "expectedAnswer": "Khối lượng tối đa không vượt quá 3/2 khối lượng trung bình một học kỳ theo kế hoạch học tập chuẩn.",
+      "actualAnswer": "Có, chúng tôi cam kết bảo mật thông tin cá nhân của bạn theo chính sách bảo mật. Thông tin của bạn được mã hóa và không chia sẻ cho bên thứ ba.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.2937062937062937,
+      "keywords": [
+        "3/2 khối lượng",
+        "đăng ký tối đa",
+        "học kỳ"
+      ],
+      "topic": "Đăng ký học phần",
+      "complexity": "Medium"
+    },
+    {
+      "id": "DAV_REG_010",
+      "category": "Quy chế Học viện",
+      "question": "Địa chỉ trụ sở chính của Học viện Ngoại giao nằm ở đâu?",
+      "expectedAnswer": "Số 69 Phố Chùa Láng, Phường Láng Thượng, Quận Đống Đa, Hà Nội.",
+      "actualAnswer": "Là tạp chí khoa học chuyên ngành, đăng tải các công trình nghiên cứu về quan hệ quốc tế, chính sách đối ngoại, luật pháp và kinh tế quốc tế.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.25,
+      "keywords": [
+        "69 Chùa Láng",
+        "Đống Đa",
+        "Hà Nội"
+      ],
+      "topic": "Thông tin chung",
+      "complexity": "Easy"
+    },
+    {
+      "id": "POL_VN_012",
+      "category": "Chính trị - Đối ngoại",
+      "question": "Trường phái ngoại giao mang đậm bản sắc Việt Nam được Tổng Bí thư Nguyễn Phú Trọng đúc kết là gì?",
+      "expectedAnswer": "Ngoại giao 'Cây tre Việt Nam': Gốc vững, thân chắc, cành uyển chuyển.",
+      "actualAnswer": "Hiện tại chưa hỗ trợ tính năng tặng sách. Bạn có thể mua voucher để tặng bạn bè, họ có thể dùng voucher để thuê sách.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.2564102564102564,
+      "keywords": [
+        "cây tre Việt Nam",
+        "gốc vững",
+        "cành uyển chuyển"
+      ],
+      "topic": "Trường phái ngoại giao VN",
+      "complexity": "Medium"
+    },
+    {
+      "id": "POL_VN_013",
+      "category": "Chính trị - Đối ngoại",
+      "question": "Chính sách quốc phòng 'Bốn không' của Việt Nam bao gồm những nội dung nào?",
+      "expectedAnswer": "Không tham gia liên minh quân sự; không liên kết với nước này để chống nước kia; không cho nước ngoài đặt căn cứ quân sự hoặc sử dụng lãnh thổ để chống lại nước khác; không sử dụng vũ lực hoặc đe dọa sử dụng vũ lực.",
+      "actualAnswer": "Có, bạn sẽ nhận email thông báo về: xác nhận đơn hàng, nhắc nhở trả sách, khuyến mãi. Bạn có thể tùy chỉnh trong \"Cài đặt thông báo\".",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.27906976744186046,
+      "keywords": [
+        "bốn không",
+        "liên minh quân sự",
+        "căn cứ quân sự",
+        "không vũ lực"
+      ],
+      "topic": "Chính sách quốc phòng",
+      "complexity": "Hard"
+    },
+    {
+      "id": "POL_VN_018",
+      "category": "Chính trị - Đối ngoại",
+      "question": "Cụm từ 'Đa phương hóa, đa dạng hóa' trong chính sách đối ngoại của Việt Nam có ý nghĩa gì?",
+      "expectedAnswer": "Nghĩa là mở rộng quan hệ với nhiều đối tác, nhiều khu vực, không bị lệ thuộc vào một đối tác hay một thị trường duy nhất.",
+      "actualAnswer": "Quản lý hồ sơ sinh viên, điểm rèn luyện, chế độ chính sách, học bổng và các hoạt động phong trào.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.2975206611570248,
+      "keywords": [
+        "đa phương hóa",
+        "đa dạng hóa",
+        "nhiều đối tác"
+      ],
+      "topic": "Chính sách đối ngoại",
+      "complexity": "Medium"
+    },
+    {
+      "id": "INT_LAW_022",
+      "category": "Luật pháp Quốc tế",
+      "question": "Vùng đặc quyền kinh tế (EEZ) của một quốc gia ven biển mở rộng tối đa bao nhiêu hải lý?",
+      "expectedAnswer": "200 hải lý tính từ đường cơ sở.",
+      "actualAnswer": "Chúng tôi đảm bảo chất lượng sách khi giao. Nếu sách có vấn đề trong 24h đầu (không do lỗi người dùng), chúng tôi sẽ đổi miễn phí.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.15384615384615385,
+      "keywords": [
+        "200 hải lý",
+        "EEZ",
+        "đặc quyền kinh tế"
+      ],
+      "topic": "Luật Biển",
+      "complexity": "Medium"
+    },
+    {
+      "id": "INT_LAW_023",
+      "category": "Luật pháp Quốc tế",
+      "question": "DOC là viết tắt của văn bản pháp lý nào liên quan đến Biển Đông?",
+      "expectedAnswer": "Declaration on the Conduct of Parties in the South China Sea (Tuyên bố về ứng xử của các bên ở Biển Đông).",
+      "actualAnswer": "Việt Nam muốn là bạn, là đối tác tin cậy và là thành viên có trách nhiệm của cộng đồng quốc tế.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.2641509433962264,
+      "keywords": [
+        "DOC",
+        "tuyên bố ứng xử",
+        "Biển Đông"
+      ],
+      "topic": "Biển Đông",
+      "complexity": "Easy"
+    },
+    {
+      "id": "INT_LAW_025",
+      "category": "Luật pháp Quốc tế",
+      "question": "Quyền tài phán (Jurisdiction) của quốc gia ven biển trong vùng Đặc quyền kinh tế (EEZ) bao gồm những gì?",
+      "expectedAnswer": "Quyền tài phán về lắp đặt, sử dụng đảo nhân tạo, thiết bị, công trình; nghiên cứu khoa học biển; và bảo vệ môi trường biển.",
+      "actualAnswer": "Có, chúng tôi cam kết bảo mật thông tin cá nhân của bạn theo chính sách bảo mật. Thông tin của bạn được mã hóa và không chia sẻ cho bên thứ ba.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.2727272727272727,
+      "keywords": [
+        "quyền tài phán",
+        "đảo nhân tạo",
+        "nghiên cứu khoa học biển"
+      ],
+      "topic": "Luật Biển",
+      "complexity": "Hard"
+    },
+    {
+      "id": "INT_LAW_028",
+      "category": "Luật pháp Quốc tế",
+      "question": "Cơ quan tư pháp chính của Liên Hợp Quốc có trụ sở tại The Hague là gì?",
+      "expectedAnswer": "Tòa án Công lý Quốc tế (ICJ).",
+      "actualAnswer": "Số 69 Phố Chùa Láng, Phường Láng Thượng, Quận Đống Đa, Hà Nội.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.25806451612903225,
+      "keywords": [
+        "ICJ",
+        "Tòa án Công lý Quốc tế",
+        "The Hague"
+      ],
+      "topic": "Tổ chức quốc tế",
+      "complexity": "Easy"
+    },
+    {
+      "id": "INT_LAW_030",
+      "category": "Luật pháp Quốc tế",
+      "question": "Nguyên tắc 'Pacta sunt servanda' trong Luật Điều ước quốc tế có nghĩa là gì?",
+      "expectedAnswer": "Mọi điều ước quốc tế đã có hiệu lực đều ràng buộc các bên tham gia và phải được thực hiện một cách thiện chí.",
+      "actualAnswer": "Tham mưu, giúp Bộ trưởng Bộ Ngoại giao thực hiện chức năng quản lý nhà nước về công tác đối với người Việt Nam ở nước ngoài.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.24193548387096775,
+      "keywords": [
+        "pacta sunt servanda",
+        "ràng buộc",
+        "thiện chí"
+      ],
+      "topic": "Luật Điều ước",
+      "complexity": "Medium"
+    },
+    {
+      "id": "IR_THEORY_031",
+      "category": "Quan hệ Quốc tế",
+      "question": "Thuyết Hiện thực (Realism) trong Quan hệ quốc tế coi chủ thể nào là quan trọng nhất?",
+      "expectedAnswer": "Quốc gia - Dân tộc (Nation-State).",
+      "actualAnswer": "Gắn kết và Chủ động thích ứng (Cohesive and Responsive).",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.25,
+      "keywords": [
+        "Realism",
+        "Nation-State",
+        "quốc gia"
+      ],
+      "topic": "Lý thuyết Hiện thực",
+      "complexity": "Easy"
+    },
+    {
+      "id": "DAV_HIST_036",
+      "category": "Lịch sử & Truyền thống DAV",
+      "question": "Học viện Ngoại giao được thành lập vào năm nào và tên gọi đầu tiên là gì?",
+      "expectedAnswer": "Thành lập năm 1959 với tên gọi Trường Cán bộ Ngoại giao - Ngoại thương.",
+      "actualAnswer": "Chấm dứt chiến tranh, lập lại hòa bình ở Đông Dương.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.28169014084507044,
+      "keywords": [
+        "1959",
+        "Trường Cán bộ",
+        "Ngoại giao Ngoại thương"
+      ],
+      "topic": "Lịch sử thành lập",
+      "complexity": "Easy"
+    },
+    {
+      "id": "DAV_HIST_037",
+      "category": "Lịch sử & Truyền thống DAV",
+      "question": "Sứ mạng (Mission) của Học viện Ngoại giao được xác định là gì?",
+      "expectedAnswer": "Đào tạo nguồn nhân lực chất lượng cao, bồi dưỡng cán bộ ngoại giao, nghiên cứu chiến lược và tư vấn chính sách đối ngoại.",
+      "actualAnswer": "Có, chúng tôi cam kết bảo mật thông tin cá nhân của bạn theo chính sách bảo mật. Thông tin của bạn được mã hóa và không chia sẻ cho bên thứ ba.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.2867132867132867,
+      "keywords": [
+        "đào tạo",
+        "bồi dưỡng",
+        "nghiên cứu chiến lược",
+        "tư vấn chính sách"
+      ],
+      "topic": "Sứ mạng",
+      "complexity": "Medium"
+    },
+    {
+      "id": "DAV_SPEC_039",
+      "category": "Quy chế đặc thù",
+      "question": "Khoa nào tại Học viện Ngoại giao chịu trách nhiệm đào tạo chuyên sâu về Luật biển và Luật môi trường quốc tế?",
+      "expectedAnswer": "Khoa Luật Quốc tế.",
+      "actualAnswer": "Khu vực giữa Biển Đông (VNM-C).",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.22580645161290322,
+      "keywords": [
+        "Khoa Luật Quốc tế",
+        "Luật biển",
+        "Luật môi trường"
+      ],
+      "topic": "Khoa chuyên môn",
+      "complexity": "Easy"
+    },
+    {
+      "id": "INT_LAW_043",
+      "category": "Luật pháp Quốc tế",
+      "question": "Nguyên tắc 'Bình đẳng chủ quyền giữa các quốc gia' được ghi nhận tại văn bản pháp lý quốc tế quan trọng nào?",
+      "expectedAnswer": "Hiến chương Liên Hợp Quốc (Điều 2.1).",
+      "actualAnswer": "Chấm dứt chiến tranh, lập lại hòa bình ở Đông Dương.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.2692307692307692,
+      "keywords": [
+        "bình đẳng chủ quyền",
+        "Hiến chương LHQ",
+        "Điều 2.1"
+      ],
+      "topic": "Hiến chương LHQ",
+      "complexity": "Easy"
+    },
+    {
+      "id": "DAV_REG_046",
+      "category": "Quy chế Học viện",
+      "question": "Cổng thông tin đào tạo trực tuyến của Học viện Ngoại giao thường sử dụng tên miền nào để sinh viên đăng ký tín chỉ?",
+      "expectedAnswer": "qldt.dav.edu.vn",
+      "actualAnswer": "Bạn có thể thay đổi địa chỉ trước khi đơn hàng được giao cho shipper. Sau đó, vui lòng liên hệ hotline để được hỗ trợ.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.05084745762711865,
+      "keywords": [
+        "qldt.dav.edu.vn",
+        "đăng ký tín chỉ",
+        "cổng đào tạo"
+      ],
+      "topic": "Hệ thống thông tin",
+      "complexity": "Easy"
+    },
+    {
+      "id": "DAV_REG_051",
+      "category": "Quy chế Học viện",
+      "question": "Điểm rèn luyện của sinh viên DAV được xếp loại Xuất sắc khi đạt mức điểm nào?",
+      "expectedAnswer": "Từ 90 đến 100 điểm.",
+      "actualAnswer": "Thư viện mở cửa từ 8h00-22h00 tất cả các ngày trong tuần, kể cả ngày lễ và chủ nhật.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.11904761904761904,
+      "keywords": [
+        "90-100 điểm",
+        "xuất sắc",
+        "rèn luyện"
+      ],
+      "topic": "Điểm rèn luyện",
+      "complexity": "Easy"
+    },
+    {
+      "id": "DAV_REG_055",
+      "category": "Quy chế Học viện",
+      "question": "Sinh viên muốn khiếu nại điểm thi kết thúc học phần phải nộp đơn trong thời hạn bao lâu kể từ ngày công bố điểm?",
+      "expectedAnswer": "Trong vòng 05 - 07 ngày làm việc (tuỳ theo thông báo cụ thể từng kỳ).",
+      "actualAnswer": "Có điểm trung bình chung tích lũy dưới 1.20 (đối với sinh viên năm nhất) hoặc dưới 1.40 (các năm sau) trong 2 kỳ liên tiếp.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.2601626016260163,
+      "keywords": [
+        "khiếu nại điểm",
+        "05-07 ngày",
+        "công bố điểm"
+      ],
+      "topic": "Khiếu nại điểm",
+      "complexity": "Medium"
+    },
+    {
+      "id": "POL_VN_059",
+      "category": "Chính trì - Đối ngoại",
+      "question": "Cơ chế hợp tác Mê Kông - Lan Thương (MLC) bao gồm những quốc gia thành viên nào?",
+      "expectedAnswer": "Trung Quốc, Myanmar, Lào, Thái Lan, Campuchia và Việt Nam.",
+      "actualAnswer": "Có điểm trung bình chung tích lũy dưới 1.20 (đối với sinh viên năm nhất) hoặc dưới 1.40 (các năm sau) trong 2 kỳ liên tiếp.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.2032520325203252,
+      "keywords": [
+        "Mê Kông Lan Thương",
+        "MLC",
+        "6 quốc gia"
+      ],
+      "topic": "Hợp tác tiểu vùng",
+      "complexity": "Medium"
+    },
+    {
+      "id": "INT_LAW_062",
+      "category": "Luật pháp Quốc tế",
+      "question": "Nguyên tắc 'Jus cogens' (Quy phạm mệnh lệnh) có đặc điểm gì?",
+      "expectedAnswer": "Là quy phạm pháp luật quốc tế chung được cộng đồng quốc tế chấp nhận, không cho phép bất cứ sự vi phạm nào và chỉ có thể bị sửa đổi bởi một quy phạm cùng tính chất ra đời sau.",
+      "actualAnswer": "Tham mưu, giúp Bộ trưởng Bộ Ngoại giao thực hiện chức năng quản lý nhà nước về công tác đối với người Việt Nam ở nước ngoài.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.2742857142857143,
+      "keywords": [
+        "jus cogens",
+        "quy phạm mệnh lệnh",
+        "không vi phạm"
+      ],
+      "topic": "Quy phạm mệnh lệnh",
+      "complexity": "Hard"
+    },
+    {
+      "id": "INT_LAW_063",
+      "category": "Luật pháp Quốc tế",
+      "question": "Cơ quan nào của Liên Hợp Quốc có quyền ban hành các nghị quyết mang tính ràng buộc pháp lý đối với tất cả thành viên?",
+      "expectedAnswer": "Hội đồng Bảo an (Security Council).",
+      "actualAnswer": "Chấm dứt chiến tranh, lập lại hòa bình ở Đông Dương.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.19230769230769232,
+      "keywords": [
+        "Hội đồng Bảo an",
+        "ràng buộc pháp lý",
+        "nghị quyết"
+      ],
+      "topic": "Hội đồng Bảo an",
+      "complexity": "Medium"
+    },
+    {
+      "id": "DAV_SPEC_073",
+      "category": "Quy chế đặc thù",
+      "question": "Câu lạc bộ nào tại DAV chuyên trách về mô phỏng các phiên họp của Liên Hợp Quốc?",
+      "expectedAnswer": "DAV Model United Nations (DAVMUN).",
+      "actualAnswer": "Trong vòng 05 - 07 ngày làm việc (tuỳ theo thông báo cụ thể từng kỳ).",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.2028985507246377,
+      "keywords": [
+        "DAVMUN",
+        "Model UN",
+        "mô phỏng LHQ"
+      ],
+      "topic": "Hoạt động sinh viên",
+      "complexity": "Easy"
+    },
+    {
+      "id": "DAV_SPEC_075",
+      "category": "Quy chế đặc thù",
+      "question": "Sinh viên DAV được yêu cầu trang phục như thế nào khi đến trường theo quy định văn hóa học đường?",
+      "expectedAnswer": "Trang phục lịch sự, kín đáo; khuyến khích mặc áo sơ mi, quần âu; cấm mặc quần đùi, áo ba lỗ, dép lê vào khu vực giảng đường.",
+      "actualAnswer": "Các bên tham chiến phải luôn phân biệt giữa mục tiêu quân sự và mục tiêu dân sự, giữa binh lính và thường dân.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.2661290322580645,
+      "keywords": [
+        "trang phục lịch sự",
+        "áo sơ mi",
+        "quần âu"
+      ],
+      "topic": "Văn hóa học đường",
+      "complexity": "Easy"
+    },
+    {
+      "id": "DAV_REG_081",
+      "category": "Quy chế Học viện",
+      "question": "Trong trường hợp bất khả kháng (dịch bệnh, thiên tai), phương thức giảng dạy tại DAV được chuyển đổi như thế nào?",
+      "expectedAnswer": "Chuyển sang hình thức đào tạo trực tuyến (E-learning) thông qua MS Teams hoặc các nền tảng được phê duyệt.",
+      "actualAnswer": "Lấy cái không thay đổi (mục tiêu độc lập, chủ quyền) để ứng phó với cái vạn biến (tình thế, sách lược thay đổi khôn lường).",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.25203252032520324,
+      "keywords": [
+        "E-learning",
+        "MS Teams",
+        "đào tạo trực tuyến"
+      ],
+      "topic": "Đào tạo trực tuyến",
+      "complexity": "Easy"
+    },
+    {
+      "id": "DAV_REG_082",
+      "category": "Quy chế Học viện",
+      "question": "Sinh viên có được phép đăng ký học vượt (đăng ký môn học của năm sau) không?",
+      "expectedAnswer": "Có, nếu đáp ứng đủ điều kiện về điểm trung bình tích lũy và điều kiện tiên quyết của học phần.",
+      "actualAnswer": "Tham mưu, giúp Bộ trưởng Bộ Ngoại giao thực hiện chức năng quản lý nhà nước về công tác đối với người Việt Nam ở nước ngoài.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.27419354838709675,
+      "keywords": [
+        "học vượt",
+        "điều kiện tiên quyết",
+        "GPA"
+      ],
+      "topic": "Đăng ký học phần",
+      "complexity": "Medium"
+    },
+    {
+      "id": "DAV_SPEC_093",
+      "category": "Quy chế đặc thù",
+      "question": "Sự kiện thường niên 'DAV Open Day' có mục đích gì?",
+      "expectedAnswer": "Ngày hội tư vấn tuyển sinh và hướng nghiệp dành cho học sinh THPT muốn tìm hiểu về Học viện.",
+      "actualAnswer": "Tham mưu, giúp Bộ trưởng Bộ Ngoại giao thực hiện chức năng quản lý nhà nước về công tác đối với người Việt Nam ở nước ngoài.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.25806451612903225,
+      "keywords": [
+        "DAV Open Day",
+        "tư vấn tuyển sinh",
+        "hướng nghiệp"
+      ],
+      "topic": "Sự kiện tuyển sinh",
+      "complexity": "Easy"
+    },
+    {
+      "id": "INT_LAW_095",
+      "category": "Luật pháp Quốc tế",
+      "question": "Quyền tự vệ chính đáng (Self-defense) được quy định tại Điều bao nhiêu của Hiến chương LHQ?",
+      "expectedAnswer": "Điều 51.",
+      "actualAnswer": "Có điểm trung bình chung tích lũy dưới 1.20 (đối với sinh viên năm nhất) hoặc dưới 1.40 (các năm sau) trong 2 kỳ liên tiếp.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.04878048780487805,
+      "keywords": [
+        "Điều 51",
+        "quyền tự vệ",
+        "self-defense"
+      ],
+      "topic": "Quyền tự vệ",
+      "complexity": "Easy"
+    },
+    {
+      "id": "POL_VN_096",
+      "category": "Chính trị - Đối ngoại",
+      "question": "Việt Nam thiết lập quan hệ ngoại giao với Trung Quốc vào ngày tháng năm nào?",
+      "expectedAnswer": "Ngày 18 tháng 1 năm 1950.",
+      "actualAnswer": "Có, chúng tôi có sách về các tôn giáo: Phật giáo, Thiên Chúa giáo, Hồi giáo, và các tín ngưỡng khác.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.14,
+      "keywords": [
+        "18/1/1950",
+        "Trung Quốc",
+        "thiết lập ngoại giao"
+      ],
+      "topic": "Quan hệ song phương",
+      "complexity": "Easy"
+    },
+    {
+      "id": "POL_VN_097",
+      "category": "Chính trị - Đối ngoại",
+      "question": "Vai trò 'Nòng cốt, dẫn dắt, hòa giải' là mục tiêu Việt Nam hướng tới trong tổ chức khu vực nào?",
+      "expectedAnswer": "ASEAN.",
+      "actualAnswer": "Thành phố Đà Nẵng.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.1111111111111111,
+      "keywords": [
+        "nòng cốt",
+        "dẫn dắt",
+        "hòa giải",
+        "ASEAN"
+      ],
+      "topic": "ASEAN",
+      "complexity": "Medium"
+    },
+    {
+      "id": "DAV_REG_098",
+      "category": "Quy chế Học viện",
+      "question": "Sinh viên bị buộc thôi học nếu quá thời gian nghỉ học tạm thời bao lâu mà không làm thủ tục nhập học lại?",
+      "expectedAnswer": "Quá 01 tháng kể từ ngày hết hạn quyết định nghỉ học tạm thời.",
+      "actualAnswer": "Có, bạn sẽ nhận email thông báo về: xác nhận đơn hàng, nhắc nhở trả sách, khuyến mãi. Bạn có thể tùy chỉnh trong \"Cài đặt thông báo\".",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.24060150375939848,
+      "keywords": [
+        "01 tháng",
+        "nghỉ học tạm thời",
+        "buộc thôi học"
+      ],
+      "topic": "Nghỉ học",
+      "complexity": "Medium"
+    },
+    {
+      "id": "DAV_REG_100",
+      "category": "Quy chế Học viện",
+      "question": "Để được xét tốt nghiệp loại Giỏi, sinh viên phải đạt điểm trung bình tích lũy (CPA) từ bao nhiêu?",
+      "expectedAnswer": "Từ 3.20 đến 3.59.",
+      "actualAnswer": "Có điểm trung bình chung tích lũy dưới 1.20 (đối với sinh viên năm nhất) hoặc dưới 1.40 (các năm sau) trong 2 kỳ liên tiếp.",
+      "errorCategory": "Tìm thấy nhưng độ tương đồng thấp",
+      "reason": "Tìm thấy 5 FAQs nhưng độ tương đồng < 0.3",
+      "severity": "MEDIUM",
+      "score": 0.08943089430894309,
+      "keywords": [
+        "tốt nghiệp Giỏi",
+        "3.20-3.59",
+        "CPA"
+      ],
+      "topic": "Xếp loại tốt nghiệp",
+      "complexity": "Easy"
+    }
+  ],
+  "recommendations": [
+    "Cải thiện text search index hoặc giảm similarity threshold (34 cases gần đúng)"
+  ]
+}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biểu đồ 5.2 - Độ Chính Xác Hệ Thống</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+        .metrics-table {
+            margin-top: 30px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #3498db;
+            color: white;
+            font-weight: 600;
+        }
+        tr:hover {
+            background: #f5f5f5;
+        }
+        .pass {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        .fail {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Đánh Giá Độ Chính Xác - Section 5.2.3</h1>
+        
+        <div class="charts-grid">
+            <div>
+                <h3 style="text-align: center;">Metrics vs Target</h3>
+                <div class="chart-container">
+                    <canvas id="metricsChart"></canvas>
+                </div>
+            </div>
+            
+            <div>
+                <h3 style="text-align: center;">MRR Score</h3>
+                <div class="chart-container">
+                    <canvas id="mrrChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <div class="metrics-table">
+            <h3>Chi tiết Metrics</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Current Value</th>
+                        <th>Target</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Precision@5</strong></td>
+                        <td>93%</td>
+                        <td>88%</td>
+                        <td class="pass">
+                            ✅ PASS
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Faithfulness</strong></td>
+                        <td>34%</td>
+                        <td>92%</td>
+                        <td class="fail">
+                            ⚠️ NEEDS WORK
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>MRR</strong></td>
+                        <td>0.823</td>
+                        <td>0.700</td>
+                        <td class="pass">
+                            ✅ PASS
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Metrics comparison chart
+        const ctx1 = document.getElementById('metricsChart');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Precision@5', 'Faithfulness'],
+                datasets: [
+                    {
+                        label: 'Current',
+                        data: [93, 34],
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Target',
+                        data: [88, 92],
+                        backgroundColor: 'rgba(255, 206, 86, 0.7)',
+                        borderColor: 'rgba(255, 206, 86, 1)',
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // MRR gauge chart
+        const ctx2 = document.getElementById('mrrChart');
+        new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ['MRR Score', 'Remaining'],
+                datasets: [{
+                    data: [82.3, 17.7],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(200, 200, 200, 0.3)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                if (context.dataIndex === 0) {
+                                    return 'MRR: 0.823';
+                                }
+                                return '';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
