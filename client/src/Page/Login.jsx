@@ -6,17 +6,24 @@ import images from '../assets/images/imagesLogin.jpg';
 import Footer from '../Components/Footer/Footer';
 import { Link, useNavigate } from 'react-router-dom';
 import { requestLogin } from '../config/request';
+import { useStore } from '../hooks/useStore';
 
 import { message } from 'antd';
 import { useEffect } from 'react';
 
 function LoginUser() {
     const navigate = useNavigate();
+    const { fetchAuth, fetchCart } = useStore();
 
     const onFinish = async (values) => {
         try {
             const res = await requestLogin(values);
             message.success(res.message);
+
+            // Cookie is set by this response; refresh auth/cart state immediately
+            // so the header re-renders as logged-in without needing a full reload.
+            await fetchAuth();
+            await fetchCart();
 
             if (res?.metadata?.mustChangePassword) {
                 message.warning('Bạn cần đổi mật khẩu ngay trong lần đăng nhập đầu tiên.');
