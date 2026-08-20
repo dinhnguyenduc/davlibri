@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import { requestGetViewBook } from '../../config/request';
 
-import CardBody from '../../Components/CardBody/CardBody';
+import CardBody from '../../Components/Cardbody/Cardbody';
 
 const ViewedProducts = () => {
     const [viewedBooks, setViewedBooks] = useState([]);
