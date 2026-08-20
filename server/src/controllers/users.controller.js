@@ -103,6 +103,7 @@ class usersController {
                 httpOnly: true, // Chặn truy cập từ JavaScript (bảo mật hơn)
                 secure: isProduction, // Chỉ gửi trên HTTPS khi production
                 sameSite: isProduction ? 'none' : 'lax', // Cho phép gọi chéo tên miền trên production, tránh bị chặn trên localhost
+                domain: isProduction ? '.davit.io.vn' : undefined, // Chia sẻ cookie giữa các subdomain frontend/backend
                 maxAge: 15 * 60 * 1000, // 15 phút
             });
 
@@ -110,6 +111,7 @@ class usersController {
                 httpOnly: false, // Chặn truy cập từ JavaScript (bảo mật hơn)
                 secure: isProduction, // Chỉ gửi trên HTTPS khi production
                 sameSite: isProduction ? 'none' : 'lax', // Cho phép gọi chéo tên miền trên production, tránh bị chặn trên localhost
+                domain: isProduction ? '.davit.io.vn' : undefined, // Chia sẻ cookie giữa các subdomain frontend/backend
                 maxAge: 7 * 24 * 60 * 60 * 1000, // 7 ngày
             });
 
@@ -118,6 +120,7 @@ class usersController {
                 httpOnly: true,
                 secure: isProduction,
                 sameSite: isProduction ? 'none' : 'lax',
+                domain: isProduction ? '.davit.io.vn' : undefined,
                 maxAge: 7 * 24 * 60 * 60 * 1000, // 7 ngày
             });
             new Created({ message: 'Đăng ký thành công', metadata: { token, refreshToken } }).send(res);
@@ -190,6 +193,7 @@ class usersController {
                 httpOnly: true, // Chặn truy cập từ JavaScript (bảo mật hơn)
                 secure: isProduction, // Chỉ gửi trên HTTPS khi production
                 sameSite: isProduction ? 'none' : 'lax', // Cho phép gọi chéo tên miền trên production, tránh bị chặn trên localhost
+                domain: isProduction ? '.davit.io.vn' : undefined, // Chia sẻ cookie giữa các subdomain frontend/backend
                 maxAge: 15 * 60 * 1000, // 15 phút
             });
 
@@ -197,6 +201,7 @@ class usersController {
                 httpOnly: false, // Chặn truy cập từ JavaScript (bảo mật hơn)
                 secure: isProduction, // Chỉ gửi trên HTTPS khi production
                 sameSite: isProduction ? 'none' : 'lax', // Cho phép gọi chéo tên miền trên production, tránh bị chặn trên localhost
+                domain: isProduction ? '.davit.io.vn' : undefined, // Chia sẻ cookie giữa các subdomain frontend/backend
                 maxAge: 7 * 24 * 60 * 60 * 1000, // 7 ngày
             });
 
@@ -205,6 +210,7 @@ class usersController {
                 httpOnly: true,
                 secure: isProduction,
                 sameSite: isProduction ? 'none' : 'lax',
+                domain: isProduction ? '.davit.io.vn' : undefined,
                 maxAge: 7 * 24 * 60 * 60 * 1000, // 7 ngày
             });
             new OK({
@@ -240,6 +246,7 @@ class usersController {
             httpOnly: true, // Chặn truy cập từ JavaScript (bảo mật hơn)
             secure: isProduction, // Chỉ gửi trên HTTPS khi production
             sameSite: isProduction ? 'none' : 'lax', // Cho phép gọi chéo tên miền trên production, tránh bị chặn trên localhost
+            domain: isProduction ? '.davit.io.vn' : undefined, // Chia sẻ cookie giữa các subdomain frontend/backend
             maxAge: 15 * 60 * 1000, // 15 phút
         });
 
@@ -247,6 +254,7 @@ class usersController {
             httpOnly: false, // Chặn truy cập từ JavaScript (bảo mật hơn)
             secure: isProduction,
             sameSite: isProduction ? 'none' : 'lax', // Cho phép gọi chéo tên miền trên production, tránh bị chặn trên localhost
+            domain: isProduction ? '.davit.io.vn' : undefined, // Chia sẻ cookie giữa các subdomain frontend/backend
             maxAge: 7 * 24 * 60 * 60 * 1000, // 7 ngày
         });
 
@@ -256,9 +264,10 @@ class usersController {
     async logout(req, res) {
         const { id } = req.user;
         await modelApiKey.deleteOne({ userId: id });
-        res.clearCookie('token');
-        res.clearCookie('refreshToken');
-        res.clearCookie('logged');
+        const cookieDomain = isProduction ? '.davit.io.vn' : undefined;
+        res.clearCookie('token', { domain: cookieDomain });
+        res.clearCookie('refreshToken', { domain: cookieDomain });
+        res.clearCookie('logged', { domain: cookieDomain });
 
         new OK({ message: 'Đăng xuất thành công' }).send(res);
     }
@@ -663,7 +672,7 @@ class usersController {
             return res
                 .setHeader('Set-Cookie', [
                     `tokenResetPassword=${token}; ${
-                        isProduction ? 'Secure;' : ''
+                        isProduction ? 'Secure; Domain=.davit.io.vn;' : ''
                     } Max-Age=900; Path=/; SameSite=${isProduction ? 'None' : 'Lax'}`,
                 ])
                 .status(200)
@@ -730,7 +739,7 @@ class usersController {
 
             // Xóa OTP sau khi đặt lại mật khẩu thành công
             await modelOtp.deleteOne({ email: decode.email });
-            res.clearCookie('tokenResetPassword');
+            res.clearCookie('tokenResetPassword', { domain: isProduction ? '.davit.io.vn' : undefined });
             return res.status(200).json({ message: 'Đặt lại mật khẩu thành công' });
         } catch (error) {
             console.error(error);
