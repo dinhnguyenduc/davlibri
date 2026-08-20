@@ -21,3 +21,8 @@ services:
             - '5173:80'
         depends_on:
             - backend
+
+networks:
+    default:
+        name: web_network
+        external: true
