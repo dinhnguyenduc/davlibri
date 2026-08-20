@@ -13,6 +13,8 @@ services:
             context: ./client
             args:
                 VITE_API_URL: ${VITE_API_URL:-https://api-davlibri.davit.io.vn}
+                # Must match SECRET_CRYPTO in server/.env, otherwise login succeeds but the frontend can't decrypt the user payload
+                VITE_SECRET_CRYPTO: ${VITE_SECRET_CRYPTO:-123456}
         container_name: davlibri-frontend
         restart: unless-stopped
         ports:
