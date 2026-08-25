@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import './Banner.css';
 import { requestGetBanners } from '../../config/request';
 
 const Banner = () => {
@@ -105,12 +104,9 @@ const Banner = () => {
 
     if (loading) {
         return (
-            <div className="banner-container">
-                <div
-                    className="banner-wrapper"
-                    style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-                >
-                    <p>Đang tải banner...</p>
+            <div className="w-full h-full bg-white relative z-0">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 h-full w-full relative overflow-hidden flex items-center justify-center">
+                    <p className="text-gray-600 text-lg">Đang tải banner...</p>
                 </div>
             </div>
         );
@@ -121,13 +117,12 @@ const Banner = () => {
     }
 
     return (
-        <div className="banner-container">
-            <div className="banner-wrapper">
+        <div className="w-full h-full bg-white relative z-0">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 h-full w-full relative overflow-hidden">
                 {slides.map((slide, index) => {
                     // Tính toán background-position từ imageOffsetX và imageOffsetY (chính xác)
                     const getBackgroundPosition = () => {
                         if (!slide.image) return 'center';
-                        // Ưu tiên dùng imageOffsetX/Y (chính xác theo %), nếu không có thì dùng imagePositionX/Y
                         if (slide.imageOffsetX !== undefined && slide.imageOffsetY !== undefined) {
                             return `${slide.imageOffsetX}% ${slide.imageOffsetY}%`;
                         }
@@ -142,51 +137,100 @@ const Banner = () => {
                     };
 
                     return (
-                        <div key={slide.id} className={`banner-slide ${index === currentSlide ? 'active' : ''}`}>
+                        <div
+                            key={slide.id}
+                            className={`absolute w-full h-full transition-opacity duration-1000 ${
+                                index === currentSlide
+                                    ? 'opacity-100 pointer-events-auto'
+                                    : 'opacity-0 pointer-events-none'
+                            }`}
+                        >
                             <div
-                                className="banner-background"
+                                className="w-full h-full rounded-none p-10 shadow-lg overflow-hidden flex items-center justify-between gap-10 bg-gradient-to-br from-orange-100 to-orange-50"
                                 style={{
-                                    background: slide.image
-                                        ? slide.backgroundColor || '#f6ecdd'
-                                        : slide.backgroundColor || 'linear-gradient(135deg, #f6ecdd 0%, #e8d5c4 100%)',
+                                    backgroundColor: slide.image ? slide.backgroundColor || '#f6ecdd' : undefined,
                                     backgroundImage: slide.image ? `url(${slide.image})` : 'none',
                                     backgroundPosition: getBackgroundPosition(),
                                     backgroundSize: getBackgroundSize(),
                                     backgroundRepeat: 'no-repeat',
+                                    backgroundAttachment: 'scroll',
                                 }}
                             >
-                                <div className="banner-content">
-                                    {/* Left side - Books illustration (chỉ hiện nếu không có ảnh) */}
+                                <div className="max-w-7xl mx-auto w-full flex items-center justify-between h-full gap-10">
+                                    {/* Left side - Books illustration (only if no image) */}
                                     {!slide.image && (
-                                        <div className="banner-left">
-                                            <div className="books-stack">
-                                                <div className="book book-1"></div>
-                                                <div className="book book-2"></div>
-                                                <div className="book book-3"></div>
+                                        <div className="flex-shrink-0 w-32 flex items-center justify-center">
+                                            <div className="relative w-36 h-48">
+                                                {/* Book 1 - Purple */}
+                                                <div
+                                                    className="absolute w-20 h-24 rounded shadow-lg"
+                                                    style={{
+                                                        background: 'linear-gradient(135deg, #8b4c8f 0%, #7a3e7e 100%)',
+                                                        transform: 'rotate(-15deg)',
+                                                        left: '0px',
+                                                        top: '50px',
+                                                        zIndex: 3,
+                                                    }}
+                                                />
+                                                {/* Book 2 - Red */}
+                                                <div
+                                                    className="absolute w-20 h-24 rounded shadow-lg"
+                                                    style={{
+                                                        background: 'linear-gradient(135deg, #c44569 0%, #b23555 100%)',
+                                                        transform: 'rotate(-5deg)',
+                                                        left: '30px',
+                                                        top: '40px',
+                                                        zIndex: 2,
+                                                    }}
+                                                />
+                                                {/* Book 3 - Yellow */}
+                                                <div
+                                                    className="absolute w-20 h-24 rounded shadow-lg"
+                                                    style={{
+                                                        background: 'linear-gradient(135deg, #f9ca24 0%, #f0b922 100%)',
+                                                        transform: 'rotate(5deg)',
+                                                        left: '60px',
+                                                        top: '30px',
+                                                        zIndex: 1,
+                                                    }}
+                                                />
                                             </div>
                                         </div>
                                     )}
 
                                     {/* Center - Text content */}
-                                    <div className="banner-center">
-                                        <div className="banner-text-content">
+                                    <div className="flex-1 flex flex-col justify-center px-10">
+                                        <div className="max-w-2xl">
                                             {slide.showTitle && (
-                                                <h1 className="banner-title" style={{ color: slide.textColor }}>
+                                                <h1
+                                                    className="text-4xl sm:text-5xl font-bold mb-8 leading-tight animate-fade-in-up"
+                                                    style={{ color: slide.textColor }}
+                                                >
                                                     {slide.title}
                                                 </h1>
                                             )}
                                             {slide.subtitle && (
-                                                <h2 className="banner-subtitle" style={{ color: slide.textColor }}>
+                                                <h2
+                                                    className="text-xl sm:text-2xl font-semibold mb-6 animate-fade-in"
+                                                    style={{ color: slide.textColor }}
+                                                >
                                                     {slide.subtitle}
                                                 </h2>
                                             )}
 
                                             {slide.features && slide.features.length > 0 && (
-                                                <div className="banner-features">
+                                                <div className="space-y-3 mb-8">
                                                     {slide.features.map((feature, idx) => (
-                                                        <div key={idx} className="feature-item">
-                                                            <i className="fa fa-book feature-icon"></i>
-                                                            <span style={{ color: slide.textColor }}>{feature}</span>
+                                                        <div
+                                                            key={idx}
+                                                            className="flex items-center gap-3 text-lg font-medium animate-fade-in-left"
+                                                            style={{
+                                                                color: slide.textColor,
+                                                                animationDelay: `${idx * 0.1}s`,
+                                                            }}
+                                                        >
+                                                            <span className="text-blue-600 text-xl">📖</span>
+                                                            <span>{feature}</span>
                                                         </div>
                                                     ))}
                                                 </div>
@@ -194,27 +238,60 @@ const Banner = () => {
                                         </div>
                                     </div>
 
-                                    {/* Right side - Reading person illustration (chỉ hiện nếu không có ảnh) */}
+                                    {/* Right side - Reading person illustration (only if no image) */}
                                     {!slide.image && (
-                                        <div className="banner-right">
-                                            <div className={`illustration illustration-${slide.illustration}`}>
+                                        <div className="flex-shrink-0 w-80 h-96 flex items-center justify-center">
+                                            <div className="w-full h-full relative">
                                                 {slide.illustration === 'slide1' && (
-                                                    <div className="reading-person">
-                                                        <div className="person-cap"></div>
-                                                        <div className="person-body"></div>
-                                                        <div className="person-book"></div>
+                                                    <div className="relative w-72 h-80">
+                                                        {/* Person silhouette - simplified with Tailwind */}
+                                                        <div className="absolute w-16 h-20 bg-gradient-to-b from-amber-800 to-amber-700 rounded-full top-2 left-24" />
+                                                        <div className="absolute w-24 h-32 bg-gradient-to-b from-blue-400 to-blue-500 rounded-lg top-20 left-16" />
+                                                        <div className="absolute w-20 h-24 bg-yellow-100 border-2 border-amber-900 rounded-lg top-24 left-28 transform -rotate-12" />
                                                     </div>
                                                 )}
                                                 {slide.illustration === 'slide2' && (
-                                                    <div className="family-reading">
-                                                        <div className="family-group"></div>
+                                                    <div className="flex gap-4 h-full items-center justify-center">
+                                                        <div className="w-12 h-16 bg-purple-500 rounded-full" />
+                                                        <div className="w-12 h-16 bg-pink-500 rounded-full" />
+                                                        <div className="w-12 h-16 bg-blue-500 rounded-full" />
                                                     </div>
                                                 )}
                                                 {slide.illustration === 'slide3' && (
-                                                    <div className="books-stack-right">
-                                                        <div className="book-right book-r1"></div>
-                                                        <div className="book-right book-r2"></div>
-                                                        <div className="book-right book-r3"></div>
+                                                    <div className="relative w-40 h-56">
+                                                        <div
+                                                            className="absolute w-20 h-28 rounded shadow-lg"
+                                                            style={{
+                                                                background:
+                                                                    'linear-gradient(135deg, #d4a574 0%, #a67c52 100%)',
+                                                                transform: 'rotate(5deg)',
+                                                                right: '0px',
+                                                                top: '0px',
+                                                                zIndex: 1,
+                                                            }}
+                                                        />
+                                                        <div
+                                                            className="absolute w-20 h-28 rounded shadow-lg"
+                                                            style={{
+                                                                background:
+                                                                    'linear-gradient(135deg, #e8b4b8 0%, #d99ba3 100%)',
+                                                                transform: 'rotate(-5deg)',
+                                                                right: '20px',
+                                                                top: '20px',
+                                                                zIndex: 2,
+                                                            }}
+                                                        />
+                                                        <div
+                                                            className="absolute w-20 h-28 rounded shadow-lg"
+                                                            style={{
+                                                                background:
+                                                                    'linear-gradient(135deg, #a8d8b8 0%, #7bc98f 100%)',
+                                                                transform: 'rotate(0deg)',
+                                                                right: '40px',
+                                                                top: '40px',
+                                                                zIndex: 3,
+                                                            }}
+                                                        />
                                                     </div>
                                                 )}
                                             </div>
@@ -227,12 +304,17 @@ const Banner = () => {
                 })}
 
                 {/* Dots Navigation */}
-                <div className="banner-dots">
+                <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-3 z-50">
                     {slides.map((_, index) => (
                         <button
                             key={index}
-                            className={`dot ${index === currentSlide ? 'active' : ''}`}
                             onClick={() => goToSlide(index)}
+                            className={`h-3 rounded-full transition-all duration-300 ${
+                                index === currentSlide
+                                    ? 'bg-blue-600 w-8'
+                                    : 'bg-white bg-opacity-60 w-3 hover:bg-opacity-100'
+                            }`}
+                            aria-label={`Slide ${index + 1}`}
                         />
                     ))}
                 </div>

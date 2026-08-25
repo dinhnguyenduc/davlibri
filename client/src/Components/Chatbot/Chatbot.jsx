@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Button, Input, Spin, Card, Tooltip, Divider } from 'antd';
+import { Button, Input, Spin, Tooltip, Divider } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import {
     MessageOutlined,
@@ -9,15 +9,14 @@ import {
     UserOutlined,
     QuestionCircleOutlined,
     CustomerServiceOutlined,
+    FullscreenOutlined,
     UpOutlined,
     DownOutlined,
-    FullscreenOutlined,
 } from '@ant-design/icons';
 import { requestAskChatbot, requestGetPublicFAQs } from '../../config/request';
 import { useStore } from '../../hooks/useStore';
 import LiveChatModal from './LiveChatModal';
 import BookReferences from './BookReferences';
-import './Chatbot.css';
 
 const { TextArea } = Input;
 
@@ -25,17 +24,11 @@ function Chatbot() {
     const navigate = useNavigate();
     const { dataUser, chatbotOpen, setChatbotOpen } = useStore();
     const [liveChatOpen, setLiveChatOpen] = useState(false);
-    const [messages, setMessages] = useState([
-        {
-            type: 'bot',
-            text: 'Xin chào! Tôi là trợ lý ảo của thư viện. Tôi có thể giúp gì cho bạn?',
-            timestamp: new Date(),
-        },
-    ]);
+    const [messages, setMessages] = useState([]);
     const [inputValue, setInputValue] = useState('');
     const [loading, setLoading] = useState(false);
     const [suggestedQuestions, setSuggestedQuestions] = useState([]);
-    const [faqExpanded, setFaqExpanded] = useState(true);
+    const [faqExpanded, setFaqExpanded] = useState(false);
     const messagesEndRef = useRef(null);
 
     // Scroll to bottom khi có tin nhắn mới
@@ -47,12 +40,23 @@ function Chatbot() {
         scrollToBottom();
     }, [messages]);
 
-    // Lấy câu hỏi gợi ý khi mở chatbot
+    // Lấy câu hỏi gợi ý và gửi tin nhắn chào mừng khi mở chatbot
     useEffect(() => {
-        if (chatbotOpen && suggestedQuestions.length === 0) {
+        if (!chatbotOpen) return;
+
+        if (suggestedQuestions.length === 0) {
             loadSuggestedQuestions();
         }
-    }, [chatbotOpen]);
+
+        if (messages.length === 0) {
+            const welcomeMessage = {
+                type: 'bot',
+                text: 'Xin chào anh/chị 👋\nCảm ơn anh/chị đã quan tâm đến thư viện DAVLibri!\nEm có thể hỗ trợ anh/chị nội dung gì ạ?',
+                timestamp: new Date(),
+            };
+            setMessages([welcomeMessage]);
+        }
+    }, [chatbotOpen, messages.length, suggestedQuestions.length]);
 
     const loadSuggestedQuestions = async () => {
         try {
@@ -93,7 +97,7 @@ function Chatbot() {
             };
 
             setMessages((prev) => [...prev, botMessage]);
-        } catch (error) {
+        } catch {
             const errorMessage = {
                 type: 'bot',
                 text: 'Xin lỗi, tôi gặp lỗi khi xử lý câu hỏi của bạn. Vui lòng thử lại sau.',
@@ -126,170 +130,137 @@ function Chatbot() {
 
     return (
         <>
-            {/* Floating Button */}
+            {/* Floating Button - Fixed Position, Not Covering Other Elements */}
             <Tooltip title="Trợ lý ảo" placement="left">
-                <Button
-                    type="primary"
-                    shape="circle"
-                    size="large"
-                    icon={chatbotOpen ? <CloseOutlined /> : <MessageOutlined />}
+                <button
                     onClick={toggleChat}
-                    className="chatbot-float-button"
-                    style={{
-                        position: 'fixed',
-                        bottom: '30px',
-                        right: '30px',
-                        width: '60px',
-                        height: '60px',
-                        fontSize: '24px',
-                        zIndex: 1000,
-                        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-                    }}
-                />
+                    className={`fixed bottom-6 right-6 md:bottom-8 md:right-8 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center font-semibold transition-all duration-300 z-50 ${
+                        chatbotOpen
+                            ? 'bg-red-500 hover:bg-red-600 shadow-lg'
+                            : 'bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 shadow-xl hover:shadow-2xl hover:scale-110'
+                    }`}
+                    aria-label={chatbotOpen ? 'Đóng' : 'Mở trợ lý ảo'}
+                >
+                    {chatbotOpen ? (
+                        <CloseOutlined className="text-white text-xl md:text-2xl" />
+                    ) : (
+                        <MessageOutlined className="text-white text-xl md:text-2xl" />
+                    )}
+                </button>
             </Tooltip>
 
-            {/* Chat Window */}
+            {/* Chat Window - Full Screen Modal on Mobile, Fixed Window on Desktop */}
             {chatbotOpen && (
-                <div className="chatbot-window">
-                    <Card
-                        className="chatbot-card"
-                        bodyStyle={{ padding: 0, height: '100%', display: 'flex', flexDirection: 'column' }}
-                    >
+                <>
+                    {/* Mobile Overlay */}
+                    <div
+                        className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+                        onClick={() => setChatbotOpen(false)}
+                    />
+
+                    {/* Chat Container */}
+                    <div className="fixed inset-0 z-40 flex flex-col overflow-hidden bg-white shadow-[0_24px_80px_rgba(15,23,42,0.22)] md:inset-auto md:bottom-24 md:right-8 md:h-[600px] md:max-h-[85vh] md:w-[360px] md:rounded-[22px]">
                         {/* Header */}
-                        <div className="chatbot-header">
+                        <div className="flex flex-shrink-0 items-center justify-between bg-[#0f172a] px-4 py-3 text-white shadow-[inset_0_-1px_0_rgba(255,255,255,0.08)] sm:px-5">
                             <div className="flex items-center gap-3">
-                                <div className="chatbot-avatar">
-                                    <RobotOutlined style={{ fontSize: '20px', color: '#fff' }} />
+                                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/10">
+                                    <RobotOutlined className="text-lg text-white" />
                                 </div>
                                 <div>
-                                    <h3 className="chatbot-title">Trợ lý ảo</h3>
+                                    <h3 className="text-sm font-semibold sm:text-base">Sapo AI</h3>
+                                    <p className="text-[10px] text-slate-300">DAVLibri Support</p>
                                 </div>
                             </div>
-                            <div className="chatbot-header-actions">
+                            <div className="flex items-center gap-2">
                                 <Tooltip title="Mở chat riêng full màn hình" placement="top">
-                                    <Button
-                                        type="text"
-                                        icon={<FullscreenOutlined />}
+                                    <button
                                         onClick={openFullChatPage}
-                                        className="chatbot-expand-btn"
-                                    />
+                                        className="rounded p-2 text-slate-200 transition-colors hover:bg-white/10 hover:text-white"
+                                    >
+                                        <FullscreenOutlined />
+                                    </button>
                                 </Tooltip>
-                                <Button
-                                    type="text"
-                                    icon={<CloseOutlined />}
-                                    onClick={toggleChat}
-                                    className="chatbot-close-btn"
-                                />
+                                <button
+                                    onClick={() => setChatbotOpen(false)}
+                                    className="rounded p-2 text-slate-200 transition-colors hover:bg-white/10 hover:text-white"
+                                >
+                                    <CloseOutlined />
+                                </button>
                             </div>
                         </div>
 
                         {/* Messages Area */}
-                        <div className="chatbot-messages">
+                        <div className="flex-1 overflow-y-auto bg-gray-50 px-3 sm:px-4 py-4 space-y-4">
                             {messages.map((msg, index) => (
-                                <div key={index} className={`message-wrapper ${msg.type}`}>
-                                    <div className="message-avatar">
+                                <div
+                                    key={index}
+                                    className={`flex gap-2 sm:gap-3 ${msg.type === 'user' ? 'flex-row-reverse' : ''}`}
+                                >
+                                    {/* Avatar */}
+                                    <div
+                                        className={`flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center ${
+                                            msg.type === 'bot' ? 'bg-blue-100' : 'bg-green-100'
+                                        }`}
+                                    >
                                         {msg.type === 'bot' ? (
-                                            <RobotOutlined style={{ fontSize: '20px', color: '#1890ff' }} />
+                                            <RobotOutlined className="text-blue-600 text-sm" />
                                         ) : (
-                                            <UserOutlined style={{ fontSize: '20px', color: '#52c41a' }} />
+                                            <UserOutlined className="text-green-600 text-sm" />
                                         )}
                                     </div>
-                                    <div className="message-content">
-                                        <div className={`message-bubble ${msg.type}`}>
-                                            <p style={{ whiteSpace: 'pre-line' }}>{msg.text}</p>
 
-                                            {/* 💰 Show calculation result (NEW) */}
+                                    {/* Message Content */}
+                                    <div
+                                        className={`flex flex-col gap-1 max-w-xs ${
+                                            msg.type === 'user' ? 'items-end' : 'items-start'
+                                        }`}
+                                    >
+                                        {/* Bubble */}
+                                        <div
+                                            className={`px-3 sm:px-4 py-2 sm:py-3 rounded-2xl text-sm sm:text-base break-words ${
+                                                msg.type === 'user'
+                                                    ? 'bg-blue-500 text-white rounded-br-none'
+                                                    : 'bg-white text-gray-800 border border-gray-200 rounded-bl-none'
+                                            }`}
+                                        >
+                                            <p className="whitespace-pre-line leading-relaxed">{msg.text}</p>
+
+                                            {/* 💰 Calculation Result */}
                                             {msg.calculation && (
-                                                <div
-                                                    style={{
-                                                        marginTop: '12px',
-                                                        padding: '12px',
-                                                        background: '#f0f9ff',
-                                                        borderRadius: '8px',
-                                                        border: '1px solid #91d5ff',
-                                                    }}
-                                                >
-                                                    <div
-                                                        style={{
-                                                            fontWeight: 'bold',
-                                                            marginBottom: '8px',
-                                                            color: '#1890ff',
-                                                        }}
-                                                    >
+                                                <div className="mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-opacity-20 border-gray-400 space-y-2">
+                                                    <div className="font-semibold text-xs sm:text-sm text-blue-600">
                                                         💰 Chi phí chi tiết
                                                     </div>
-                                                    <div style={{ fontSize: '13px', lineHeight: '1.8' }}>
+                                                    <div className="text-xs space-y-1 leading-relaxed">
                                                         <div>
-                                                            • Giá thuê:{' '}
-                                                            {msg.calculation.pricePerDay.toLocaleString('vi-VN')}đ/ngày
+                                                            • Giá: {msg.calculation.pricePerDay.toLocaleString('vi-VN')}
+                                                            ₫/ngày
                                                         </div>
                                                         <div>• Thời gian: {msg.calculation.durationText}</div>
-                                                        <div>• Tính toán: {msg.calculation.breakdown.formula}</div>
-                                                        <div
-                                                            style={{
-                                                                marginTop: '8px',
-                                                                paddingTop: '8px',
-                                                                borderTop: '1px solid #91d5ff',
-                                                                fontSize: '15px',
-                                                                fontWeight: 'bold',
-                                                                color: '#ff4d4f',
-                                                            }}
-                                                        >
-                                                            → Tổng tiền: {msg.calculation.breakdown.result}
+                                                        <div>• Công thức: {msg.calculation.breakdown.formula}</div>
+                                                        <div className="font-bold text-red-500 pt-1 border-t border-opacity-20 border-gray-400">
+                                                            → Tổng: {msg.calculation.breakdown.result}
                                                         </div>
                                                     </div>
                                                 </div>
                                             )}
 
-                                            {/* 📚 Show category list (NEW) */}
+                                            {/* 📚 Categories List */}
                                             {msg.categories && msg.categories.length > 0 && (
-                                                <div
-                                                    style={{
-                                                        marginTop: '12px',
-                                                        padding: '12px',
-                                                        background: '#f6ffed',
-                                                        borderRadius: '8px',
-                                                        border: '1px solid #b7eb8f',
-                                                    }}
-                                                >
-                                                    <div
-                                                        style={{
-                                                            fontWeight: 'bold',
-                                                            marginBottom: '10px',
-                                                            color: '#52c41a',
-                                                            fontSize: '14px',
-                                                        }}
-                                                    >
-                                                        📚 Danh sách danh mục sách
+                                                <div className="mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-opacity-20 border-gray-400 space-y-2">
+                                                    <div className="font-semibold text-xs sm:text-sm text-green-600">
+                                                        📚 Danh sách danh mục
                                                     </div>
-                                                    <div
-                                                        style={{
-                                                            display: 'grid',
-                                                            gridTemplateColumns: '1fr 1fr',
-                                                            gap: '8px',
-                                                        }}
-                                                    >
+                                                    <div className="grid grid-cols-2 gap-2">
                                                         {msg.categories.map((cat, idx) => (
                                                             <div
                                                                 key={idx}
-                                                                style={{
-                                                                    padding: '8px 12px',
-                                                                    background: 'white',
-                                                                    borderRadius: '6px',
-                                                                    border: '1px solid #d9f7be',
-                                                                    fontSize: '13px',
-                                                                }}
+                                                                className="bg-white bg-opacity-50 p-2 rounded border border-green-200 text-xs"
                                                             >
-                                                                <div style={{ fontWeight: 'bold', color: '#389e0d' }}>
+                                                                <div className="font-semibold text-green-700">
                                                                     {cat.nameCategory}
                                                                 </div>
-                                                                <div
-                                                                    style={{
-                                                                        fontSize: '12px',
-                                                                        color: '#8c8c8c',
-                                                                        marginTop: '2px',
-                                                                    }}
-                                                                >
+                                                                <div className="text-gray-600">
                                                                     {cat.bookCount} cuốn
                                                                 </div>
                                                             </div>
@@ -298,46 +269,49 @@ function Chatbot() {
                                                 </div>
                                             )}
 
+                                            {/* Related Questions */}
                                             {msg.relatedQuestions && msg.relatedQuestions.length > 0 && (
-                                                <div className="related-questions">
-                                                    <Divider style={{ margin: '12px 0' }} />
-                                                    <p className="related-title">
-                                                        <QuestionCircleOutlined /> Câu hỏi liên quan:
-                                                    </p>
-                                                    {msg.relatedQuestions.map((q, idx) => (
-                                                        <Button
-                                                            key={idx}
-                                                            type="link"
-                                                            size="small"
-                                                            onClick={() => handleQuestionClick(q.question)}
-                                                            className="related-question-btn"
-                                                        >
-                                                            • {q.question}
-                                                        </Button>
-                                                    ))}
+                                                <div className="mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-opacity-20 border-gray-400 space-y-2">
+                                                    <div className="font-semibold text-xs sm:text-sm flex items-center gap-1">
+                                                        <QuestionCircleOutlined /> Câu hỏi liên quan
+                                                    </div>
+                                                    <div className="space-y-1">
+                                                        {msg.relatedQuestions.map((q, idx) => (
+                                                            <button
+                                                                key={idx}
+                                                                onClick={() => handleQuestionClick(q.question)}
+                                                                className="block text-xs text-blue-600 hover:underline text-left w-full truncate"
+                                                            >
+                                                                • {q.question}
+                                                            </button>
+                                                        ))}
+                                                    </div>
                                                 </div>
                                             )}
 
-                                            {/* 📚 NGUỒN THAM KHẢO - Book References */}
+                                            {/* Book References */}
                                             {msg.relatedBooks && msg.relatedBooks.length > 0 && (
-                                                <BookReferences books={msg.relatedBooks} />
+                                                <div className="mt-2 sm:mt-3">
+                                                    <BookReferences books={msg.relatedBooks} />
+                                                </div>
                                             )}
                                         </div>
-                                        <span className="message-time">{formatTime(msg.timestamp)}</span>
+
+                                        {/* Time */}
+                                        <span className="text-xs text-gray-500 px-1">{formatTime(msg.timestamp)}</span>
                                     </div>
                                 </div>
                             ))}
 
+                            {/* Loading Indicator */}
                             {loading && (
-                                <div className="message-wrapper bot">
-                                    <div className="message-avatar">
-                                        <RobotOutlined style={{ fontSize: '20px', color: '#1890ff' }} />
+                                <div className="flex gap-3 items-start">
+                                    <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                                        <RobotOutlined className="text-blue-600 text-sm" />
                                     </div>
-                                    <div className="message-content">
-                                        <div className="message-bubble bot typing">
-                                            <Spin size="small" />
-                                            <span style={{ marginLeft: '10px' }}>Đang suy nghĩ...</span>
-                                        </div>
+                                    <div className="bg-white border border-gray-200 px-4 py-2 rounded-2xl rounded-bl-none flex items-center gap-2">
+                                        <Spin size="small" />
+                                        <span className="text-sm text-gray-600">Đang suy nghĩ...</span>
                                     </div>
                                 </div>
                             )}
@@ -345,97 +319,84 @@ function Chatbot() {
                             <div ref={messagesEndRef} />
                         </div>
 
-                        {/* Suggested Questions */}
+                        {/* FAQ Section - Accordion */}
                         {suggestedQuestions.length > 0 && (
-                            <div className="chatbot-suggestions">
-                                <div
-                                    style={{
-                                        display: 'flex',
-                                        justifyContent: 'space-between',
-                                        alignItems: 'center',
-                                        cursor: 'pointer',
-                                    }}
-                                    onClick={() => setFaqExpanded(!faqExpanded)}
+                            <div className="border-t border-slate-200 bg-white px-3 py-2.5 sm:px-4 flex-shrink-0">
+                                <button
+                                    type="button"
+                                    onClick={() => setFaqExpanded((prev) => !prev)}
+                                    className="flex w-full items-center justify-between rounded-lg px-1 py-1 text-left"
                                 >
-                                    <p className="suggestions-title">Câu hỏi thường gặp:</p>
-                                    <Button
-                                        type="text"
-                                        size="small"
-                                        icon={faqExpanded ? <UpOutlined /> : <DownOutlined />}
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            setFaqExpanded(!faqExpanded);
-                                        }}
-                                    />
-                                </div>
+                                    <span className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-slate-600">
+                                        <QuestionCircleOutlined className="text-[12px]" />
+                                        Câu hỏi thường gặp
+                                    </span>
+                                    <span className="text-slate-500">
+                                        {faqExpanded ? <UpOutlined /> : <DownOutlined />}
+                                    </span>
+                                </button>
+
                                 {faqExpanded && (
-                                    <>
-                                        <div className="suggestions-list">
-                                            {suggestedQuestions.map((q, idx) => (
-                                                <Button
-                                                    key={idx}
-                                                    size="small"
-                                                    onClick={() => handleQuestionClick(q.question)}
-                                                    className="suggestion-btn"
-                                                >
-                                                    {q.question}
-                                                </Button>
-                                            ))}
-                                        </div>
-                                        {/* Chỉ hiển thị nút Chat với Thủ thư cho user (không phải admin/librarian) */}
-                                        {dataUser && dataUser.role === 'user' && (
-                                            <div
-                                                style={{
-                                                    marginTop: '12px',
-                                                    paddingTop: '12px',
-                                                    borderTop: '1px solid #f0f0f0',
-                                                }}
+                                    <div className="mt-2 space-y-2">
+                                        {suggestedQuestions.map((q, idx) => (
+                                            <button
+                                                key={idx}
+                                                onClick={() => handleQuestionClick(q.question)}
+                                                className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-left text-sm text-slate-700 transition hover:bg-slate-100"
                                             >
-                                                <Button
-                                                    type="default"
-                                                    icon={<CustomerServiceOutlined />}
-                                                    onClick={() => setLiveChatOpen(true)}
-                                                    block
-                                                    style={{ height: '36px' }}
-                                                >
-                                                    Chat với Thủ thư
-                                                </Button>
-                                            </div>
+                                                {q.question}
+                                            </button>
+                                        ))}
+
+                                        {dataUser && dataUser.role === 'user' && (
+                                            <button
+                                                onClick={() => setLiveChatOpen(true)}
+                                                className="w-full rounded-lg border border-green-200 bg-green-50 px-3 py-2 text-left text-sm font-medium text-green-700 transition hover:bg-green-100"
+                                            >
+                                                <span className="flex items-center gap-2">
+                                                    <CustomerServiceOutlined className="text-sm" />
+                                                    Chat với thủ thư
+                                                </span>
+                                            </button>
                                         )}
-                                    </>
+                                    </div>
                                 )}
                             </div>
                         )}
 
-                        {/* Input Area */}
-                        <div className="chatbot-input-area">
-                            <TextArea
-                                value={inputValue}
-                                onChange={(e) => setInputValue(e.target.value)}
-                                onPressEnter={(e) => {
-                                    if (!e.shiftKey) {
-                                        e.preventDefault();
-                                        handleSendMessage();
-                                    }
-                                }}
-                                placeholder="Nhập câu hỏi của bạn..."
-                                autoSize={{ minRows: 1, maxRows: 4 }}
-                                disabled={loading}
-                                className="chatbot-textarea"
-                            />
-                            <Button
-                                type="primary"
-                                icon={<SendOutlined />}
-                                onClick={handleSendMessage}
-                                loading={loading}
-                                disabled={!inputValue.trim()}
-                                className="chatbot-send-btn"
-                            >
-                                Gửi
-                            </Button>
+                        {/* Input Area - Flat design */}
+                        <div className="border-t border-slate-200 bg-white px-3 py-2.5 sm:px-4 flex-shrink-0">
+                            <div className="flex items-end gap-2 bg-white">
+                                <TextArea
+                                    value={inputValue}
+                                    onChange={(e) => setInputValue(e.target.value)}
+                                    onPressEnter={(e) => {
+                                        if (!e.shiftKey) {
+                                            e.preventDefault();
+                                            handleSendMessage();
+                                        }
+                                    }}
+                                    placeholder="Nhập tin nhắn..."
+                                    autoSize={{ minRows: 1, maxRows: 3 }}
+                                    disabled={loading}
+                                    className="!border-0 !shadow-none !bg-transparent !rounded-none !p-0 !text-sm !text-slate-700 placeholder:!text-slate-400 focus:!border-0 focus:!shadow-none"
+                                />
+                                <button
+                                    onClick={handleSendMessage}
+                                    disabled={!inputValue.trim() || loading}
+                                    className={`flex h-9 w-9 items-center justify-center rounded-md text-sm transition sm:h-10 sm:w-10 ${
+                                        inputValue.trim() && !loading
+                                            ? 'bg-blue-500 text-white hover:bg-blue-600'
+                                            : 'cursor-not-allowed bg-slate-100 text-slate-400'
+                                    }`}
+                                    title="Gửi tin nhắn"
+                                >
+                                    <SendOutlined />
+                                </button>
+                            </div>
                         </div>
-                    </Card>
-                </div>
+                    </div>
+                </>
             )}
 
             {/* Live Chat Modal */}

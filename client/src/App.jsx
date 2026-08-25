@@ -1,5 +1,5 @@
 import './App.css';
-import HeaderNew from './Components/Header/HeaderNew';
+import Header from './Components/Header/Header';
 import HomePage from './Components/HomePage/HomePage';
 import Footer from './Components/Footer/Footer';
 import Chatbot from './Components/Chatbot/Chatbot';
@@ -8,7 +8,7 @@ function App() {
     return (
         <div className="w-full">
             <header>
-                <HeaderNew />
+                <Header />
             </header>
 
             <main className="w-full">

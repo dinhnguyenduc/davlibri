@@ -1,123 +1,102 @@
-import { useEffect, useState } from 'react';
-import { Gift, Truck, Tag, RefreshCw } from 'lucide-react';
-import './PolicySection.css';
-import { requestGetPolicies } from '../../config/request';
+import { Clock, BookMarked, Smartphone, RefreshCw, FileText, Award } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const PolicySection = () => {
-    const [policies, setPolicies] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchPolicies = async () => {
-            try {
-                const response = await requestGetPolicies();
-                const policyData = response.metadata;
-
-                if (policyData && policyData.length > 0) {
-                    setPolicies(policyData);
-                } else {
-                    // Fallback data
-                    setPolicies([
-                        {
-                            id: 1,
-                            title: 'Quà tặng hấp dẫn',
-                            description: 'Khuyến mãi lên đến 40% và nhiều quà tặng hấp dẫn',
-                            icon: 'https://cdn-icons-png.flaticon.com/512/3176/3176366.png',
-                            link: '#',
-                            iconColor: '#ff6b6b',
-                        },
-                        {
-                            id: 2,
-                            title: 'Miễn phí vận chuyển',
-                            description: 'Miễn phí vận chuyển toàn quốc với đơn hàng từ 300k',
-                            icon: 'https://cdn-icons-png.flaticon.com/512/2769/2769339.png',
-                            link: '#',
-                            iconColor: '#4ecdc4',
-                        },
-                        {
-                            id: 3,
-                            title: 'Giá ưu đãi nhất',
-                            description: 'Nhiều chương trình khuyến mãi hấp dẫn',
-                            icon: 'https://cdn-icons-png.flaticon.com/512/3176/3176336.png',
-                            link: '#',
-                            iconColor: '#ffa502',
-                        },
-                        {
-                            id: 4,
-                            title: 'Đổi trả dễ dàng',
-                            description: 'Hỗ trợ đổi hàng trong vòng 7 ngày kể từ khi nhận được sách',
-                            icon: 'https://cdn-icons-png.flaticon.com/512/3176/3176384.png',
-                            link: '#',
-                            iconColor: '#5f27cd',
-                        },
-                    ]);
-                }
-                setLoading(false);
-            } catch (error) {
-                console.error('Error fetching policies:', error);
-                // Use fallback data
-                setPolicies([
-                    {
-                        id: 1,
-                        title: 'Quà tặng hấp dẫn',
-                        description: 'Khuyến mãi lên đến 40% và nhiều quà tặng hấp dẫn',
-                        icon: 'https://cdn-icons-png.flaticon.com/512/3176/3176366.png',
-                        link: '#',
-                        iconColor: '#ff6b6b',
-                    },
-                    {
-                        id: 2,
-                        title: 'Miễn phí vận chuyển',
-                        description: 'Miễn phí vận chuyển toàn quốc với đơn hàng từ 300k',
-                        icon: 'https://cdn-icons-png.flaticon.com/512/2769/2769339.png',
-                        link: '#',
-                        iconColor: '#4ecdc4',
-                    },
-                    {
-                        id: 3,
-                        title: 'Giá ưu đãi nhất',
-                        description: 'Nhiều chương trình khuyến mãi hấp dẫn',
-                        icon: 'https://cdn-icons-png.flaticon.com/512/3176/3176336.png',
-                        link: '#',
-                        iconColor: '#ffa502',
-                    },
-                    {
-                        id: 4,
-                        title: 'Đổi trả dễ dàng',
-                        description: 'Hỗ trợ đổi hàng trong vòng 7 ngày kể từ khi nhận được sách',
-                        icon: 'https://cdn-icons-png.flaticon.com/512/3176/3176384.png',
-                        link: '#',
-                        iconColor: '#5f27cd',
-                    },
-                ]);
-                setLoading(false);
-            }
-        };
-
-        fetchPolicies();
-    }, []);
-
-    if (loading) {
-        return null;
-    }
+    const quickAccessItems = [
+        {
+            id: 1,
+            title: 'Giờ mở cửa',
+            description: 'Thứ 2 - CN: 7h30 - 21h',
+            icon: Clock,
+            link: '/hours',
+            color: 'text-blue-600',
+            bgColor: 'bg-blue-50',
+        },
+        {
+            id: 2,
+            title: 'Sách số',
+            description: 'Truy cập tài liệu điện tử',
+            icon: Smartphone,
+            link: '/ebooks',
+            color: 'text-purple-600',
+            bgColor: 'bg-purple-50',
+        },
+        {
+            id: 3,
+            title: 'Gia hạn sách',
+            description: 'Gia hạn trực tuyến dễ dàng',
+            icon: RefreshCw,
+            link: '/renew',
+            color: 'text-green-600',
+            bgColor: 'bg-green-50',
+        },
+        {
+            id: 4,
+            title: 'Tài liệu nội bộ',
+            description: 'Luận án, báo cáo và hơn thế',
+            icon: FileText,
+            link: '/documents',
+            color: 'text-orange-600',
+            bgColor: 'bg-orange-50',
+        },
+        {
+            id: 5,
+            title: 'Sách nổi bật',
+            description: 'Những cuốn sách được yêu thích',
+            icon: BookMarked,
+            link: '/featured',
+            color: 'text-red-600',
+            bgColor: 'bg-red-50',
+        },
+        {
+            id: 6,
+            title: 'Thành tựu',
+            description: 'Giải thưởng và công trạng',
+            icon: Award,
+            link: '/achievements',
+            color: 'text-indigo-600',
+            bgColor: 'bg-indigo-50',
+        },
+    ];
 
     return (
-        <section className="policy-section">
-            <div className="policy-container">
-                <div className="policy-row">
-                    {policies.map((policy) => (
-                        <div key={policy._id || policy.id} className="policy-item">
-                            <div className="policy-icon" style={{ backgroundColor: policy.iconColor }}>
-                                <img src={policy.icon} alt={policy.title} />
-                            </div>
-                            <div className="policy-info">
-                                <h4>
-                                    <a href={policy.link}>{policy.title}</a>
-                                </h4>
-                                <p>{policy.description}</p>
-                            </div>
-                        </div>
-                    ))}
+        <section className="w-full bg-gray-50 py-8 sm:py-12">
+            <div className="max-w-7xl mx-auto px-4">
+                {/* Section Title */}
+                <div className="mb-8 text-center">
+                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Truy cập nhanh</h2>
+                    <p className="text-gray-600 text-sm sm:text-base mt-2">Những dịch vụ nổi bật của thư viện</p>
+                </div>
+
+                {/* Quick Access Grid - 3 columns on mobile, 6 on desktop */}
+                <div className="grid grid-cols-3 md:grid-cols-6 gap-3 sm:gap-4">
+                    {quickAccessItems.map((item) => {
+                        const Icon = item.icon;
+                        return (
+                            <Link
+                                key={item.id}
+                                to={item.link}
+                                className={`${item.bgColor} hover:shadow-lg transition-all duration-300 rounded-lg p-3 sm:p-4 flex flex-col items-center text-center group cursor-pointer`}
+                            >
+                                {/* Icon */}
+                                <div
+                                    className={`${item.color} mb-2 sm:mb-3 group-hover:scale-110 transition-transform`}
+                                >
+                                    <Icon className="w-6 h-6 sm:w-8 sm:h-8" />
+                                </div>
+
+                                {/* Title */}
+                                <h3 className="text-xs sm:text-sm font-semibold text-gray-900 line-clamp-2">
+                                    {item.title}
+                                </h3>
+
+                                {/* Description - Hidden on mobile, visible on desktop */}
+                                <p className="hidden md:block text-xs text-gray-600 mt-1 line-clamp-2">
+                                    {item.description}
+                                </p>
+                            </Link>
+                        );
+                    })}
                 </div>
             </div>
         </section>

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Input, Spin, Card, Tooltip, Divider } from 'antd';
+import { Input, Spin } from 'antd';
 import {
     ArrowLeftOutlined,
     MessageOutlined,
@@ -9,26 +9,17 @@ import {
     UserOutlined,
     QuestionCircleOutlined,
     CustomerServiceOutlined,
-    UpOutlined,
-    DownOutlined,
 } from '@ant-design/icons';
 import { requestAskChatbot, requestGetPublicFAQs } from '../config/request';
 import { useStore } from '../hooks/useStore';
 import BookReferences from '../Components/Chatbot/BookReferences';
-import '../Components/Chatbot/Chatbot.css';
 
 const { TextArea } = Input;
 
 function AIChatPage() {
     const navigate = useNavigate();
     const { dataUser } = useStore();
-    const [messages, setMessages] = useState([
-        {
-            type: 'bot',
-            text: 'Xin chào! Tôi là trợ lý ảo của thư viện. Bạn có thể trò chuyện ở đây như trong một không gian riêng, đầy đủ và toàn màn hình.',
-            timestamp: new Date(),
-        },
-    ]);
+    const [messages, setMessages] = useState([]);
     const [inputValue, setInputValue] = useState('');
     const [loading, setLoading] = useState(false);
     const [suggestedQuestions, setSuggestedQuestions] = useState([]);
@@ -44,10 +35,20 @@ function AIChatPage() {
     }, [messages]);
 
     useEffect(() => {
+        if (messages.length === 0) {
+            setMessages([
+                {
+                    type: 'bot',
+                    text: 'Xin chào anh/chị 👋\nCảm ơn anh/chị đã quan tâm đến thư viện DAVLibri!\nEm có thể hỗ trợ anh/chị nội dung gì ạ?',
+                    timestamp: new Date(),
+                },
+            ]);
+        }
+
         if (suggestedQuestions.length === 0) {
             loadSuggestedQuestions();
         }
-    }, []);
+    }, [messages.length, suggestedQuestions.length]);
 
     const loadSuggestedQuestions = async () => {
         try {
@@ -112,79 +113,77 @@ function AIChatPage() {
     };
 
     return (
-        <div className="ai-chat-page-shell">
-            <div className="ai-chat-page-header">
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                    <Button icon={<ArrowLeftOutlined />} onClick={() => navigate('/')} className="ai-chat-back-btn">
-                        Về trang chính
-                    </Button>
-                    <div className="ai-chat-title-wrap">
-                        <div className="chatbot-avatar big">
-                            <MessageOutlined style={{ fontSize: '22px', color: '#fff' }} />
+        <div className="min-h-screen bg-slate-100 text-slate-700">
+            <div className="mx-auto flex min-h-screen max-w-[1280px] flex-col px-3 py-4 sm:px-5 lg:px-7">
+                <header className="mb-4 flex items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-white px-3 py-3 shadow-[0_14px_32px_rgba(15,23,42,0.08)] sm:px-4">
+                    <button
+                        type="button"
+                        onClick={() => navigate('/')}
+                        className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition-all duration-200 hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700 hover:shadow-sm"
+                    >
+                        <ArrowLeftOutlined />
+                        <span>Về trang chính</span>
+                    </button>
+
+                    <div className="flex items-center gap-3">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-slate-900 to-slate-800 text-white shadow-[0_8px_20px_rgba(15,23,42,0.22)]">
+                            <MessageOutlined className="text-lg" />
                         </div>
                         <div>
-                            <h2 className="ai-chat-title">Không gian AI Chat riêng</h2>
-                            <div className="ai-chat-subtitle">Giao tiếp trực tiếp với trợ lý thư viện</div>
+                            <h1 className="text-base font-bold text-slate-800 sm:text-lg">Không gian AI Chat riêng</h1>
+                            <p className="text-[11px] text-slate-500 sm:text-xs">
+                                Giao tiếp trực tiếp với trợ lý thư viện
+                            </p>
                         </div>
                     </div>
-                </div>
-            </div>
+                </header>
 
-            <div className="ai-chat-page-content">
-                <Card
-                    className="ai-chat-card"
-                    bodyStyle={{ padding: 0, height: '100%', display: 'flex', flexDirection: 'column' }}
-                >
-                    <div className="chatbot-messages ai-chat-messages">
+                <main className="flex min-h-[70vh] flex-1 flex-col overflow-hidden rounded-[24px] border border-slate-200 bg-white shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+                    <div className="flex items-center justify-between bg-[#0f172a] px-4 py-3 text-white shadow-[inset_0_-1px_0_rgba(255,255,255,0.08)]">
+                        <div className="flex items-center gap-3">
+                            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/10">
+                                <MessageOutlined />
+                            </div>
+                            <div>
+                                <div className="text-sm font-semibold">DAVLibri AI</div>
+                                <div className="text-[11px] text-blue-100">Trợ lý thư viện</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="flex-1 overflow-y-auto bg-[#f6f7fb] px-3 py-4 sm:px-5">
                         {messages.map((msg, index) => (
-                            <div key={index} className={`message-wrapper ${msg.type}`}>
-                                <div className="message-avatar">
-                                    {msg.type === 'bot' ? (
-                                        <RobotOutlined style={{ fontSize: '20px', color: '#1890ff' }} />
-                                    ) : (
-                                        <UserOutlined style={{ fontSize: '20px', color: '#52c41a' }} />
-                                    )}
-                                </div>
-                                <div className="message-content">
-                                    <div className={`message-bubble ${msg.type}`}>
-                                        <p style={{ whiteSpace: 'pre-line' }}>{msg.text}</p>
+                            <div
+                                key={index}
+                                className={`mb-4 flex gap-2 sm:gap-3 ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
+                            >
+                                {msg.type === 'bot' && (
+                                    <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                                        <RobotOutlined className="text-sm" />
+                                    </div>
+                                )}
+
+                                <div className={`max-w-[85%] ${msg.type === 'user' ? 'items-end' : 'items-start'}`}>
+                                    <div
+                                        className={`rounded-2xl px-3 py-2.5 text-sm leading-6 shadow-sm sm:px-4 ${
+                                            msg.type === 'user'
+                                                ? 'bg-blue-500 text-white rounded-br-md'
+                                                : 'border border-slate-200 bg-white text-slate-700 rounded-bl-md'
+                                        }`}
+                                    >
+                                        <p className="whitespace-pre-line">{msg.text}</p>
 
                                         {msg.calculation && (
-                                            <div
-                                                style={{
-                                                    marginTop: '12px',
-                                                    padding: '12px',
-                                                    background: '#f0f9ff',
-                                                    borderRadius: '8px',
-                                                    border: '1px solid #91d5ff',
-                                                }}
-                                            >
-                                                <div
-                                                    style={{
-                                                        fontWeight: 'bold',
-                                                        marginBottom: '8px',
-                                                        color: '#1890ff',
-                                                    }}
-                                                >
-                                                    💰 Chi phí chi tiết
-                                                </div>
-                                                <div style={{ fontSize: '13px', lineHeight: '1.8' }}>
+                                            <div className="mt-3 space-y-2 rounded-xl border border-blue-200 bg-blue-50 p-3 text-xs sm:text-sm">
+                                                <div className="font-semibold text-blue-700">💰 Chi phí chi tiết</div>
+                                                <div className="space-y-1 text-slate-700">
                                                     <div>
                                                         • Giá thuê:{' '}
                                                         {msg.calculation.pricePerDay.toLocaleString('vi-VN')}đ/ngày
                                                     </div>
                                                     <div>• Thời gian: {msg.calculation.durationText}</div>
                                                     <div>• Tính toán: {msg.calculation.breakdown.formula}</div>
-                                                    <div
-                                                        style={{
-                                                            marginTop: '8px',
-                                                            paddingTop: '8px',
-                                                            borderTop: '1px solid #91d5ff',
-                                                            fontSize: '15px',
-                                                            fontWeight: 'bold',
-                                                            color: '#ff4d4f',
-                                                        }}
-                                                    >
+                                                    <div className="border-t border-blue-200 pt-2 font-bold text-red-500">
                                                         → Tổng tiền: {msg.calculation.breakdown.result}
                                                     </div>
                                                 </div>
@@ -192,43 +191,53 @@ function AIChatPage() {
                                         )}
 
                                         {msg.relatedQuestions && msg.relatedQuestions.length > 0 && (
-                                            <div className="related-questions">
-                                                <Divider style={{ margin: '12px 0' }} />
-                                                <p className="related-title">
-                                                    <QuestionCircleOutlined /> Câu hỏi liên quan:
-                                                </p>
-                                                {msg.relatedQuestions.map((q, idx) => (
-                                                    <Button
-                                                        key={idx}
-                                                        type="link"
-                                                        size="small"
-                                                        onClick={() => handleQuestionClick(q.question)}
-                                                        className="related-question-btn"
-                                                    >
-                                                        • {q.question}
-                                                    </Button>
-                                                ))}
+                                            <div className="mt-3 border-t border-slate-200 pt-3">
+                                                <div className="mb-2 flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                                                    <QuestionCircleOutlined className="text-[12px]" />
+                                                    Câu hỏi liên quan
+                                                </div>
+                                                <div className="space-y-1.5">
+                                                    {msg.relatedQuestions.map((q, idx) => (
+                                                        <button
+                                                            key={idx}
+                                                            onClick={() => handleQuestionClick(q.question)}
+                                                            className="block w-full text-left text-xs text-blue-600 transition hover:text-blue-700 hover:underline"
+                                                        >
+                                                            • {q.question}
+                                                        </button>
+                                                    ))}
+                                                </div>
                                             </div>
                                         )}
 
                                         {msg.relatedBooks && msg.relatedBooks.length > 0 && (
-                                            <BookReferences books={msg.relatedBooks} />
+                                            <div className="mt-3">
+                                                <BookReferences books={msg.relatedBooks} />
+                                            </div>
                                         )}
                                     </div>
-                                    <span className="message-time">{formatTime(msg.timestamp)}</span>
+                                    <span className="mt-1 block px-1 text-[10px] text-slate-400">
+                                        {formatTime(msg.timestamp)}
+                                    </span>
                                 </div>
+
+                                {msg.type === 'user' && (
+                                    <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-green-100 text-green-600">
+                                        <UserOutlined className="text-sm" />
+                                    </div>
+                                )}
                             </div>
                         ))}
 
                         {loading && (
-                            <div className="message-wrapper bot">
-                                <div className="message-avatar">
-                                    <RobotOutlined style={{ fontSize: '20px', color: '#1890ff' }} />
+                            <div className="mb-4 flex gap-2 sm:gap-3 justify-start">
+                                <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                                    <RobotOutlined className="text-sm" />
                                 </div>
-                                <div className="message-content">
-                                    <div className="message-bubble bot typing">
+                                <div className="max-w-[85%] rounded-2xl rounded-bl-md border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-600 shadow-sm">
+                                    <div className="flex items-center gap-2">
                                         <Spin size="small" />
-                                        <span style={{ marginLeft: '10px' }}>Đang suy nghĩ...</span>
+                                        <span>Đang suy nghĩ...</span>
                                     </div>
                                 </div>
                             </div>
@@ -238,92 +247,80 @@ function AIChatPage() {
                     </div>
 
                     {suggestedQuestions.length > 0 && (
-                        <div className="chatbot-suggestions ai-chat-suggestions">
-                            <div
-                                style={{
-                                    display: 'flex',
-                                    justifyContent: 'space-between',
-                                    alignItems: 'center',
-                                    cursor: 'pointer',
-                                }}
-                                onClick={() => setFaqExpanded(!faqExpanded)}
+                        <div className="border-t border-slate-200 bg-white px-3 py-3 sm:px-4">
+                            <button
+                                type="button"
+                                onClick={() => setFaqExpanded((prev) => !prev)}
+                                className="mb-2 flex w-full items-center justify-between rounded-lg px-1 py-1.5 text-left transition hover:bg-slate-100"
                             >
-                                <p className="suggestions-title">Câu hỏi thường gặp:</p>
-                                <Button
-                                    type="text"
-                                    size="small"
-                                    icon={faqExpanded ? <UpOutlined /> : <DownOutlined />}
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        setFaqExpanded(!faqExpanded);
-                                    }}
-                                />
-                            </div>
+                                <span className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-slate-600">
+                                    <QuestionCircleOutlined className="text-[12px]" />
+                                    Câu hỏi thường gặp
+                                </span>
+                                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-100 text-slate-500">
+                                    {faqExpanded ? '▴' : '▾'}
+                                </span>
+                            </button>
+
                             {faqExpanded && (
-                                <>
-                                    <div className="suggestions-list">
-                                        {suggestedQuestions.map((q, idx) => (
-                                            <Button
-                                                key={idx}
-                                                size="small"
-                                                onClick={() => handleQuestionClick(q.question)}
-                                                className="suggestion-btn"
-                                            >
-                                                {q.question}
-                                            </Button>
-                                        ))}
-                                    </div>
-                                    {dataUser && dataUser.role === 'user' && (
-                                        <div
-                                            style={{
-                                                marginTop: '12px',
-                                                paddingTop: '12px',
-                                                borderTop: '1px solid #f0f0f0',
-                                            }}
+                                <div className="space-y-2">
+                                    {suggestedQuestions.map((q, idx) => (
+                                        <button
+                                            key={idx}
+                                            onClick={() => handleQuestionClick(q.question)}
+                                            className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-left text-sm text-slate-700 transition hover:border-slate-300 hover:bg-slate-100"
                                         >
-                                            <Button
-                                                type="default"
-                                                icon={<CustomerServiceOutlined />}
-                                                // no-op by design; this page is dedicated to AI chat
-                                                block
-                                                style={{ height: '36px' }}
-                                            >
-                                                Tiếp tục với AI
-                                            </Button>
-                                        </div>
+                                            {q.question}
+                                        </button>
+                                    ))}
+                                    {dataUser && dataUser.role === 'user' && (
+                                        <button
+                                            onClick={() => {}}
+                                            className="w-full rounded-lg border border-green-200 bg-green-50 px-3 py-2 text-left text-sm font-medium text-green-700 transition hover:border-green-300 hover:bg-green-100"
+                                        >
+                                            <span className="flex items-center gap-2">
+                                                <CustomerServiceOutlined className="text-sm" />
+                                                Chat với thủ thư
+                                            </span>
+                                        </button>
                                     )}
-                                </>
+                                </div>
                             )}
                         </div>
                     )}
 
-                    <div className="chatbot-input-area ai-chat-input-area">
-                        <TextArea
-                            value={inputValue}
-                            onChange={(e) => setInputValue(e.target.value)}
-                            onPressEnter={(e) => {
-                                if (!e.shiftKey) {
-                                    e.preventDefault();
-                                    handleSendMessage();
-                                }
-                            }}
-                            placeholder="Nhập câu hỏi của bạn..."
-                            autoSize={{ minRows: 1, maxRows: 4 }}
-                            disabled={loading}
-                            className="chatbot-textarea"
-                        />
-                        <Button
-                            type="primary"
-                            icon={<SendOutlined />}
-                            onClick={handleSendMessage}
-                            loading={loading}
-                            disabled={!inputValue.trim()}
-                            className="chatbot-send-btn"
-                        >
-                            Gửi
-                        </Button>
+                    <div className="border-t border-slate-200 bg-white p-3 sm:p-4">
+                        <div className="flex items-end gap-2 rounded-xl bg-white transition duration-200 focus-within:bg-slate-50">
+                            <TextArea
+                                value={inputValue}
+                                onChange={(e) => setInputValue(e.target.value)}
+                                onPressEnter={(e) => {
+                                    if (!e.shiftKey) {
+                                        e.preventDefault();
+                                        handleSendMessage();
+                                    }
+                                }}
+                                placeholder="Nhập tin nhắn..."
+                                autoSize={{ minRows: 1, maxRows: 3 }}
+                                disabled={loading}
+                                className="!border-0 !shadow-none !bg-transparent !rounded-none !p-0 !text-sm !text-slate-700 placeholder:!text-slate-400 focus:!border-0 focus:!shadow-none"
+                            />
+                            <button
+                                type="button"
+                                onClick={handleSendMessage}
+                                disabled={!inputValue.trim() || loading}
+                                className={`flex h-9 w-9 items-center justify-center rounded-lg text-sm transition-all duration-200 sm:h-10 sm:w-10 ${
+                                    inputValue.trim() && !loading
+                                        ? 'bg-[#0ea5e9] text-white shadow-[0_8px_20px_rgba(14,165,233,0.28)] hover:bg-[#0284c7]'
+                                        : 'cursor-not-allowed bg-slate-100 text-slate-400'
+                                }`}
+                                aria-label="Gửi tin nhắn"
+                            >
+                                <SendOutlined className="text-[14px]" />
+                            </button>
+                        </div>
                     </div>
-                </Card>
+                </main>
             </div>
         </div>
     );

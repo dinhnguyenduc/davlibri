@@ -1,12 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Modal, Input, Button, Avatar, Divider, Rate, message, Spin, Badge } from 'antd';
-import {
-    SendOutlined,
-    UserOutlined,
-    CloseOutlined,
-    CustomerServiceOutlined,
-    CheckCircleOutlined,
-} from '@ant-design/icons';
+import { Input, Rate, message, Spin } from 'antd';
+import { SendOutlined, CloseOutlined, CustomerServiceOutlined, CheckCircleOutlined } from '@ant-design/icons';
 import {
     requestCreateChatRequest,
     requestGetActiveChat,
@@ -39,7 +33,6 @@ function LiveChatModal({ visible, onClose }) {
     useEffect(() => {
         if (visible) {
             initChat();
-            // Poll for new messages every 2 seconds
             pollInterval.current = setInterval(() => {
                 loadActiveChat();
             }, 2000);
@@ -59,12 +52,10 @@ function LiveChatModal({ visible, onClose }) {
     const initChat = async () => {
         setLoading(true);
         try {
-            // Check if there's an active chat
             const activeRes = await requestGetActiveChat();
             if (activeRes.metadata) {
                 setChat(activeRes.metadata);
             } else {
-                // Create new chat request
                 const createRes = await requestCreateChatRequest();
                 setChat(createRes.metadata);
                 message.success('Đã gửi yêu cầu chat. Vui lòng chờ thủ thư phản hồi...');
@@ -108,20 +99,14 @@ function LiveChatModal({ visible, onClose }) {
     const handleCloseChat = async () => {
         if (!chat) return;
 
-        Modal.confirm({
-            title: 'Kết thúc cuộc trò chuyện?',
-            content: 'Bạn có chắc muốn kết thúc cuộc trò chuyện với thủ thư?',
-            okText: 'Kết thúc',
-            cancelText: 'Hủy',
-            onOk: async () => {
-                try {
-                    await requestCloseChat({ chatId: chat._id });
-                    setShowRating(true);
-                } catch (error) {
-                    message.error('Không thể kết thúc cuộc trò chuyện');
-                }
-            },
-        });
+        if (window.confirm('Bạn có chắc muốn kết thúc cuộc trò chuyện với thủ thư?')) {
+            try {
+                await requestCloseChat({ chatId: chat._id });
+                setShowRating(true);
+            } catch (error) {
+                message.error('Không thể kết thúc cuộc trò chuyện');
+            }
+        }
     };
 
     const handleSubmitRating = async () => {
@@ -150,25 +135,26 @@ function LiveChatModal({ visible, onClose }) {
         switch (chat.status) {
             case 'waiting':
                 return (
-                    <div style={{ textAlign: 'center', padding: '20px', color: '#faad14' }}>
+                    <div className="flex flex-col items-center justify-center py-6 px-4 bg-yellow-50 border-b border-yellow-200">
                         <Spin />
-                        <p style={{ marginTop: '10px' }}>Đang chờ thủ thư phản hồi...</p>
-                        <p style={{ fontSize: '12px', color: '#999' }}>Vui lòng đợi trong giây lát</p>
+                        <p className="mt-3 text-yellow-800 font-medium text-center">Đang chờ thủ thư phản hồi...</p>
+                        <p className="text-xs text-gray-600 text-center mt-1">Vui lòng đợi trong giây lát</p>
                     </div>
                 );
             case 'active':
                 return (
-                    <div style={{ padding: '8px 16px', background: '#f0f9ff', borderBottom: '1px solid #e6f7ff' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                            <Avatar
-                                src={chat.librarianId?.avatar}
-                                icon={<CustomerServiceOutlined />}
-                                style={{ background: '#1890ff' }}
-                            />
+                    <div className="px-4 py-3 bg-blue-50 border-b border-blue-200">
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0">
+                                <CustomerServiceOutlined className="text-white text-lg" />
+                            </div>
                             <div>
-                                <div style={{ fontWeight: 500 }}>{chat.librarianId?.fullName || 'Thủ thư'}</div>
-                                <div style={{ fontSize: '12px', color: '#52c41a' }}>
-                                    <Badge status="success" text="Đang trực tuyến" />
+                                <div className="font-semibold text-gray-800">
+                                    {chat.librarianId?.fullName || 'Thủ thư'}
+                                </div>
+                                <div className="text-xs text-green-600 font-medium flex items-center gap-1">
+                                    <span className="inline-block w-2 h-2 bg-green-500 rounded-full"></span>
+                                    Đang trực tuyến
                                 </div>
                             </div>
                         </div>
@@ -176,9 +162,9 @@ function LiveChatModal({ visible, onClose }) {
                 );
             case 'closed':
                 return (
-                    <div style={{ textAlign: 'center', padding: '20px', color: '#52c41a' }}>
-                        <CheckCircleOutlined style={{ fontSize: '32px' }} />
-                        <p style={{ marginTop: '10px' }}>Cuộc trò chuyện đã kết thúc</p>
+                    <div className="flex flex-col items-center justify-center py-8 text-green-600">
+                        <CheckCircleOutlined className="text-5xl mb-3" />
+                        <p className="font-semibold text-center">Cuộc trò chuyện đã kết thúc</p>
                     </div>
                 );
             default:
@@ -186,59 +172,102 @@ function LiveChatModal({ visible, onClose }) {
         }
     };
 
-    return (
-        <>
-            <Modal
-                title={
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <CustomerServiceOutlined style={{ color: '#1890ff' }} />
-                        <span>Chat với Thủ thư</span>
+    // Rating Modal
+    if (showRating) {
+        return (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                <div className="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6 space-y-4">
+                    <div className="text-center space-y-2">
+                        <h3 className="text-lg font-semibold text-gray-800">Đánh giá cuộc trò chuyện</h3>
+                        <p className="text-sm text-gray-600">Bạn hài lòng với dịch vụ hỗ trợ của chúng tôi?</p>
                     </div>
-                }
-                open={visible}
-                onCancel={onClose}
-                footer={null}
-                width={500}
-                styles={{
-                    body: { padding: 0, height: '500px', display: 'flex', flexDirection: 'column' },
-                }}
-            >
+
+                    <div className="flex justify-center">
+                        <Rate value={rating} onChange={setRating} className="text-3xl" />
+                    </div>
+
+                    <div className="border-t pt-4">
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Nhận xét của bạn (không bắt buộc)
+                        </label>
+                        <TextArea
+                            value={feedback}
+                            onChange={(e) => setFeedback(e.target.value)}
+                            placeholder="Chia sẻ trải nghiệm của bạn..."
+                            rows={4}
+                        />
+                    </div>
+
+                    <div className="flex gap-2 pt-2">
+                        <button
+                            onClick={() => {
+                                setShowRating(false);
+                                onClose();
+                            }}
+                            className="flex-1 px-4 py-2 text-gray-700 font-medium rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
+                        >
+                            Bỏ qua
+                        </button>
+                        <button
+                            onClick={handleSubmitRating}
+                            className="flex-1 px-4 py-2 text-white font-medium rounded-lg bg-blue-500 hover:bg-blue-600 transition-colors"
+                        >
+                            Gửi đánh giá
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    // Chat Modal
+    if (!visible) return null;
+
+    return (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl h-96 sm:h-[500px] flex flex-col overflow-hidden">
+                {/* Header */}
+                <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-4 flex items-center justify-between flex-shrink-0">
+                    <div className="flex items-center gap-3">
+                        <CustomerServiceOutlined className="text-2xl" />
+                        <span className="font-semibold text-lg">Chat với Thủ thư</span>
+                    </div>
+                    <button
+                        onClick={onClose}
+                        className="text-white hover:bg-white hover:bg-opacity-20 rounded p-2 transition-colors"
+                    >
+                        <CloseOutlined className="text-xl" />
+                    </button>
+                </div>
+
+                {/* Status/Loading */}
                 {loading ? (
-                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                    <div className="flex-1 flex items-center justify-center">
                         <Spin size="large" />
                     </div>
                 ) : (
                     <>
                         {renderStatus()}
 
-                        {/* Messages */}
-                        <div style={{ flex: 1, overflowY: 'auto', padding: '16px' }}>
+                        {/* Messages Area */}
+                        <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-4 space-y-4 bg-gray-50">
                             {chat?.messages?.map((msg, index) => (
                                 <div
                                     key={index}
-                                    style={{
-                                        display: 'flex',
-                                        justifyContent: msg.senderRole === 'user' ? 'flex-end' : 'flex-start',
-                                        marginBottom: '12px',
-                                    }}
+                                    className={`flex ${msg.senderRole === 'user' ? 'justify-end' : 'justify-start'}`}
                                 >
                                     <div
-                                        style={{
-                                            maxWidth: '70%',
-                                            padding: '8px 12px',
-                                            borderRadius: '12px',
-                                            background: msg.senderRole === 'user' ? '#1890ff' : '#f0f0f0',
-                                            color: msg.senderRole === 'user' ? '#fff' : '#000',
-                                        }}
+                                        className={`max-w-xs px-4 py-2 rounded-2xl text-sm ${
+                                            msg.senderRole === 'user'
+                                                ? 'bg-blue-500 text-white rounded-br-none'
+                                                : 'bg-white text-gray-800 border border-gray-200 rounded-bl-none'
+                                        }`}
                                     >
-                                        <div>{msg.message}</div>
+                                        <div className="break-words">{msg.message}</div>
                                         <div
-                                            style={{
-                                                fontSize: '10px',
-                                                marginTop: '4px',
-                                                opacity: 0.7,
-                                                textAlign: 'right',
-                                            }}
+                                            className={`text-xs mt-1 opacity-70 text-right ${
+                                                msg.senderRole === 'user' ? 'text-blue-100' : 'text-gray-600'
+                                            }`}
                                         >
                                             {new Date(msg.timestamp).toLocaleTimeString('vi-VN', {
                                                 hour: '2-digit',
@@ -251,10 +280,10 @@ function LiveChatModal({ visible, onClose }) {
                             <div ref={messagesEndRef} />
                         </div>
 
-                        {/* Input */}
+                        {/* Input Area */}
                         {chat?.status === 'active' && (
-                            <div style={{ padding: '12px', borderTop: '1px solid #f0f0f0' }}>
-                                <div style={{ display: 'flex', gap: '8px' }}>
+                            <div className="border-t border-gray-200 px-4 sm:px-6 py-3 bg-white flex-shrink-0 space-y-2">
+                                <div className="flex gap-2">
                                     <TextArea
                                         value={inputMessage}
                                         onChange={(e) => setInputMessage(e.target.value)}
@@ -267,53 +296,34 @@ function LiveChatModal({ visible, onClose }) {
                                         placeholder="Nhập tin nhắn..."
                                         autoSize={{ minRows: 1, maxRows: 3 }}
                                         disabled={sending}
+                                        className="!text-sm"
                                     />
-                                    <Button
-                                        type="primary"
-                                        icon={<SendOutlined />}
+                                    <button
                                         onClick={handleSendMessage}
-                                        loading={sending}
-                                        disabled={!inputMessage.trim()}
+                                        disabled={!inputMessage.trim() || sending}
+                                        className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center transition-all ${
+                                            inputMessage.trim() && !sending
+                                                ? 'bg-blue-500 hover:bg-blue-600 text-white'
+                                                : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                                        }`}
                                     >
-                                        Gửi
-                                    </Button>
+                                        <SendOutlined className="text-lg" />
+                                    </button>
                                 </div>
-                                <div style={{ marginTop: '8px', textAlign: 'right' }}>
-                                    <Button size="small" danger icon={<CloseOutlined />} onClick={handleCloseChat}>
-                                        Kết thúc
-                                    </Button>
+                                <div className="flex justify-end">
+                                    <button
+                                        onClick={handleCloseChat}
+                                        className="px-3 py-1 text-sm text-red-600 hover:bg-red-50 rounded transition-colors font-medium flex items-center gap-2"
+                                    >
+                                        <CloseOutlined /> Kết thúc
+                                    </button>
                                 </div>
                             </div>
                         )}
                     </>
                 )}
-            </Modal>
-
-            {/* Rating Modal */}
-            <Modal
-                title="Đánh giá cuộc trò chuyện"
-                open={showRating}
-                onOk={handleSubmitRating}
-                onCancel={() => {
-                    setShowRating(false);
-                    onClose();
-                }}
-                okText="Gửi đánh giá"
-                cancelText="Bỏ qua"
-            >
-                <div style={{ textAlign: 'center' }}>
-                    <p>Bạn hài lòng với dịch vụ hỗ trợ của chúng tôi?</p>
-                    <Rate value={rating} onChange={setRating} style={{ fontSize: '32px' }} />
-                    <Divider />
-                    <TextArea
-                        value={feedback}
-                        onChange={(e) => setFeedback(e.target.value)}
-                        placeholder="Nhận xét của bạn (không bắt buộc)"
-                        rows={4}
-                    />
-                </div>
-            </Modal>
-        </>
+            </div>
+        </div>
     );
 }
 
