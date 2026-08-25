@@ -1,7 +1,7 @@
 import { Link, useSearchParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { BookOutlined } from '@ant-design/icons';
-import { X, Filter, Search, Sparkles, BookOpen as BookIcon } from 'lucide-react';
+import { X, Filter, Sparkles, BookOpen as BookIcon } from 'lucide-react';
 import useDeboune from '../../hooks/useDebounce';
 import Banner from '../Banner/Banner';
 import Cardbody from '../Cardbody/Cardbody';
@@ -207,60 +207,6 @@ function HomePage() {
                 <Banner />
             </div>
 
-            {/* SEARCH BAR SECTION - Below Banner */}
-            <section className="w-full bg-gradient-to-b from-blue-50 to-white py-6 sm:py-8 shadow-sm">
-                <div className="w-full max-w-2xl mx-auto px-2 sm:px-4 relative">
-                    <div className="relative">
-                        <input
-                            type="text"
-                            placeholder="Tìm kiếm sách, tác giả, hoặc từ khóa..."
-                            value={searchText}
-                            onChange={(e) => setSearchText(e.target.value)}
-                            onFocus={() => setShowSearchResults(true)}
-                            className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-white rounded-full text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm sm:text-base shadow-md"
-                        />
-                        <Search className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-
-                        {/* Search Results Dropdown */}
-                        {showSearchResults && searchResult.length > 0 && (
-                            <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-lg shadow-2xl overflow-hidden z-50">
-                                <div className="max-h-96 overflow-y-auto">
-                                    {searchResult.slice(0, 5).map((book) => (
-                                        <button
-                                            key={book._id}
-                                            onClick={() => handleBookClick(book._id)}
-                                            className="w-full text-left px-4 py-3 hover:bg-gray-50 transition border-b border-gray-100 last:border-b-0 flex gap-3 items-start"
-                                        >
-                                            {book.images && book.images.length > 0 && (
-                                                <img
-                                                    src={book.images[0]}
-                                                    alt={book.title}
-                                                    className="w-10 h-14 object-cover rounded"
-                                                />
-                                            )}
-                                            <div className="flex-1 min-w-0">
-                                                <p className="text-sm font-semibold text-gray-900 truncate">
-                                                    {book.title}
-                                                </p>
-                                                <p className="text-xs text-gray-600 truncate">
-                                                    {book.dailyRentalFee?.toLocaleString()}đ/ngày
-                                                </p>
-                                            </div>
-                                        </button>
-                                    ))}
-                                    {searchResult.length > 5 && (
-                                        <div className="px-4 py-2 text-center text-xs text-gray-600 bg-gray-50">
-                                            +{searchResult.length - 5} kết quả khác
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            </section>
-
-            {/* QUICK ACCESS SECTION */}
             <PolicySection />
 
             {/* FILTER DRAWER - Mobile Only */}

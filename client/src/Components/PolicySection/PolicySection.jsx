@@ -1,102 +1,197 @@
-import { Clock, BookMarked, Smartphone, RefreshCw, FileText, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useStore } from '../../hooks/useStore';
+
+const categoryStyles = [
+    {
+        icon: 'cart',
+        accent: '#16a34a',
+    },
+    {
+        icon: 'search',
+        accent: '#16a34a',
+    },
+    {
+        icon: 'shelf',
+        accent: '#16a34a',
+    },
+    {
+        icon: 'stack',
+        accent: '#16a34a',
+    },
+    {
+        icon: 'reader',
+        accent: '#16a34a',
+    },
+    {
+        icon: 'apple',
+        accent: '#16a34a',
+    },
+];
+
+const renderIllustration = (icon, accent) => {
+    const common = {
+        fill: 'none',
+        stroke: '#111827',
+        strokeWidth: 2.2,
+        strokeLinecap: 'round',
+        strokeLinejoin: 'round',
+    };
+
+    const accentProps = {
+        ...common,
+        stroke: accent,
+    };
+
+    switch (icon) {
+        case 'cart':
+            return (
+                <svg viewBox="0 0 120 96" className="h-20 w-20 md:h-24 md:w-24" aria-hidden="true">
+                    <g>
+                        <path {...common} d="M10 18h14l8 38h48l10-28H34" />
+                        <circle {...common} cx="38" cy="70" r="7" />
+                        <circle {...common} cx="70" cy="70" r="7" />
+                        <path {...accentProps} d="M22 30h56" />
+                        <path {...accentProps} d="M34 18l10 12h26" />
+                    </g>
+                </svg>
+            );
+        case 'search':
+            return (
+                <svg viewBox="0 0 120 96" className="h-20 w-20 md:h-24 md:w-24" aria-hidden="true">
+                    <g>
+                        <rect x="18" y="20" width="52" height="42" rx="3" {...common} />
+                        <path {...accentProps} d="M34 36h20" />
+                        <path {...accentProps} d="M34 45h16" />
+                        <circle cx="70" cy="52" r="18" {...common} />
+                        <path d="M82 64l18 16" {...common} />
+                    </g>
+                </svg>
+            );
+        case 'shelf':
+            return (
+                <svg viewBox="0 0 120 96" className="h-20 w-20 md:h-24 md:w-24" aria-hidden="true">
+                    <g>
+                        <path {...common} d="M18 28h72" />
+                        <path {...common} d="M18 48h72" />
+                        <path {...common} d="M22 20v54" />
+                        <path {...common} d="M82 20v54" />
+                        <path {...common} d="M36 20v54" />
+                        <path {...common} d="M52 20v54" />
+                        <path {...common} d="M68 20v54" />
+                        <path {...accentProps} d="M14 66h80" />
+                        <path {...accentProps} d="M38 18v-8" />
+                        <path {...accentProps} d="M58 18v-8" />
+                    </g>
+                </svg>
+            );
+        case 'stack':
+            return (
+                <svg viewBox="0 0 120 96" className="h-20 w-20 md:h-24 md:w-24" aria-hidden="true">
+                    <g>
+                        <path {...common} d="M18 30l42-18 42 18-42 18-42-18Z" />
+                        <path {...common} d="M18 46l42 18 42-18" />
+                        <path {...common} d="M18 60l42 18 42-18" />
+                        <path {...accentProps} d="M36 32l18 8 18-8" />
+                    </g>
+                </svg>
+            );
+        case 'reader':
+            return (
+                <svg viewBox="0 0 120 96" className="h-20 w-20 md:h-24 md:w-24" aria-hidden="true">
+                    <g>
+                        <path {...common} d="M22 22h50v52H22z" />
+                        <path {...common} d="M78 22h20v52H78" />
+                        <path {...common} d="M72 22v52" />
+                        <path {...accentProps} d="M32 36h30" />
+                        <path {...accentProps} d="M32 48h26" />
+                        <path {...accentProps} d="M86 40h8v18h-8" />
+                    </g>
+                </svg>
+            );
+        case 'apple':
+            return (
+                <svg viewBox="0 0 120 96" className="h-20 w-20 md:h-24 md:w-24" aria-hidden="true">
+                    <g>
+                        <path
+                            {...common}
+                            d="M52 18c12 0 18 10 18 18v30c0 12-10 22-22 22S26 78 26 66V36c0-8 6-18 18-18h8Z"
+                        />
+                        <path {...common} d="M52 18v12m-8-8c4-8 16-10 24-4" />
+                        <path {...accentProps} d="M78 20l18 18" />
+                        <path {...accentProps} d="M96 20l-18 18" />
+                    </g>
+                </svg>
+            );
+        default:
+            return (
+                <svg viewBox="0 0 120 96" className="h-20 w-20 md:h-24 md:w-24" aria-hidden="true">
+                    <g>
+                        <rect x="22" y="18" width="54" height="52" rx="3" {...common} />
+                        <path {...accentProps} d="M32 36h34" />
+                        <path {...accentProps} d="M32 48h26" />
+                    </g>
+                </svg>
+            );
+    }
+};
 
 const PolicySection = () => {
-    const quickAccessItems = [
-        {
-            id: 1,
-            title: 'Giờ mở cửa',
-            description: 'Thứ 2 - CN: 7h30 - 21h',
-            icon: Clock,
-            link: '/hours',
-            color: 'text-blue-600',
-            bgColor: 'bg-blue-50',
-        },
-        {
-            id: 2,
-            title: 'Sách số',
-            description: 'Truy cập tài liệu điện tử',
-            icon: Smartphone,
-            link: '/ebooks',
-            color: 'text-purple-600',
-            bgColor: 'bg-purple-50',
-        },
-        {
-            id: 3,
-            title: 'Gia hạn sách',
-            description: 'Gia hạn trực tuyến dễ dàng',
-            icon: RefreshCw,
-            link: '/renew',
-            color: 'text-green-600',
-            bgColor: 'bg-green-50',
-        },
-        {
-            id: 4,
-            title: 'Tài liệu nội bộ',
-            description: 'Luận án, báo cáo và hơn thế',
-            icon: FileText,
-            link: '/documents',
-            color: 'text-orange-600',
-            bgColor: 'bg-orange-50',
-        },
-        {
-            id: 5,
-            title: 'Sách nổi bật',
-            description: 'Những cuốn sách được yêu thích',
-            icon: BookMarked,
-            link: '/featured',
-            color: 'text-red-600',
-            bgColor: 'bg-red-50',
-        },
-        {
-            id: 6,
-            title: 'Thành tựu',
-            description: 'Giải thưởng và công trạng',
-            icon: Award,
-            link: '/achievements',
-            color: 'text-indigo-600',
-            bgColor: 'bg-indigo-50',
-        },
-    ];
+    const { category } = useStore();
+
+    const displayCategories = Array.isArray(category) ? category.slice(0, 6) : [];
 
     return (
-        <section className="w-full bg-gray-50 py-8 sm:py-12">
-            <div className="max-w-7xl mx-auto px-4">
-                {/* Section Title */}
-                <div className="mb-8 text-center">
-                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Truy cập nhanh</h2>
-                    <p className="text-gray-600 text-sm sm:text-base mt-2">Những dịch vụ nổi bật của thư viện</p>
+        <section className="w-full bg-[#f5f5f5] py-8 md:py-10">
+            <div className="mx-auto max-w-7xl px-4">
+                <div className="mb-7 text-center">
+                    <h2 className="text-[26px] font-bold leading-tight text-gray-900 md:text-[32px]">
+                        Có thể bạn đang tìm kiếm
+                    </h2>
                 </div>
 
-                {/* Quick Access Grid - 3 columns on mobile, 6 on desktop */}
-                <div className="grid grid-cols-3 md:grid-cols-6 gap-3 sm:gap-4">
-                    {quickAccessItems.map((item) => {
-                        const Icon = item.icon;
-                        return (
-                            <Link
-                                key={item.id}
-                                to={item.link}
-                                className={`${item.bgColor} hover:shadow-lg transition-all duration-300 rounded-lg p-3 sm:p-4 flex flex-col items-center text-center group cursor-pointer`}
-                            >
-                                {/* Icon */}
-                                <div
-                                    className={`${item.color} mb-2 sm:mb-3 group-hover:scale-110 transition-transform`}
-                                >
-                                    <Icon className="w-6 h-6 sm:w-8 sm:h-8" />
-                                </div>
+                <div className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 lg:grid-cols-6">
+                    {displayCategories.length > 0
+                        ? displayCategories.map((item, index) => {
+                              const style = categoryStyles[index % categoryStyles.length];
+                              const title = item?.nameCategory || 'Danh mục';
 
-                                {/* Title */}
-                                <h3 className="text-xs sm:text-sm font-semibold text-gray-900 line-clamp-2">
-                                    {item.title}
-                                </h3>
-
-                                {/* Description - Hidden on mobile, visible on desktop */}
-                                <p className="hidden md:block text-xs text-gray-600 mt-1 line-clamp-2">
-                                    {item.description}
-                                </p>
-                            </Link>
-                        );
-                    })}
+                              return (
+                                  <Link
+                                      key={item?._id || index}
+                                      to={item?._id ? `/?category=${item._id}` : '/'}
+                                      className="group flex flex-col items-center text-center"
+                                  >
+                                      <div className="flex h-28 w-28 items-center justify-center rounded-[18px] border-[2.5px] border-[#111827] bg-[#f8fafc] transition-transform duration-200 group-hover:-translate-y-1 group-hover:shadow-[0_10px_20px_rgba(15,23,42,0.08)] md:h-32 md:w-32">
+                                          {renderIllustration(style.icon, style.accent)}
+                                      </div>
+                                      <p className="mt-3 text-base font-semibold leading-6 text-gray-900 md:text-lg">
+                                          {title}
+                                      </p>
+                                  </Link>
+                              );
+                          })
+                        : [1, 2, 3, 4, 5, 6].map((item) => (
+                              <div key={item} className="flex flex-col items-center text-center">
+                                  <div className="flex h-28 w-28 items-center justify-center rounded-[18px] border-[2.5px] border-[#111827] bg-[#f8fafc] md:h-32 md:w-32">
+                                      {renderIllustration(
+                                          categoryStyles[(item - 1) % categoryStyles.length].icon,
+                                          '#16a34a',
+                                      )}
+                                  </div>
+                                  <p className="mt-3 text-base font-semibold text-gray-900 md:text-lg">
+                                      {
+                                          [
+                                              'Sách bán chạy',
+                                              'Sách mới xuất bản',
+                                              'Sách sắp xuất bản',
+                                              'Sách hưu cầu',
+                                              'Sách phi hư cấu',
+                                              'Sách nghiên cứu',
+                                          ][item - 1]
+                                      }
+                                  </p>
+                              </div>
+                          ))}
                 </div>
             </div>
         </section>
