@@ -22,10 +22,10 @@ function Footer() {
                         <li className="hover:text-blue-600 transition cursor-pointer">Hướng dẫn trả góp</li>
                         <li className="hover:text-blue-600 transition cursor-pointer">Chính sách nhập khẩu</li>
                         <li className="hover:text-blue-600 transition cursor-pointer">
-                            Hỗ trợ khách hàng: hotro@davlibri.vn
+                            Hỗ trợ khách hàng: hotro@dav.edu.vn
                         </li>
                         <li className="hover:text-blue-600 transition cursor-pointer">
-                            Báo lỗi bảo mật: security@davlibri.vn
+                            Báo lỗi bảo mật: security@dav.edu.vn
                         </li>
                     </ul>
                 </div>
@@ -105,7 +105,7 @@ function Footer() {
 
             {/* Bottom Info */}
             <div className="max-w-7xl mx-auto px-4 py-6 text-center text-xs text-gray-600">
-                <p>© 2024 DAVLibri - Thư viện Đại học. Tất cả quyền được bảo lưu.</p>
+                <p>© 2026 DAVLibri - Thư viện Học viện Ngoại giao.</p>
             </div>
         </footer>
     );

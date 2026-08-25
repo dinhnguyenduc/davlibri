@@ -167,7 +167,7 @@ function Chatbot() {
                                     <RobotOutlined className="text-lg text-white" />
                                 </div>
                                 <div>
-                                    <h3 className="text-sm font-semibold sm:text-base">Sapo AI</h3>
+                                    <h3 className="text-sm font-semibold sm:text-base">Trợ lý AI</h3>
                                     <p className="text-[10px] text-slate-300">DAVLibri Support</p>
                                 </div>
                             </div>

@@ -91,7 +91,7 @@ function Header() {
                     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-xs sm:text-sm">
                         {/* Left - Slogan & Contact */}
                         <div className="flex items-center gap-4 sm:gap-6 flex-wrap">
-                            <span className="font-semibold text-gray-800">📖 Read more, read better</span>
+                            <span className="font-semibold text-gray-800">📖 Books: Food for the Brain</span>
                             <a
                                 href="tel:+84964834431"
                                 className="flex items-center gap-1.5 text-gray-600 hover:text-blue-600 transition"
