@@ -153,20 +153,20 @@ const PolicySection = () => {
                     {displayCategories.length > 0
                         ? displayCategories.map((item, index) => {
                               const style = categoryStyles[index % categoryStyles.length];
-                              const title = item?.nameCategory || 'Danh mục';
+                              const categoryTitle = item?.title || item?.nameCategory || item?.name || 'Danh mục';
 
                               return (
                                   <Link
                                       key={item?._id || index}
-                                      to={`/products?category=${encodeURIComponent(title)}`}
-                                      state={{ categoryId: item?._id, categoryName: title }}
+                                      to={`/products?category=${encodeURIComponent(categoryTitle)}`}
+                                      state={{ categoryId: item?._id, categoryName: categoryTitle }}
                                       className="group flex cursor-pointer flex-col items-center text-center transition-transform duration-200 hover:scale-105"
                                   >
                                       <div className="flex h-28 w-28 items-center justify-center rounded-[18px] border-[2.5px] border-[#111827] bg-[#f8fafc] transition-shadow duration-200 group-hover:shadow-[0_10px_20px_rgba(15,23,42,0.08)] md:h-32 md:w-32">
                                           {renderIllustration(style.icon, style.accent)}
                                       </div>
                                       <p className="mt-3 text-base font-semibold leading-6 text-gray-900 md:text-lg">
-                                          {title}
+                                          {categoryTitle}
                                       </p>
                                   </Link>
                               );
