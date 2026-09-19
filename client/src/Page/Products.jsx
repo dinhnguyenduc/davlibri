@@ -7,7 +7,7 @@ import Footer from '../Components/Footer/Footer';
 import Chatbot from '../Components/Chatbot/Chatbot';
 import Cardbody from '../Components/Cardbody/Cardbody';
 import { useStore } from '../hooks/useStore';
-import { requestGetBooks, requestGetCategoryById } from '../config/request';
+import { requestGetBooks } from '../config/request';
 
 const colorOptions = [
     {
@@ -36,10 +36,15 @@ const colorOptions = [
     },
 ];
 
+const normalizeText = (value) =>
+    String(value || '')
+        .trim()
+        .toLocaleLowerCase('vi-VN');
+
 function Products() {
     const { category } = useStore();
     const [searchParams, setSearchParams] = useSearchParams();
-    const categoryFromUrl = searchParams.get('category');
+    const categoryFromUrl = searchParams.get('category') || '';
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [books, setBooks] = useState([]);
     const [filteredBooks, setFilteredBooks] = useState([]);
@@ -58,9 +63,31 @@ function Products() {
           }))
         : [];
 
-    const selectedCategoryName = selectedCategory
-        ? styledCategories.find((cat) => cat._id === selectedCategory)?.nameCategory || 'Danh mục tài liệu'
-        : 'Tất cả tài liệu';
+    const selectedCategoryName = selectedCategory || 'Tất cả tài liệu';
+
+    const getCategoryNameById = (categoryId) =>
+        styledCategories.find((cat) => normalizeText(cat._id) === normalizeText(categoryId))?.nameCategory;
+
+    const getBookCategoryValue = (book) => {
+        if (!book?.category) return '';
+
+        if (typeof book.category === 'string') {
+            return getCategoryNameById(book.category) || book.category;
+        }
+
+        return book.category.nameCategory || book.category.name || book.category.title || book.category._id || '';
+    };
+
+    const isSameCategory = (book, categoryName) => {
+        if (!categoryName) return true;
+
+        const normalizedSelected = normalizeText(categoryName);
+        const normalizedBookCategory = normalizeText(getBookCategoryValue(book));
+        const matchedCategory = styledCategories.find((cat) => normalizeText(cat.nameCategory) === normalizedSelected);
+        const normalizedMatchedId = normalizeText(matchedCategory?._id);
+
+        return normalizedBookCategory === normalizedSelected || normalizeText(book?.category) === normalizedMatchedId;
+    };
 
     const fetchBooks = async () => {
         const response = await requestGetBooks();
@@ -69,30 +96,16 @@ function Products() {
         setFilteredBooks(metadata);
     };
 
-    const fetchCategoryById = async (id) => {
-        const response = await requestGetCategoryById(id);
-        const products = Array.isArray(response?.metadata?.products) ? response.metadata.products : [];
-        setBooks(products);
-        setFilteredBooks(products);
-    };
-
     useEffect(() => {
-        if (categoryFromUrl) {
-            setSelectedCategory(categoryFromUrl);
-            fetchCategoryById(categoryFromUrl);
-        } else {
-            setSelectedCategory(null);
-            fetchBooks();
-        }
+        setSelectedCategory(categoryFromUrl || null);
+        fetchBooks();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [categoryFromUrl]);
 
     useEffect(() => {
         if (selectedCategory && selectedCategory !== categoryFromUrl) {
-            fetchCategoryById(selectedCategory);
             setSearchParams({ category: selectedCategory });
         } else if (!selectedCategory && categoryFromUrl) {
-            fetchBooks();
             setSearchParams({});
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -100,6 +113,10 @@ function Products() {
 
     useEffect(() => {
         let result = [...books];
+
+        if (selectedCategory) {
+            result = result.filter((book) => isSameCategory(book, selectedCategory));
+        }
 
         result = result.filter(
             (book) => book.dailyRentalFee >= priceFilter.min && book.dailyRentalFee <= priceFilter.max,
@@ -142,7 +159,8 @@ function Products() {
     };
 
     const handleSelectCategory = (categoryId) => {
-        setSelectedCategory(selectedCategory === categoryId ? null : categoryId);
+        const categoryName = styledCategories.find((cat) => cat._id === categoryId)?.nameCategory || categoryId;
+        setSelectedCategory(normalizeText(selectedCategory) === normalizeText(categoryName) ? null : categoryName);
         setIsFilterDrawerOpen(false);
     };
 
@@ -153,7 +171,7 @@ function Products() {
                     key={cat._id}
                     onClick={() => handleSelectCategory(cat._id)}
                     className={`w-full rounded-lg px-3 py-2 text-left text-sm transition ${
-                        selectedCategory === cat._id
+                        normalizeText(selectedCategory) === normalizeText(cat.nameCategory)
                             ? `${cat.bgColor} ${cat.textColor} border-l-4 border-blue-600 font-semibold`
                             : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
                     }`}
@@ -279,11 +297,19 @@ function Products() {
                                 </div>
                             ) : (
                                 <div className="flex min-h-[280px] flex-col items-center justify-center text-center">
-                                    <BookOpen className="h-14 w-14 text-gray-300" />
+                                    <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-blue-50">
+                                        <BookOpen className="h-10 w-10 text-gray-300" />
+                                    </div>
                                     <p className="mt-4 text-lg font-semibold text-gray-700">
-                                        Không tìm thấy tài liệu phù hợp
+                                        {selectedCategory
+                                            ? `Hiện tại chưa có tài liệu nào thuộc chủ đề ${selectedCategory}.`
+                                            : 'Không tìm thấy tài liệu phù hợp'}
                                     </p>
-                                    <p className="mt-2 text-sm text-gray-500">Hãy thử đổi danh mục hoặc bộ lọc giá.</p>
+                                    <p className="mt-2 text-sm text-gray-500">
+                                        {selectedCategory
+                                            ? 'Vui lòng quay lại sau hoặc thử chọn một danh mục khác.'
+                                            : 'Hãy thử đổi danh mục hoặc bộ lọc giá.'}
+                                    </p>
                                 </div>
                             )}
 

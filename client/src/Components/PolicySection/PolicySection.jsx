@@ -158,7 +158,7 @@ const PolicySection = () => {
                               return (
                                   <Link
                                       key={item?._id || index}
-                                      to={item?._id ? `/products?category=${item._id}` : '/products'}
+                                      to={`/products?category=${encodeURIComponent(title)}`}
                                       state={{ categoryId: item?._id, categoryName: title }}
                                       className="group flex cursor-pointer flex-col items-center text-center transition-transform duration-200 hover:scale-105"
                                   >
