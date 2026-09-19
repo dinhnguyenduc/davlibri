@@ -14,6 +14,7 @@ import LoanPaymentSuccess from '../Page/LoanPaymentSuccess';
 import About from '../Page/About';
 import Pricing from '../Page/Pricing';
 import Bookshelf from '../Page/Bookshelf';
+import Products from '../Page/Products';
 import Blog from '../Page/Blog';
 import Wishlist from '../Page/Wishlist';
 import Guide from '../Page/Guide';
@@ -78,7 +79,7 @@ export const routes = [
     },
     {
         path: '/products',
-        component: <App />,
+        component: <Products />,
     },
     {
         path: '/bookshelf',

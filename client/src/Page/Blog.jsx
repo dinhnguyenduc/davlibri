@@ -43,8 +43,8 @@ function Blog() {
 
             <main className="max-w-7xl mx-auto px-4 py-12 min-h-[60vh]">
                 <div className="mb-10">
-                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">DAVLibri Blog</p>
-                    <h1 className="mt-3 text-3xl font-bold text-gray-900 md:text-5xl">Góc mọt sách</h1>
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">Tin tức & Sự kiện</p>
+                    <h1 className="mt-3 text-3xl font-bold text-gray-900 md:text-5xl">Tin tức & Sự kiện</h1>
                     <p className="mt-4 max-w-2xl text-gray-600">
                         Tin tức, gợi ý đọc sách và các kỹ năng khai thác tài liệu học thuật hiệu quả.
                     </p>
