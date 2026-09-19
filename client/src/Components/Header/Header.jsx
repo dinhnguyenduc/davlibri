@@ -1,6 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ShoppingCart, Search, User, Menu, X, ChevronDown, Phone, Mail, BookOpen } from 'lucide-react';
+import {
+    ShoppingCart,
+    Search,
+    User,
+    Menu,
+    X,
+    ChevronDown,
+    Phone,
+    Mail,
+    BookOpen,
+    BookMarked,
+    Heart,
+} from 'lucide-react';
 import { useStore } from '../../hooks/useStore';
 import { requestLogout, requestSearchBook } from '../../config/request';
 import useDeboune from '../../hooks/useDebounce';
@@ -71,10 +83,10 @@ function Header() {
 
     const navigationLinks = [
         { to: '/about', label: 'Giới thiệu DAVLibri' },
+        { to: '/products', label: 'Danh mục tài liệu' },
         { to: '/packages', label: 'Gói nạp ngày thuê' },
-        { to: '/products', label: 'Tủ sách' },
-        { to: '/blog', label: 'Góc mọt sách' },
-        { to: '/wishlist', label: 'Wishlist' },
+        { to: '/blog', label: 'Tin tức & Sự kiện' },
+        { to: '/guide', label: 'Hướng dẫn mượn trả' },
     ];
 
     const topMenuLinks = [
@@ -226,6 +238,24 @@ function Header() {
                                                         >
                                                             <User size={16} className="text-blue-600" />
                                                             <span className="text-sm font-medium">Hồ sơ cá nhân</span>
+                                                        </Link>
+
+                                                        <Link
+                                                            to="/bookshelf"
+                                                            onClick={() => setIsUserMenuOpen(false)}
+                                                            className="flex items-center gap-3 px-5 py-2.5 text-gray-700 hover:bg-gray-50 transition min-h-[44px]"
+                                                        >
+                                                            <BookMarked size={16} className="text-blue-600" />
+                                                            <span className="text-sm font-medium">Tủ sách</span>
+                                                        </Link>
+
+                                                        <Link
+                                                            to="/wishlist"
+                                                            onClick={() => setIsUserMenuOpen(false)}
+                                                            className="flex items-center gap-3 px-5 py-2.5 text-gray-700 hover:bg-gray-50 transition min-h-[44px]"
+                                                        >
+                                                            <Heart size={16} className="text-blue-600" />
+                                                            <span className="text-sm font-medium">Wishlist</span>
                                                         </Link>
 
                                                         {(dataUser.role === 'admin' ||
@@ -412,6 +442,9 @@ function Header() {
 
                         {/* Navigation Links */}
                         <nav className="flex flex-col gap-1 px-4 py-4">
+                            <p className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                Public Menu
+                            </p>
                             {navigationLinks.map((link) => (
                                 <Link
                                     key={link.to}
@@ -422,6 +455,73 @@ function Header() {
                                     {link.label}
                                 </Link>
                             ))}
+                        </nav>
+
+                        {/* Divider */}
+                        <div className="border-t border-gray-200" />
+
+                        {/* Account Links */}
+                        <nav className="flex flex-col gap-1 px-4 py-4">
+                            <p className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                Tài khoản
+                            </p>
+                            {dataUser?._id ? (
+                                <>
+                                    <Link
+                                        to="/info-user"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="px-4 py-3 text-gray-700 font-medium hover:bg-blue-50 rounded-lg transition min-h-[44px] flex items-center gap-3"
+                                    >
+                                        <User size={16} className="text-blue-600" />
+                                        Hồ sơ cá nhân
+                                    </Link>
+                                    <Link
+                                        to="/bookshelf"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="px-4 py-3 text-gray-700 font-medium hover:bg-blue-50 rounded-lg transition min-h-[44px] flex items-center gap-3"
+                                    >
+                                        <BookMarked size={16} className="text-blue-600" />
+                                        Tủ sách
+                                    </Link>
+                                    <Link
+                                        to="/wishlist"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="px-4 py-3 text-gray-700 font-medium hover:bg-blue-50 rounded-lg transition min-h-[44px] flex items-center gap-3"
+                                    >
+                                        <Heart size={16} className="text-blue-600" />
+                                        Wishlist
+                                    </Link>
+                                    {(dataUser.role === 'admin' || dataUser.role === 'librarian') && (
+                                        <Link
+                                            to="/admin"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className="px-4 py-3 text-gray-700 font-medium hover:bg-blue-50 rounded-lg transition min-h-[44px] flex items-center gap-3"
+                                        >
+                                            <span className="text-lg">⚙️</span>
+                                            Trang quản trị
+                                        </Link>
+                                    )}
+                                </>
+                            ) : (
+                                <>
+                                    <Link
+                                        to="/login"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="px-4 py-3 text-gray-700 font-medium hover:bg-blue-50 rounded-lg transition min-h-[44px] flex items-center gap-3"
+                                    >
+                                        <span className="text-lg">🔐</span>
+                                        Đăng nhập
+                                    </Link>
+                                    <Link
+                                        to="/register"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="px-4 py-3 text-gray-700 font-medium hover:bg-blue-50 rounded-lg transition min-h-[44px] flex items-center gap-3"
+                                    >
+                                        <span className="text-lg">📝</span>
+                                        Đăng ký
+                                    </Link>
+                                </>
+                            )}
                         </nav>
 
                         {/* Divider */}

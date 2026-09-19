@@ -16,6 +16,7 @@ import Pricing from '../Page/Pricing';
 import Bookshelf from '../Page/Bookshelf';
 import Blog from '../Page/Blog';
 import Wishlist from '../Page/Wishlist';
+import Guide from '../Page/Guide';
 
 export const routes = [
     { path: '/', component: <App /> },
@@ -77,6 +78,10 @@ export const routes = [
     },
     {
         path: '/products',
+        component: <App />,
+    },
+    {
+        path: '/bookshelf',
         component: <Bookshelf />,
     },
     {
@@ -86,5 +91,9 @@ export const routes = [
     {
         path: '/wishlist',
         component: <Wishlist />,
+    },
+    {
+        path: '/guide',
+        component: <Guide />,
     },
 ];

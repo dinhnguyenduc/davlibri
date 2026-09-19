@@ -52,6 +52,7 @@ const colorOptions = [
 function HomePage() {
     const { category } = useStore(); // Dữ liệu từ API
     const [searchParams, setSearchParams] = useSearchParams();
+    const categoryFromUrl = searchParams.get('category');
     const navigate = useNavigate();
     const [searchText, setSearchText] = useState('');
     const [searchResult, setSearchResult] = useState([]);
@@ -116,21 +117,20 @@ function HomePage() {
         setFilteredBooks(category.metadata.products);
     };
 
-    // Khôi phục danh mục từ URL khi component mount
+    // Đồng bộ danh mục từ URL khi vào trang hoặc khi query category thay đổi
     useEffect(() => {
-        const categoryFromUrl = searchParams.get('category');
         if (categoryFromUrl) {
             setSelectedCategory(categoryFromUrl);
             fetchCategoryById(categoryFromUrl);
         } else {
+            setSelectedCategory(null);
             fetchBooks();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [categoryFromUrl]);
 
     // Xử lý khi selectedCategory thay đổi (không phải từ URL)
     useEffect(() => {
-        const categoryFromUrl = searchParams.get('category');
         // Chỉ fetch khi selectedCategory thay đổi và khác với URL hiện tại
         if (selectedCategory && selectedCategory !== categoryFromUrl) {
             fetchCategoryById(selectedCategory);
