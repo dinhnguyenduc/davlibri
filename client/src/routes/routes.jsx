@@ -11,6 +11,11 @@ import ForgotPassword from '../Page/ForgotPassword';
 import AIChatPage from '../Page/AIChatPage';
 import PaymentDemo from '../Page/PaymentDemo';
 import LoanPaymentSuccess from '../Page/LoanPaymentSuccess';
+import About from '../Page/About';
+import Pricing from '../Page/Pricing';
+import Bookshelf from '../Page/Bookshelf';
+import Blog from '../Page/Blog';
+import Wishlist from '../Page/Wishlist';
 
 export const routes = [
     { path: '/', component: <App /> },
@@ -61,5 +66,25 @@ export const routes = [
     {
         path: '/ai-chat',
         component: <AIChatPage />,
+    },
+    {
+        path: '/about',
+        component: <About />,
+    },
+    {
+        path: '/packages',
+        component: <Pricing />,
+    },
+    {
+        path: '/products',
+        component: <Bookshelf />,
+    },
+    {
+        path: '/blog',
+        component: <Blog />,
+    },
+    {
+        path: '/wishlist',
+        component: <Wishlist />,
     },
 ];
