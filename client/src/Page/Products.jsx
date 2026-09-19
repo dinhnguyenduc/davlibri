@@ -39,6 +39,7 @@ const colorOptions = [
 const normalizeText = (value) =>
     String(value || '')
         .trim()
+        .replace(/-/g, ' ')
         .toLocaleLowerCase('vi-VN');
 
 function Products() {
@@ -65,29 +66,25 @@ function Products() {
 
     const selectedCategoryName = selectedCategory || 'Tất cả tài liệu';
 
-    const getCategoryNameById = (categoryId) =>
-        styledCategories.find((cat) => normalizeText(cat._id) === normalizeText(categoryId))?.nameCategory;
+    const getCategoryLabel = (value) =>
+        styledCategories.find(
+            (cat) =>
+                normalizeText(cat._id) === normalizeText(value) ||
+                normalizeText(cat.nameCategory) === normalizeText(value),
+        )?.nameCategory || value;
 
     const getBookCategoryValue = (book) => {
         if (!book?.category) return '';
 
         if (typeof book.category === 'string') {
-            return getCategoryNameById(book.category) || book.category;
+            return getCategoryLabel(book.category);
         }
 
         return book.category.nameCategory || book.category.name || book.category.title || book.category._id || '';
     };
 
-    const isSameCategory = (book, categoryName) => {
-        if (!categoryName) return true;
-
-        const normalizedSelected = normalizeText(categoryName);
-        const normalizedBookCategory = normalizeText(getBookCategoryValue(book));
-        const matchedCategory = styledCategories.find((cat) => normalizeText(cat.nameCategory) === normalizedSelected);
-        const normalizedMatchedId = normalizeText(matchedCategory?._id);
-
-        return normalizedBookCategory === normalizedSelected || normalizeText(book?.category) === normalizedMatchedId;
-    };
+    const categoryMatches = (book, categoryName) =>
+        normalizeText(getBookCategoryValue(book)).includes(normalizeText(categoryName));
 
     const fetchBooks = async () => {
         const response = await requestGetBooks();
@@ -97,10 +94,14 @@ function Products() {
     };
 
     useEffect(() => {
-        setSelectedCategory(categoryFromUrl || null);
+        const nextCategory = searchParams.get('category');
+        setSelectedCategory(nextCategory ? decodeURIComponent(nextCategory) : null);
+    }, [searchParams]);
+
+    useEffect(() => {
         fetchBooks();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [categoryFromUrl]);
+    }, []);
 
     useEffect(() => {
         if (selectedCategory && selectedCategory !== categoryFromUrl) {
@@ -115,7 +116,7 @@ function Products() {
         let result = [...books];
 
         if (selectedCategory) {
-            result = result.filter((book) => isSameCategory(book, selectedCategory));
+            result = result.filter((book) => categoryMatches(book, selectedCategory));
         }
 
         result = result.filter(
@@ -141,7 +142,7 @@ function Products() {
 
         setFilteredBooks(result);
         setCanLoadMore(result.length > displayedBooksCount);
-    }, [books, priceFilter, sortOrder, displayedBooksCount]);
+    }, [books, selectedCategory, priceFilter, sortOrder, displayedBooksCount]);
 
     useEffect(() => {
         setDisplayedBooksCount(24);
